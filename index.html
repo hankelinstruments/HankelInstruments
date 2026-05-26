@@ -4,263 +4,445 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hankel Instruments | MCUs de Vanguardia en Perú</title>
+    <!-- Fonts: Azonix (Heading) & Gotham (Body) -->
+    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <style>
-        /* Estilos Globales y Tema Oscuro */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Importar Azonix - Fuente personalizada para el nombre de la marca */
+        @font-face {
+            font-family: 'Azonix';
+            src: url('https://dl.dropboxusercontent.com/s/6b7v6s7s6s7s6s7/Azonix.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* Fallback local por si la URL falla - usaremos una fuente similar */
+        @font-face {
+            font-family: 'Azonix Fallback';
+            src: local('Arial Black'), local('Impact');
+            font-weight: bold;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #10141d; /* Color de fondo oscuro, similar al logo */
-            color: #f0f0f0; /* Texto claro */
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: #0a0c10;
+            color: #e0e0e0;
             line-height: 1.6;
+        }
+
+        /* Títulos y marca con Azonix */
+        h1, h2, h3, .brand-font, .logo-text, .nav-links a {
+            font-family: 'Azonix', 'Azonix Fallback', 'Arial Black', sans-serif;
+            letter-spacing: 1px;
         }
 
         a {
             text-decoration: none;
-            color: #00bcd4; /* Color de acento cian para enlaces */
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        a:hover {
-            color: #fff;
-        }
-
-        /* Contenedor Principal */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Encabezado y Navegación */
+        /* Header estilo Texas Instruments moderno */
         header {
-            background-color: rgba(16, 20, 29, 0.9); /* Ligeramente transparente */
-            padding: 20px 0;
+            background: rgba(10, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(0, 188, 212, 0.3);
+            padding: 16px 0;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
-            max-height: 50px; /* Ajusta según el tamaño de tu logo */
+            max-height: 48px;
+            width: auto;
+            border-radius: 6px;
+            transition: transform 0.2s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Fallback para logo si no carga */
+        .logo-fallback {
+            display: none;
+            font-family: 'Azonix', sans-serif;
+            font-size: 1.8rem;
+            color: #00bcd4;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
+            gap: 32px;
         }
 
         .nav-links a {
-            font-weight: 600;
             color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
         }
 
-        /* Sección Hero (Principal) con Imagen de Fondo */
+        .nav-links a:hover {
+            color: #00bcd4;
+            border-bottom-color: #00bcd4;
+        }
+
+        /* Hero Section con flag.png */
         .hero {
-            height: 100vh;
-            background-image: linear-gradient(rgba(16, 20, 29, 0.7), rgba(16, 20, 29, 0.8)), url('image_16.png');
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,12,16,0.85), rgba(10,12,16,0.95)), url('flag.png');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efecto Parallax */
+            background-position: center center;
+            background-attachment: fixed;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding-top: 100px; /* Espacio para el header fijo */
+            padding: 120px 20px 80px;
+        }
+
+        /* Si flag.png no existe, color de respaldo */
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 20px;
-            letter-spacing: -1px;
-            color: #fff;
+            background: linear-gradient(135deg, #fff, #00bcd4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero-content p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             max-width: 700px;
-            margin: 0 auto 40px auto;
-            color: #ccc;
+            margin: 0 auto 32px;
+            font-weight: 300;
         }
 
         .btn {
             display: inline-block;
-            background-color: #00bcd4;
-            color: #10141d;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
+            background: #00bcd4;
+            color: #0a0c10;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-family: 'Gotham', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            background-color: #fff;
-            color: #10141d;
+            background: #fff;
+            color: #0a0c10;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,188,212,0.3);
         }
 
-        /* Sección Sobre Nosotros / Visión */
-        .about {
+        /* Sección Misión (visión renovada) */
+        .mission {
             padding: 100px 0;
-            background-color: #141824; /* Un tono ligeramente diferente */
+            background: #0f1117;
         }
 
-        .about h2 {
-            font-size: 2.5rem;
+        .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            font-size: 2.8rem;
+            margin-bottom: 48px;
             color: #fff;
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            color: #00bcd4;
-            font-size: 1.8rem;
-        }
-
-        /* Sección de Repositorios / Proyectos */
-        .projects {
-            padding: 100px 0;
-        }
-
-        .projects h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #fff;
-        }
-
-        .project-list {
-            list-style: none;
-            padding: 0;
+        .mission-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 48px;
         }
 
-        .project-card {
-            background-color: #1a1f2e;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .mission-card {
+            background: #151a24;
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid #2a2f3a;
+            transition: all 0.3s;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
+        .mission-card:hover {
             border-color: #00bcd4;
+            transform: translateY(-6px);
         }
 
-        .project-card h3 {
-            margin-top: 0;
+        .mission-card h3 {
+            color: #00bcd4;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        /* Repositorios - estilo github pero premium */
+        .repos {
+            padding: 100px 0;
+            background: #0a0c10;
+        }
+
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .repo-card {
+            background: #12161e;
+            padding: 28px;
+            border-radius: 20px;
+            border-left: 4px solid #00bcd4;
+            transition: 0.2s;
+        }
+
+        .repo-card h3 a {
+            color: #fff;
             font-size: 1.5rem;
+            font-family: 'Azonix', sans-serif;
         }
 
-        .project-card p {
-            color: #ccc;
+        .repo-card h3 a:hover {
+            color: #00bcd4;
         }
 
-        /* Pie de Página */
+        .repo-card p {
+            color: #b0b7c5;
+            margin: 16px 0;
+        }
+
+        .repo-tag {
+            display: inline-block;
+            background: #1e2a3a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #00bcd4;
+        }
+
+        /* Footer estilo Tesla (minimalista tech) */
         footer {
-            background-color: #0c0f15;
-            padding: 40px 0;
+            background: #05070a;
+            padding: 48px 0 32px;
+            border-top: 1px solid #1a1f2a;
             text-align: center;
-            border-top: 1px solid #333;
         }
 
-        footer p {
-            margin: 0;
-            color: #777;
+        footer a {
+            color: #00bcd4;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        /* Manejo de errores de imágenes con JS */
+        .image-error-fallback {
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .nav-links {
+                gap: 18px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#"><img src="image_17.png" alt="Hankel Instruments Logo" class="logo"></a>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#vision">Nuestra Visión</a></li>
-                    <li><a href="#repositorios">Repositorios</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" id="logoLink">
+                <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#mision">Visión Tesla</a></li>
+                <li><a href="#repositorios">I+D + MCUs</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <section id="inicio" class="hero">
-        <div class="container hero-content">
-            <h1>Hardware de Vanguardia. Accesible.</h1>
-            <p>Empoderando la innovación en Perú con microcontroladores (MCUs) avanzados y de bajo costo.</p>
-            <a href="#vision" class="btn">Conoce Nuestra Visión</a>
-        </div>
-    </section>
+<section id="inicio" class="hero">
+    <div class="container hero-content">
+        <h1>Hardware de Vanguardia.<br>Hecho en Perú.</h1>
+        <p>MCUs avanzados + Hoja de ruta estilo Tesla: de la distribución a la fabricación de instrumentos científicos propios.</p>
+        <a href="#mision" class="btn">Explorar el futuro</a>
+    </div>
+</section>
 
-    <section id="vision" class="about">
-        <div class="container">
-            <h2>Nuestra Misión y Hoja de Ruta</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>Fase 1: Democratizando el Hardware</h3>
-                    <p>Actualmente, nuestro núcleo de negocio se centra en el suministro y la venta de microcontroladores (MCUs) de vanguardia a precios accesibles. Creemos que la innovación tecnológica debe estar al alcance de todos los ingenieros y desarrolladores en Perú, sentando las bases comerciales para el futuro.</p>
-                </div>
-                <div class="about-text">
-                    <h3>Visión a Largo Plazo: I+D Avanzado</h3>
-                    <p>Nuestra visión va mucho más allá de la distribución. Estamos reinvirtiendo para evolucionar hacia un hub de investigación y desarrollo (I+D) dedicado a la fabricación de nuestra propia línea de instrumentos científicos avanzados. Esto incluye el diseño de PCBs personalizados de alto rendimiento y ultra bajo consumo, y la integración pionera de nanotecnología y sensores plasmónicos.</p>
-                </div>
+<section id="mision" class="mission">
+    <div class="container">
+        <h2 class="section-title">De Texas Instruments a Nuestro Propio Tesla</h2>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3>⚡ Fase 1: MCUs Accesibles</h3>
+                <p>Distribuimos microcontroladores de última generación a precios justos. Democratizamos el hardware en Perú con el respaldo de ingeniería local.</p>
+            </div>
+            <div class="mission-card">
+                <h3>🔬 Fase 2: I+D Avanzado</h3>
+                <p>Desarrollamos nuestra propia línea de instrumentos científicos: PCBs personalizados, bajo consumo extremo y sensores plasmónicos.</p>
+            </div>
+            <div class="mission-card">
+                <h3>🇵🇪 Fase 3: Fabricación Nacional</h3>
+                <p>Como Tesla en el auto eléctrico, Hankel Instruments construirá la próxima generación de instrumentación peruana con nanotecnología.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="repositorios" class="projects">
-        <div class="container">
-            <h2>Nuestros Repositorios Destacados</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto 60px auto; color: #ccc;">Explora nuestro código, librerías y ejemplos de proyectos diseñados para nuestros MCUs.</p>
-            <ul class="project-list">
-                <li class="project-card">
-                    <h3><a href="#">mcu-peru-examples</a></h3>
-                    <p>Librerías y código de ejemplo para comenzar rápidamente con los MCUs que distribuimos (ESP32, STM32, etc.).</p>
-                </li>
-                <li class="project-card">
-                    <h3><a href="#">iot-sensor-drivers</a></h3>
-                    <p>Controladores optimizados para integrar sensores IoT comunes en tus proyectos de hardware.</p>
-                </li>
-                <li class="project-card">
-                    <h3><a href="#">pcb-design-templates</a></h3>
-                    <p>Plantillas iniciales para diseños de PCBs de alto rendimiento utilizando herramientas open-source.</p>
-                </li>
-            </ul>
+<section id="repositorios" class="repos">
+    <div class="container">
+        <h2 class="section-title">Repositorios Flagship</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 24px; color:#9aa3b5;">Código abierto, drivers y templates para ingenieros que construyen el mañana.</p>
+        <div class="repo-grid">
+            <div class="repo-card">
+                <h3><a href="#">mcu-peru-examples</a></h3>
+                <p>Librerías optimizadas y ejemplos para MCUs ARM de alto rendimiento. Ideal para prototipado rápido.</p>
+                <span class="repo-tag">C</span> <span class="repo-tag">STM32</span> <span class="repo-tag">Rust</span>
+            </div>
+            <div class="repo-card">
+                <h3><a href="#">iot-sensor-drivers</a></h3>
+                <p>Controladores avanzados para sensores IoT con consumo en nanoamperios. Compatible con nuestra hoja de ruta.</p>
+                <span class="repo-tag">Embedded</span> <span class="repo-tag">I2C/SPI</span>
+            </div>
+            <div class="repo-card">
+                <h3><a href="#">pcb-design-templates</a></h3>
+                <p>Plantillas KiCad para diseños de alta densidad, referencia para instrumentos científicos.</p>
+                <span class="repo-tag">KiCad</span> <span class="repo-tag">RF</span>
+            </div>
+            <div class="repo-card">
+                <h3><a href="#">plasmonic-sensor-lib</a></h3>
+                <p>(Próximamente) Librería de procesamiento de señales para sensores plasmónicos de última generación.</p>
+                <span class="repo-tag">Research</span> <span class="repo-tag">Python</span>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer id="contacto">
-        <div class="container">
-            <p>Contáctanos: <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
-            <p>&copy; 2023 Hankel Instruments. Todos los derechos reservados.</p>
+<footer id="contacto">
+    <div class="container">
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#mision">Visión</a>
+            <a href="#repositorios">Repositorios</a>
+            <a href="mailto:info@hankelinstruments.com">Email</a>
         </div>
-    </footer>
+        <p>📩 <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+        <p style="margin-top: 20px; font-size: 0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería que inspira. Referente: Texas Instruments. Rumbo: Tesla.</p>
+    </div>
+</footer>
 
+<script>
+    // Manejo robusto de imágenes: flag.png y logo.jpg
+    function handleLogoError() {
+        const logoImg = document.getElementById('mainLogo');
+        const fallbackSpan = document.getElementById('logoFallbackText');
+        if (logoImg && fallbackSpan) {
+            logoImg.style.display = 'none';
+            fallbackSpan.style.display = 'inline-block';
+            // Opcional: cambiar el href del enlace para mantener la marca
+            const logoLink = document.getElementById('logoLink');
+            if(logoLink) {
+                logoLink.removeAttribute('href');
+                logoLink.style.cursor = 'default';
+            }
+        }
+    }
+    
+    // Verificar si flag.png existe, si no, aplicar un gradiente mejorado o textura (sin romper diseño)
+    function checkFlagImage() {
+        const heroSection = document.querySelector('.hero');
+        const testImg = new Image();
+        testImg.onload = function() {
+            // La imagen existe -> ya está cargada en CSS, no hacer nada
+            console.log('flag.png cargada correctamente');
+        };
+        testImg.onerror = function() {
+            // Si falla, añadir clase de respaldo con un patrón sutil
+            if(heroSection) {
+                heroSection.style.background = 'linear-gradient(135deg, #0a0c10, #0f1722), repeating-linear-gradient(45deg, #1a1f2a 0px, #1a1f2a 2px, transparent 2px, transparent 8px)';
+                heroSection.style.backgroundBlendMode = 'overlay';
+                console.log('flag.png no encontrada, usando respaldo visual');
+            }
+        };
+        testImg.src = 'flag.png';
+    }
+    
+    // También verificamos el logo.jpg por si acaso, pero ya tenemos handleLogoError
+    window.addEventListener('DOMContentLoaded', () => {
+        checkFlagImage();
+        // Forzar chequeo si logo.jpg no carga (además del onerror nativo)
+        const logo = document.getElementById('mainLogo');
+        if(logo && logo.complete && logo.naturalWidth === 0) {
+            handleLogoError();
+        }
+    });
+    
+    // Smooth scroll para los enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if(href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if(target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
 </body>
 </html>
