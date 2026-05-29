@@ -1,13 +1,52 @@
 <!DOCTYPE html>
+<!-- 
+    ¿QUÉ ES ESTO?
+    "DOCTYPE" le dice al navegador: "Oye, esto es HTML5, no uses modos raros de compatibilidad"
+    SIN ESTO: la página podría verse diferente en cada navegador
+-->
 <html lang="es">
+<!-- 
+    <html> es la etiqueta que ENVUELVE TODO el contenido
+    lang="es" indica que el contenido está en español (útil para traductores y lectores de pantalla)
+-->
+
 <head>
+    <!-- 
+        <head> es como el "carnet de identidad" de la página
+        TODO lo que va aquí NO se ve directamente, pero es CRUCIAL para el funcionamiento
+    -->
+    
     <meta charset="UTF-8">
+    <!-- 
+        meta charset="UTF-8" → Permite usar tildes, ñ, emojis, etc.
+        SIN ESTO: los textos con "ñ" o "á" saldrían como símbolos raros ▒
+    -->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        viewport → Hace que la página se vea bien en CELULARES
+        SIN ESTO: en móvil se vería super pequeña (como si fuera escritorio)
+    -->
+    
     <title>Hankel Instruments | MCUs de Vanguardia en Perú</title>
-    <!-- Fonts: Azonix (Heading) & Gotham (Body) -->
+    <!-- 
+        <title> → Es el texto que aparece en la PESTAÑA del navegador
+        También es lo que ve Google en los resultados de búsqueda
+    -->
+    
+    <!-- CARGAR FUENTE GOTHAM DESDE INTERNET -->
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+    
     <style>
-        /* Importar Azonix - Fuente personalizada para el nombre de la marca */
+        /* 
+            <style> → Aquí va TODO el CSS (diseño, colores, tamaños)
+            CSS controla CÓMO SE VE cada elemento
+        */
+        
+        /* =============================================== */
+        /* 1. IMPORTAR FUENTES PERSONALIZADAS              */
+        /* =============================================== */
+        
         @font-face {
             font-family: 'Azonix';
             src: url('https://dl.dropboxusercontent.com/s/6b7v6s7s6s7s6s7/Azonix.otf') format('opentype');
@@ -15,19 +54,27 @@
             font-style: normal;
         }
         
-        /* Fallback local por si la URL falla - usaremos una fuente similar */
+        /* FUENTE DE RESPALDO (FALLBACK) */
         @font-face {
             font-family: 'Azonix Fallback';
             src: local('Arial Black'), local('Impact');
             font-weight: bold;
         }
 
+        /* =============================================== */
+        /* 2. RESETEO DE ESTILOS (NORMALIZACIÓN)           */
+        /* =============================================== */
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* =============================================== */
+        /* 3. ESTILOS DEL CUERPO PRINCIPAL (BODY)          */
+        /* =============================================== */
+        
         body {
             font-family: 'Gotham', 'Segoe UI', 'Helvetica Neue', sans-serif;
             background-color: #0a0c10;
@@ -35,24 +82,38 @@
             line-height: 1.6;
         }
 
-        /* Títulos y marca con Azonix */
+        /* =============================================== */
+        /* 4. TÍTULOS Y MARCA CON FUENTE AZONIX            */
+        /* =============================================== */
+        
         h1, h2, h3, .brand-font, .logo-text, .nav-links a {
             font-family: 'Azonix', 'Azonix Fallback', 'Arial Black', sans-serif;
             letter-spacing: 1px;
         }
 
+        /* =============================================== */
+        /* 5. ESTILOS DE ENLACES (LINKS)                   */
+        /* =============================================== */
+        
         a {
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
+        /* =============================================== */
+        /* 6. CONTENEDOR PRINCIPAL                         */
+        /* =============================================== */
+        
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header estilo Texas Instruments moderno */
+        /* =============================================== */
+        /* 7. ENCABEZADO FIJO (HEADER)                     */
+        /* =============================================== */
+        
         header {
             background: rgba(10, 12, 16, 0.95);
             backdrop-filter: blur(10px);
@@ -82,7 +143,6 @@
             transform: scale(1.02);
         }
 
-        /* Fallback para logo si no carga */
         .logo-fallback {
             display: none;
             font-family: 'Azonix', sans-serif;
@@ -111,9 +171,12 @@
             border-bottom-color: #00bcd4;
         }
 
-        /* Hero Section con flag.png */
+        /* =============================================== */
+        /* 8. SECCIÓN HERO (PRINCIPAL)                    */
+        /* =============================================== */
+        
         .hero {
-            min-height: 100vh;
+            min-height: 60vh;
             background: linear-gradient(135deg, rgba(10,12,16,0.85), rgba(10,12,16,0.95)), url('flag.png');
             background-size: cover;
             background-position: center center;
@@ -123,13 +186,7 @@
             justify-content: center;
             text-align: center;
             padding: 120px 20px 80px;
-        }
-
-        /* Si flag.png no existe, color de respaldo */
-        @media (max-width: 768px) {
-            .hero {
-                background-attachment: scroll;
-            }
+            margin-top: 80px;
         }
 
         .hero-content h1 {
@@ -171,17 +228,191 @@
             box-shadow: 0 8px 20px rgba(0,188,212,0.3);
         }
 
-        /* Sección Misión (visión renovada) */
-        .mission {
-            padding: 100px 0;
+        /* =============================================== */
+        /* 9. SECCIÓN DE PRODUCTOS                         */
+        /* =============================================== */
+        
+        .productos {
+            padding: 80px 0;
             background: #0f1117;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.8rem;
-            margin-bottom: 48px;
+            margin-bottom: 20px;
             color: #fff;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9aa3b5;
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+        }
+
+        /* FILTROS Y BÚSQUEDA */
+        .filtros-container {
+            background: #151a24;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .busqueda {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .busqueda input {
+            width: 100%;
+            padding: 12px 20px;
+            background: #1a1f2e;
+            border: 1px solid #2a2f3a;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .filtros {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filtros select {
+            padding: 12px 20px;
+            background: #1a1f2e;
+            border: 1px solid #2a2f3a;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* GRID DE PRODUCTOS */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .producto-card {
+            background: #12161e;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid #1f2533;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            border-color: #00bcd4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1a1f2e, #0f1117);
+        }
+
+        .producto-info {
+            padding: 20px;
+        }
+
+        .producto-codigo {
+            font-family: 'Azonix', sans-serif;
+            color: #00bcd4;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .producto-nombre {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .producto-descripcion {
+            font-size: 0.85rem;
+            color: #9aa3b5;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .producto-precio {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00bcd4;
+            margin: 12px 0;
+        }
+
+        .producto-stock {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .stock-alto {
+            background: #1e3a2f;
+            color: #4ade80;
+        }
+
+        .stock-medio {
+            background: #3a2e1e;
+            color: #fbbf24;
+        }
+
+        .stock-bajo {
+            background: #3a1e1e;
+            color: #f87171;
+        }
+
+        .btn-comprar {
+            background: #00bcd4;
+            color: #0a0c10;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .btn-comprar:hover {
+            background: #fff;
+            transform: scale(1.02);
+        }
+
+        .sin-stock {
+            background: #3a1e1e;
+            color: #f87171;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .sin-stock:hover {
+            background: #3a1e1e;
+            transform: none;
+        }
+
+        /* =============================================== */
+        /* 10. SECCIÓN DE MISIÓN (TARJETAS)                */
+        /* =============================================== */
+        
+        .mission {
+            padding: 100px 0;
+            background: #0a0c10;
         }
 
         .mission-grid {
@@ -209,10 +440,13 @@
             margin-bottom: 16px;
         }
 
-        /* Repositorios - estilo github pero premium */
+        /* =============================================== */
+        /* 11. SECCIÓN DE REPOSITORIOS                     */
+        /* =============================================== */
+        
         .repos {
             padding: 100px 0;
-            background: #0a0c10;
+            background: #0f1117;
         }
 
         .repo-grid {
@@ -252,9 +486,13 @@
             border-radius: 20px;
             font-size: 0.75rem;
             color: #00bcd4;
+            margin-right: 8px;
         }
 
-        /* Footer estilo Tesla (minimalista tech) */
+        /* =============================================== */
+        /* 12. PIE DE PÁGINA (FOOTER)                      */
+        /* =============================================== */
+        
         footer {
             background: #05070a;
             padding: 48px 0 32px;
@@ -278,11 +516,10 @@
             flex-wrap: wrap;
         }
 
-        /* Manejo de errores de imágenes con JS */
-        .image-error-fallback {
-            display: inline-block;
-        }
-
+        /* =============================================== */
+        /* 13. MEDIA QUERIES (RESPONSIVE)                  */
+        /* =============================================== */
+        
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.4rem;
@@ -293,156 +530,375 @@
             .section-title {
                 font-size: 2rem;
             }
+            .filtros-container {
+                flex-direction: column;
+            }
+            .filtros {
+                width: 100%;
+            }
+            .filtros select {
+                flex: 1;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="#" id="logoLink">
-                <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
-                <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#mision">Visión Tesla</a></li>
-                <li><a href="#repositorios">I+D + MCUs</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <!-- =============================================== -->
+    <!-- ENCABEZADO FIJO (SIEMPRE VISIBLE)                -->
+    <!-- =============================================== -->
+    
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" id="logoLink">
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#mision">Visión</a></li>
+                    <li><a href="#repositorios">I+D</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<section id="inicio" class="hero">
-    <div class="container hero-content">
-        <h1>Hardware de Vanguardia.<br>Hecho en Perú.</h1>
-        <p>MCUs avanzados + Hoja de ruta estilo Tesla: de la distribución a la fabricación de instrumentos científicos propios.</p>
-        <a href="#mision" class="btn">Explorar el futuro</a>
-    </div>
-</section>
+    <!-- =============================================== -->
+    <!-- SECCIÓN HERO (PRINCIPAL)                        -->
+    <!-- =============================================== -->
+    
+    <section id="inicio" class="hero">
+        <div class="container hero-content">
+            <h1>Hardware de Vanguardia.<br>Hecho en Perú.</h1>
+            <p>MCUs avanzados: de la distribución a la fabricación de instrumentos científicos propios.</p>
+            <a href="#productos" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
 
-<section id="mision" class="mission">
-    <div class="container">
-        <h2 class="section-title">De Texas Instruments a Nuestro Propio Tesla</h2>
-        <div class="mission-grid">
-            <div class="mission-card">
-                <h3>⚡ Fase 1: MCUs Accesibles</h3>
-                <p>Distribuimos microcontroladores de última generación a precios justos. Democratizamos el hardware en Perú con el respaldo de ingeniería local.</p>
+    <!-- =============================================== -->
+    <!-- SECCIÓN DE PRODUCTOS (20 PRODUCTOS)             -->
+    <!-- =============================================== -->
+    
+    <section id="productos" class="productos">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <p class="section-subtitle">20 microcontroladores de última generación para tus proyectos</p>
+            
+            <!-- FILTROS -->
+            <div class="filtros-container">
+                <div class="busqueda">
+                    <input type="text" id="searchInput" placeholder="🔍 Buscar producto por nombre o código...">
+                </div>
+                <div class="filtros">
+                    <select id="stockFilter">
+                        <option value="todos">📦 Todos los stocks</option>
+                        <option value="alto">✅ Stock alto (>10)</option>
+                        <option value="medio">⚠️ Stock medio (1-10)</option>
+                        <option value="bajo">🔴 Stock bajo (0)</option>
+                    </select>
+                    <select id="sortBy">
+                        <option value="codigo">🔤 Ordenar por código</option>
+                        <option value="precio-asc">💰 Precio: menor a mayor</option>
+                        <option value="precio-desc">💰 Precio: mayor a menor</option>
+                        <option value="stock">📦 Stock: mayor a menor</option>
+                    </select>
+                </div>
             </div>
-            <div class="mission-card">
-                <h3>🔬 Fase 2: I+D Avanzado</h3>
-                <p>Desarrollamos nuestra propia línea de instrumentos científicos: PCBs personalizados, bajo consumo extremo y sensores plasmónicos.</p>
-            </div>
-            <div class="mission-card">
-                <h3>🇵🇪 Fase 3: Fabricación Nacional</h3>
-                <p>Como Tesla en el auto eléctrico, Hankel Instruments construirá la próxima generación de instrumentación peruana con nanotecnología.</p>
+            
+            <!-- GRID DE PRODUCTOS -->
+            <div id="productosContainer" class="productos-grid">
+                <!-- Los productos se cargarán dinámicamente con JavaScript -->
+                <div style="text-align: center; padding: 60px;">📡 Cargando productos...</div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="repositorios" class="repos">
-    <div class="container">
-        <h2 class="section-title">Repositorios Flagship</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 24px; color:#9aa3b5;">Código abierto, drivers y templates para ingenieros que construyen el mañana.</p>
-        <div class="repo-grid">
-            <div class="repo-card">
-                <h3><a href="#">mcu-peru-examples</a></h3>
-                <p>Librerías optimizadas y ejemplos para MCUs ARM de alto rendimiento. Ideal para prototipado rápido.</p>
-                <span class="repo-tag">C</span> <span class="repo-tag">STM32</span> <span class="repo-tag">Rust</span>
-            </div>
-            <div class="repo-card">
-                <h3><a href="#">iot-sensor-drivers</a></h3>
-                <p>Controladores avanzados para sensores IoT con consumo en nanoamperios. Compatible con nuestra hoja de ruta.</p>
-                <span class="repo-tag">Embedded</span> <span class="repo-tag">I2C/SPI</span>
-            </div>
-            <div class="repo-card">
-                <h3><a href="#">pcb-design-templates</a></h3>
-                <p>Plantillas KiCad para diseños de alta densidad, referencia para instrumentos científicos.</p>
-                <span class="repo-tag">KiCad</span> <span class="repo-tag">RF</span>
-            </div>
-            <div class="repo-card">
-                <h3><a href="#">plasmonic-sensor-lib</a></h3>
-                <p>(Próximamente) Librería de procesamiento de señales para sensores plasmónicos de última generación.</p>
-                <span class="repo-tag">Research</span> <span class="repo-tag">Python</span>
+    <!-- =============================================== -->
+    <!-- SECCIÓN DE MISIÓN (TRES TARJETAS)               -->
+    <!-- =============================================== -->
+    
+    <section id="mision" class="mission">
+        <div class="container">
+            <h2 class="section-title">De Texas Instruments a Nuestro Propio Tesla</h2>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <h3>⚡ Fase 1: MCUs Accesibles</h3>
+                    <p>Distribuimos microcontroladores de última generación a precios justos. Democratizamos el hardware en Perú con el respaldo de ingeniería local.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <h3>🔬 Fase 2: I+D Avanzado</h3>
+                    <p>Desarrollamos nuestra propia línea de instrumentos científicos: PCBs personalizados, bajo consumo extremo y sensores plasmónicos.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <h3>🇵🇪 Fase 3: Fabricación Nacional</h3>
+                    <p>Hankel Instruments construirá la próxima generación de instrumentación peruana con nanotecnología.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer id="contacto">
-    <div class="container">
-        <div class="footer-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#mision">Visión</a>
-            <a href="#repositorios">Repositorios</a>
-            <a href="mailto:info@hankelinstruments.com">Email</a>
+    <!-- =============================================== -->
+    <!-- SECCIÓN DE REPOSITORIOS                         -->
+    <!-- =============================================== -->
+    
+    <section id="repositorios" class="repos">
+        <div class="container">
+            <h2 class="section-title">Repositorios Flagship</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 24px; color:#9aa3b5;">Código abierto, drivers y templates para ingenieros que construyen el mañana.</p>
+            
+            <div class="repo-grid">
+                <div class="repo-card">
+                    <h3><a href="#">mcu-peru-examples</a></h3>
+                    <p>Librerías optimizadas y ejemplos para MCUs ARM de alto rendimiento. Ideal para prototipado rápido.</p>
+                    <span class="repo-tag">C</span> 
+                    <span class="repo-tag">STM32</span> 
+                    <span class="repo-tag">Rust</span>
+                </div>
+                
+                <div class="repo-card">
+                    <h3><a href="#">iot-sensor-drivers</a></h3>
+                    <p>Controladores avanzados para sensores IoT con consumo en nanoamperios. Compatible con nuestra hoja de ruta.</p>
+                    <span class="repo-tag">Embedded</span> 
+                    <span class="repo-tag">I2C/SPI</span>
+                </div>
+                
+                <div class="repo-card">
+                    <h3><a href="#">pcb-design-templates</a></h3>
+                    <p>Plantillas KiCad para diseños de alta densidad, referencia para instrumentos científicos.</p>
+                    <span class="repo-tag">KiCad</span> 
+                    <span class="repo-tag">RF</span>
+                </div>
+                
+                <div class="repo-card">
+                    <h3><a href="#">plasmonic-sensor-lib</a></h3>
+                    <p>(Próximamente) Librería de procesamiento de señales para sensores plasmónicos de última generación.</p>
+                    <span class="repo-tag">Research</span> 
+                    <span class="repo-tag">Python</span>
+                </div>
+            </div>
         </div>
-        <p>📩 <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
-        <p style="margin-top: 20px; font-size: 0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería que inspira. Referente: Texas Instruments. Rumbo: Tesla.</p>
-    </div>
-</footer>
+    </section>
 
-<script>
-    // Manejo robusto de imágenes: flag.png y logo.jpg
-    function handleLogoError() {
-        const logoImg = document.getElementById('mainLogo');
-        const fallbackSpan = document.getElementById('logoFallbackText');
-        if (logoImg && fallbackSpan) {
-            logoImg.style.display = 'none';
-            fallbackSpan.style.display = 'inline-block';
-            // Opcional: cambiar el href del enlace para mantener la marca
-            const logoLink = document.getElementById('logoLink');
-            if(logoLink) {
-                logoLink.removeAttribute('href');
-                logoLink.style.cursor = 'default';
+    <!-- =============================================== -->
+    <!-- PIE DE PÁGINA (FOOTER)                          -->
+    <!-- =============================================== -->
+    
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#mision">Visión</a>
+                <a href="#repositorios">Repositorios</a>
+                <a href="mailto:info@hankelinstruments.com">Email</a>
+            </div>
+            <p>📩 <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top: 20px; font-size: 0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería que inspira</p>
+        </div>
+    </footer>
+
+    <!-- =============================================== -->
+    <!-- JAVASCRIPT (INTERACTIVIDAD)                     -->
+    <!-- =============================================== -->
+    
+    <script>
+        // ==============================================
+        // 1. BASE DE DATOS DE PRODUCTOS (20 productos)
+        // ==============================================
+        
+        const productos = [
+            { codigo: "HI01", nombre: "MCU ARM Cortex-M4", precio: 45.90, stock: 12, descripcion: "Microcontrolador de alto rendimiento 32-bit con DSP" },
+            { codigo: "HI02", nombre: "STM32F103C8T6", precio: 28.50, stock: 8, descripcion: "Blue Pill - Ideal para prototipado y proyectos educativos" },
+            { codigo: "HI03", nombre: "ESP32-WROOM-32", precio: 32.00, stock: 15, descripcion: "WiFi + Bluetooth integrado, perfecto para IoT" },
+            { codigo: "HI04", nombre: "Arduino Nano RP2040", precio: 38.75, stock: 5, descripcion: "Conectividad y USB-C, dual-core ARM Cortex-M0+" },
+            { codigo: "HI05", nombre: "Raspberry Pi Pico", precio: 24.99, stock: 20, descripcion: "RP2040 dual-core, bajo costo y alto rendimiento" },
+            { codigo: "HI06", nombre: "MCU ATmega328P", precio: 18.50, stock: 25, descripcion: "Para proyectos educativos y compatible con Arduino" },
+            { codigo: "HI07", nombre: "STM32F407VET6", precio: 52.30, stock: 7, descripcion: "High-performance con DSP y FPU, 168MHz" },
+            { codigo: "HI08", nombre: "ESP8266 NodeMCU", precio: 21.80, stock: 18, descripcion: "IoT económico, WiFi integrado" },
+            { codigo: "HI09", nombre: "MCU PIC16F877A", precio: 31.20, stock: 10, descripcion: "Industrial grade, 40 pines" },
+            { codigo: "HI10", nombre: "ARM Cortex-M0+", precio: 26.40, stock: 14, descripcion: "Ultra bajo consumo, ideal para baterías" },
+            { codigo: "HI11", nombre: "STM32F103C6T6", precio: 24.30, stock: 9, descripcion: "Compacto y potente, 32KB Flash" },
+            { codigo: "HI12", nombre: "ESP32-C3", precio: 29.90, stock: 11, descripcion: "RISC-V WiFi 6, seguridad avanzada" },
+            { codigo: "HI13", nombre: "Arduino Mega 2560", precio: 56.75, stock: 6, descripcion: "Múltiples I/O, 54 pines digitales" },
+            { codigo: "HI14", nombre: "Teensy 4.0", precio: 45.00, stock: 4, descripcion: "600MHz ARM Cortex-M7,超高 velocidad" },
+            { codigo: "HI15", nombre: "MCU nRF52840", precio: 68.50, stock: 3, descripcion: "BLE 5.0 y Thread, ideal para wearables" },
+            { codigo: "HI16", nombre: "STM32H743VIT6", precio: 89.90, stock: 5, descripcion: "400MHz con gran memoria, 2MB Flash" },
+            { codigo: "HI17", nombre: "RP2040 Stamp", precio: 22.50, stock: 16, descripcion: "Formato pequeño, mismo chip que Raspberry Pi" },
+            { codigo: "HI18", nombre: "ESP32-S3", precio: 42.80, stock: 12, descripcion: "AI acelerador, WiFi 6 y BLE 5.0" },
+            { codigo: "HI19", nombre: "MCU CH32V203", precio: 19.90, stock: 22, descripcion: "RISC-V alternativo, muy económico" },
+            { codigo: "HI20", nombre: "STM32L476RG", precio: 54.30, stock: 8, descripcion: "Ultra low power, ideal para dispositivos médicos" }
+        ];
+        
+        // ==============================================
+        // 2. FUNCIONES PARA MOSTRAR PRODUCTOS
+        // ==============================================
+        
+        function getStockClass(stock) {
+            if(stock > 10) return 'stock-alto';
+            if(stock > 0) return 'stock-medio';
+            return 'stock-bajo';
+        }
+
+        function getStockTexto(stock) {
+            if(stock > 10) return `✓ ${stock} unidades disponibles`;
+            if(stock > 0) return `⚠️ Solo ${stock} unidades`;
+            return '❌ Agotado';
+        }
+        
+        function generarImagenGenerica(codigo) {
+            // Genera una imagen de placeholder con el código del producto
+            return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231a1f2e'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%2300bcd4' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3E${codigo}%3C/text%3E%3Ctext x='50%25' y='65%25' text-anchor='middle' fill='%239aa3b5' font-family='Arial, sans-serif' font-size='14'%3EMCU Unit%3C/text%3E%3C/svg%3E`;
+        }
+        
+        function mostrarProductos(productosFiltrados) {
+            const container = document.getElementById('productosContainer');
+            
+            if(productosFiltrados.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 60px;">🔍 No se encontraron productos</div>';
+                return;
+            }
+            
+            container.innerHTML = productosFiltrados.map(prod => `
+                <div class="producto-card" data-codigo="${prod.codigo}">
+                    <img src="${generarImagenGenerica(prod.codigo)}" 
+                         alt="${prod.nombre}"
+                         class="producto-imagen">
+                    <div class="producto-info">
+                        <div class="producto-codigo">${prod.codigo}</div>
+                        <div class="producto-nombre">${prod.nombre}</div>
+                        <div class="producto-descripcion">${prod.descripcion}</div>
+                        <div class="producto-precio">S/ ${prod.precio.toFixed(2)}</div>
+                        <div class="producto-stock ${getStockClass(prod.stock)}">
+                            ${getStockTexto(prod.stock)}
+                        </div>
+                        <button class="btn-comprar ${prod.stock === 0 ? 'sin-stock' : ''}" 
+                                ${prod.stock === 0 ? 'disabled' : ''}
+                                onclick="comprarProducto('${prod.codigo}', ${prod.precio})">
+                            ${prod.stock > 0 ? '🛒 Agregar al carrito' : '❌ Sin stock'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filtrarYOrdenarProductos() {
+            const busqueda = document.getElementById('searchInput').value.toLowerCase();
+            const stockFiltro = document.getElementById('stockFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+            
+            let filtrados = productos.filter(prod => {
+                const matchBusqueda = prod.nombre.toLowerCase().includes(busqueda) || 
+                                     prod.codigo.toLowerCase().includes(busqueda) ||
+                                     prod.descripcion.toLowerCase().includes(busqueda);
+                
+                if(!matchBusqueda) return false;
+                
+                if(stockFiltro === 'alto') return prod.stock > 10;
+                if(stockFiltro === 'medio') return prod.stock > 0 && prod.stock <= 10;
+                if(stockFiltro === 'bajo') return prod.stock === 0;
+                return true;
+            });
+            
+            // Ordenar
+            if(sortBy === 'precio-asc') filtrados.sort((a,b) => a.precio - b.precio);
+            if(sortBy === 'precio-desc') filtrados.sort((a,b) => b.precio - a.precio);
+            if(sortBy === 'codigo') filtrados.sort((a,b) => a.codigo.localeCompare(b.codigo));
+            if(sortBy === 'stock') filtrados.sort((a,b) => b.stock - a.stock);
+            
+            mostrarProductos(filtrados);
+        }
+        
+        function comprarProducto(codigo, precio) {
+            alert(`🛒 Producto ${codigo} agregado al carrito\n💰 Total: S/ ${precio.toFixed(2)}\n\n📦 Gracias por tu compra!`);
+        }
+        
+        // ==============================================
+        // 3. MANEJO DE ERROR DE LOGO
+        // ==============================================
+        
+        function handleLogoError() {
+            const logoImg = document.getElementById('mainLogo');
+            const fallbackSpan = document.getElementById('logoFallbackText');
+            if (logoImg && fallbackSpan) {
+                logoImg.style.display = 'none';
+                fallbackSpan.style.display = 'inline-block';
+                const logoLink = document.getElementById('logoLink');
+                if(logoLink) {
+                    logoLink.removeAttribute('href');
+                    logoLink.style.cursor = 'default';
+                }
             }
         }
-    }
-    
-    // Verificar si flag.png existe, si no, aplicar un gradiente mejorado o textura (sin romper diseño)
-    function checkFlagImage() {
-        const heroSection = document.querySelector('.hero');
-        const testImg = new Image();
-        testImg.onload = function() {
-            // La imagen existe -> ya está cargada en CSS, no hacer nada
-            console.log('flag.png cargada correctamente');
-        };
-        testImg.onerror = function() {
-            // Si falla, añadir clase de respaldo con un patrón sutil
-            if(heroSection) {
-                heroSection.style.background = 'linear-gradient(135deg, #0a0c10, #0f1722), repeating-linear-gradient(45deg, #1a1f2a 0px, #1a1f2a 2px, transparent 2px, transparent 8px)';
-                heroSection.style.backgroundBlendMode = 'overlay';
-                console.log('flag.png no encontrada, usando respaldo visual');
-            }
-        };
-        testImg.src = 'flag.png';
-    }
-    
-    // También verificamos el logo.jpg por si acaso, pero ya tenemos handleLogoError
-    window.addEventListener('DOMContentLoaded', () => {
-        checkFlagImage();
-        // Forzar chequeo si logo.jpg no carga (además del onerror nativo)
-        const logo = document.getElementById('mainLogo');
-        if(logo && logo.complete && logo.naturalWidth === 0) {
-            handleLogoError();
+        
+        // ==============================================
+        // 4. VERIFICAR SI FLAG.PNG EXISTE
+        // ==============================================
+        
+        function checkFlagImage() {
+            const heroSection = document.querySelector('.hero');
+            const testImg = new Image();
+            
+            testImg.onload = function() {
+                console.log('flag.png cargada correctamente');
+            };
+            
+            testImg.onerror = function() {
+                if(heroSection) {
+                    heroSection.style.background = 'linear-gradient(135deg, #0a0c10, #0f1722)';
+                    console.log('flag.png no encontrada, usando respaldo visual');
+                }
+            };
+            
+            testImg.src = 'flag.png';
         }
-    });
-    
-    // Smooth scroll para los enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if(href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if(target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // ==============================================
+        // 5. EVENTOS E INICIALIZACIÓN
+        // ==============================================
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            // Mostrar productos
+            mostrarProductos(productos);
+            
+            // Configurar filtros
+            document.getElementById('searchInput').addEventListener('input', filtrarYOrdenarProductos);
+            document.getElementById('stockFilter').addEventListener('change', filtrarYOrdenarProductos);
+            document.getElementById('sortBy').addEventListener('change', filtrarYOrdenarProductos);
+            
+            // Verificar imágenes
+            checkFlagImage();
+            
+            const logo = document.getElementById('mainLogo');
+            if(logo && logo.complete && logo.naturalWidth === 0) {
+                handleLogoError();
             }
         });
-    });
-</script>
+        
+        // ==============================================
+        // 6. SMOOTH SCROLL
+        // ==============================================
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>
