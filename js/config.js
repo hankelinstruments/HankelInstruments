@@ -19,4 +19,6 @@
    https://docs.google.com/spreadsheets/d/ESTE_ES_TU_ID/edit
    =============================================== */
 
-const SHEET_ID = ""; // 🔧 Pega aquí tu ID (o hazlo desde el panel Admin y copia el código que te da)
+const SHEET_ID = "1-aSFnmMXIPyWzR33bKRlmQKPiawQ2bvUYpsBbuBcZ9c"; // 🔧 Pega aquí tu ID (o hazlo desde el panel Admin y copia el código que te da)
+
+
