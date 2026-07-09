@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hankel Academy | Cursos Virtuales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="img/logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="academia.html" class="active">Hankel Academy</a></li>
+                    <li><a href="index.html#mision">Visión</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="carrito.html" class="cart-icon">🛒<span class="cart-badge" id="cartBadge">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>Hankel Academy</h1>
+        <p>Cursos virtuales dictados por ingenieros de Hankel Instruments. S/ 30.00 por hora de clase.</p>
+    </div>
+
+    <section>
+        <div class="container">
+            <div id="cursosContainer" class="productos-grid">
+                <div style="text-align:center; padding:60px; grid-column:1/-1;">📡 Cargando cursos...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="productos.html">Productos</a>
+                <a href="academia.html">Hankel Academy</a>
+                <a href="mailto:info@hankelinstruments.com">Email</a>
+            </div>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments</p>
+        </div>
+    </footer>
+
+    <script src="js/carrito.js"></script>
+    <script src="js/academia.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

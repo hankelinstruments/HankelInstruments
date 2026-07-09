@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Hankel Instruments</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="loginBox" class="admin-login">
+        <h2 style="color:#00bcd4; margin-bottom: 8px;">🔒 Panel Admin</h2>
+        <p style="color:#9aa3b5; font-size:0.9rem;">Solo para uso interno de Hankel Instruments</p>
+        <input type="password" id="adminClave" placeholder="Clave de acceso">
+        <p id="adminError" style="color:#f87171; font-size:0.85rem; min-height:20px;"></p>
+        <button id="btnEntrar" class="btn" style="width:100%;">Entrar</button>
+        <p style="margin-top:16px;"><a href="index.html" style="color:#9aa3b5; font-size:0.85rem;">← Volver al sitio</a></p>
+    </div>
+
+    <div id="panelBox" class="admin-panel" style="display:none;">
+        <h1 style="color:#fff; margin-bottom: 8px;">Panel de Inventario</h1>
+        <p style="color:#9aa3b5; margin-bottom: 32px;">Actualiza stock, precios e imágenes desde tu Google Sheet.</p>
+
+        <div class="admin-box">
+            <h3>📋 Cómo actualizar el stock</h3>
+            <ol style="margin-left: 20px; color:#c4cad6; line-height:2;">
+                <li>Haz clic en <strong>"Abrir hoja de cálculo"</strong> abajo.</li>
+                <li>Edita directamente ahí las columnas: <code>codigo, nombre, precio, stock, descripcion, imagen</code>.</li>
+                <li>¿Tienes un archivo Excel nuevo? En Google Sheets: <strong>Archivo → Importar → Subir</strong> tu .xlsx → elige "Reemplazar hoja actual".</li>
+                <li>Para imágenes: sube la foto a Google Drive (o cualquier hosting) y pega el enlace <strong>público</strong> en la columna "imagen".</li>
+                <li>Los cambios aparecen en <a href="productos.html" style="color:#00bcd4;">productos.html</a> en unos segundos, sin tocar código.</li>
+            </ol>
+            <a id="editLink" href="#" target="_blank" class="btn" style="margin-top:20px; display:inline-block;">📊 Abrir hoja de cálculo</a>
+        </div>
+
+        <div class="admin-box">
+            <h3>👁️ Vista previa del inventario actual</h3>
+            <button id="btnRefrescar" class="btn btn-outline" style="margin-bottom: 12px;">🔄 Refrescar</button>
+            <table class="admin-table">
+                <thead>
+                    <tr><th>Código</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Imagen</th></tr>
+                </thead>
+                <tbody id="tablaProductos">
+                    <tr><td colspan="5">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-box" style="border-color:#3a2e1e;">
+            <h3 style="color:#fbbf24;">⚠️ Nota de seguridad</h3>
+            <p style="color:#9aa3b5; font-size:0.9rem;">
+                La clave de esta página es solo un filtro básico (este sitio es HTML estático, sin servidor de login real).
+                Lo que de verdad protege tu inventario es que <strong>solo tú</strong> tengas permiso de edición sobre el Google Sheet.
+                No compartas el enlace de edición ni actives "cualquiera con el enlace puede editar".
+            </p>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

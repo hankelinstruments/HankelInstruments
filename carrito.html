@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | Hankel Instruments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- SDK de Izipay: usa sandbox mientras pruebas, cambia a producción cuando lances -->
+    <script src="https://sandbox-checkout.izipay.pe/payments/v1/js/index.js"
+            kr-public-key="TEST_PUBLICKEY_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="img/logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="academia.html">Hankel Academy</a></li>
+                    <li><a href="carrito.html" class="cart-icon active">🛒<span class="cart-badge" id="cartBadge">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>Tu Carrito</h1>
+        <p>Revisa tus productos y cursos antes de pagar con Izipay.</p>
+    </div>
+
+    <section>
+        <div class="container carrito-layout">
+            <div id="carritoItems"><!-- Se llena con JS --></div>
+
+            <div id="resumenContainer" class="carrito-resumen">
+                <h3 style="color:#fff; margin-bottom:20px;">Resumen del pedido</h3>
+                <div class="carrito-total-linea">
+                    <span>Total</span>
+                    <span id="totalCarrito">S/ 0.00</span>
+                </div>
+                <button id="btnPagar" class="btn" style="width:100%; margin-top:16px;">💳 Pagar con Izipay</button>
+
+                <!-- Formulario embebido de Izipay (aparece tras generar el token) -->
+                <div id="izipayFormContainer" style="display:none; margin-top:20px;">
+                    <div id="izipayForm" class="kr-embedded" kr-card-form-expanded></div>
+                </div>
+
+                <p style="font-size:0.75rem; color:#9aa3b5; margin-top:16px; text-align:center;">
+                    🔒 Pago procesado de forma segura por Izipay
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="font-size:0.85rem;">&copy; 2026 Hankel Instruments</p>
+        </div>
+    </footer>
+
+    <script src="js/carrito.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
