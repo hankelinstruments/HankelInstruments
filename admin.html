@@ -8,32 +8,78 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .sheet-input-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+        .sheet-input-row input {
+            flex: 1; min-width: 260px; padding: 12px 16px;
+            background: #1a1f2e; border: 1px solid #2a2f3a; color: #fff; border-radius: 8px;
+        }
+        .codigo-box {
+            background: #0a0c10; border: 1px solid #2a2f3a; border-radius: 8px;
+            padding: 16px; font-family: monospace; color: #4ade80; margin-top: 12px;
+            word-break: break-all;
+        }
+    </style>
 </head>
 <body>
 
-    <div id="loginBox" class="admin-login">
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Inter'; font-weight:800; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">← Volver al sitio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="loginBox" class="admin-login" style="margin-top: 180px;">
         <h2 style="color:#00bcd4; margin-bottom: 8px;">🔒 Panel Admin</h2>
         <p style="color:#9aa3b5; font-size:0.9rem;">Solo para uso interno de Hankel Instruments</p>
         <input type="password" id="adminClave" placeholder="Clave de acceso">
         <p id="adminError" style="color:#f87171; font-size:0.85rem; min-height:20px;"></p>
         <button id="btnEntrar" class="btn" style="width:100%;">Entrar</button>
-        <p style="margin-top:16px;"><a href="index.html" style="color:#9aa3b5; font-size:0.85rem;">← Volver al sitio</a></p>
     </div>
 
-    <div id="panelBox" class="admin-panel" style="display:none;">
+    <div id="panelBox" class="admin-panel" style="display:none; margin-top: 60px;">
         <h1 style="color:#fff; margin-bottom: 8px;">Panel de Inventario</h1>
-        <p style="color:#9aa3b5; margin-bottom: 32px;">Actualiza stock, precios e imágenes desde tu Google Sheet.</p>
+        <p style="color:#9aa3b5; margin-bottom: 32px;">Conecta tu Google Sheet para actualizar stock, precios e imágenes.</p>
+
+        <div class="admin-box">
+            <h3>🔗 Conectar tu Google Sheet</h3>
+            <p style="color:#9aa3b5; font-size:0.9rem;">Pega aquí el enlace completo de tu hoja de cálculo (o solo el ID) y presiona "Conectar".</p>
+            <div class="sheet-input-row">
+                <input type="text" id="sheetInput" placeholder="https://docs.google.com/spreadsheets/d/........../edit">
+                <button id="btnGuardarSheet" class="btn">🔗 Conectar</button>
+                <a id="editLink" href="#" target="_blank" class="btn btn-outline" style="display:none;">📊 Abrir hoja</a>
+            </div>
+            <p id="resultadoPrueba" style="font-size:0.9rem; min-height:20px;"></p>
+
+            <div id="codigoConfigBox" style="display:none;">
+                <p style="color:#fbbf24; font-size:0.9rem; margin-top:16px;">
+                    ⚠️ Esto conectó el Sheet <strong>solo en tu navegador</strong>, para que puedas probarlo.
+                    Para que se vea igual en TODOS tus clientes, copia esta línea y pégala reemplazando el
+                    contenido de <code>js/config.js</code> en tu repositorio de GitHub (edítalo directo en
+                    github.com con el ícono del lápiz, o sube el archivo de nuevo):
+                </p>
+                <div class="codigo-box" id="codigoConfig">const SHEET_ID = "";</div>
+                <button id="btnCopiar" class="btn btn-outline" style="margin-top:10px;">📋 Copiar código</button>
+            </div>
+        </div>
 
         <div class="admin-box">
             <h3>📋 Cómo actualizar el stock</h3>
             <ol style="margin-left: 20px; color:#c4cad6; line-height:2;">
-                <li>Haz clic en <strong>"Abrir hoja de cálculo"</strong> abajo.</li>
-                <li>Edita directamente ahí las columnas: <code>codigo, nombre, precio, stock, descripcion, imagen</code>.</li>
-                <li>¿Tienes un archivo Excel nuevo? En Google Sheets: <strong>Archivo → Importar → Subir</strong> tu .xlsx → elige "Reemplazar hoja actual".</li>
+                <li>Abre tu hoja con el botón "Abrir hoja" de arriba.</li>
+                <li>Edita las columnas: <code>codigo, nombre, precio, stock, descripcion, imagen</code>.</li>
+                <li>¿Tienes un archivo Excel nuevo? En Google Sheets: <strong>Archivo → Importar → Subir</strong> tu .xlsx → "Reemplazar hoja actual".</li>
                 <li>Para imágenes: sube la foto a Google Drive (o cualquier hosting) y pega el enlace <strong>público</strong> en la columna "imagen".</li>
-                <li>Los cambios aparecen en <a href="productos.html" style="color:#00bcd4;">productos.html</a> en unos segundos, sin tocar código.</li>
+                <li>Los cambios aparecen en <a href="productos.html" style="color:#00bcd4;">productos.html</a> en segundos.</li>
             </ol>
-            <a id="editLink" href="#" target="_blank" class="btn" style="margin-top:20px; display:inline-block;">📊 Abrir hoja de cálculo</a>
         </div>
 
         <div class="admin-box">
@@ -44,7 +90,7 @@
                     <tr><th>Código</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Imagen</th></tr>
                 </thead>
                 <tbody id="tablaProductos">
-                    <tr><td colspan="5">Cargando...</td></tr>
+                    <tr><td colspan="5">Conecta tu Sheet arriba 👆</td></tr>
                 </tbody>
             </table>
         </div>
@@ -52,13 +98,14 @@
         <div class="admin-box" style="border-color:#3a2e1e;">
             <h3 style="color:#fbbf24;">⚠️ Nota de seguridad</h3>
             <p style="color:#9aa3b5; font-size:0.9rem;">
-                La clave de esta página es solo un filtro básico (este sitio es HTML estático, sin servidor de login real).
-                Lo que de verdad protege tu inventario es que <strong>solo tú</strong> tengas permiso de edición sobre el Google Sheet.
-                No compartas el enlace de edición ni actives "cualquiera con el enlace puede editar".
+                La clave de esta página es solo un filtro básico (sitio estático, sin servidor de login real).
+                Lo que de verdad protege tu inventario es que <strong>solo tú</strong> tengas permiso de edición
+                sobre el Google Sheet. No actives "cualquiera con el enlace puede editar".
             </p>
         </div>
     </div>
 
+    <script src="js/config.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>
