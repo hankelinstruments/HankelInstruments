@@ -1,0 +1,502 @@
+/* ===============================================
+   HANKEL INSTRUMENTS - ESTILOS GLOBALES
+   Este archivo se usa en TODAS las páginas
+   ===============================================
+   TIPOGRAFÍA ESTILO TESLA:
+   Tesla usa una sans-serif geométrica minimalista, con
+   títulos en mayúsculas de peso alto y tracking amplio,
+   y texto de cuerpo delgado con mucho espacio en blanco.
+   Usamos 'Inter' (Google Fonts, gratuita y muy similar en
+   espíritu a la tipografía corporativa de Tesla) en vez de
+   una fuente sci-fi como Azonix. Se carga desde <link> en
+   el <head> de cada HTML.
+   =============================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    background-color: #0a0c10;
+    color: #e0e0e0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.brand-font, .logo-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== HEADER / NAV (igual en todas las páginas) ===== */
+header {
+    background: rgba(10, 12, 16, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.3);
+    padding: 16px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    max-height: 48px;
+    width: auto;
+    border-radius: 6px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #00bcd4;
+    border-bottom-color: #00bcd4;
+}
+
+.admin-link {
+    background: #151a24;
+    border: 1px solid #2a2f3a;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #9aa3b5 !important;
+    font-size: 1rem !important;
+}
+
+.admin-link:hover {
+    color: #00bcd4 !important;
+    border-color: #00bcd4;
+}
+
+.cart-icon {
+    position: relative;
+    background: #151a24;
+    border: 1px solid #2a2f3a;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: #fff !important;
+    font-size: 1.1rem !important;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #00bcd4;
+    color: #0a0c10;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* ===== HERO genérico para páginas internas ===== */
+.page-hero {
+    padding: 140px 20px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(10,12,16,0.9), rgba(15,17,23,0.95));
+}
+
+.page-hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff, #00bcd4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.page-hero p {
+    color: #9aa3b5;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    background: #00bcd4;
+    color: #0a0c10;
+    padding: 14px 36px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,188,212,0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #00bcd4;
+    color: #00bcd4;
+}
+
+.btn-outline:hover {
+    background: #00bcd4;
+    color: #0a0c10;
+}
+
+.btn:disabled, .sin-stock {
+    background: #3a1e1e !important;
+    color: #f87171 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ===== SECCIONES GENERALES ===== */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #9aa3b5;
+    margin-bottom: 44px;
+    font-size: 1.05rem;
+}
+
+/* ===== FILTROS / BÚSQUEDA (productos y academia) ===== */
+.filtros-container {
+    background: #151a24;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.busqueda { flex: 1; min-width: 200px; }
+
+.busqueda input, .filtros select {
+    padding: 12px 20px;
+    background: #1a1f2e;
+    border: 1px solid #2a2f3a;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.filtros { display: flex; gap: 15px; flex-wrap: wrap; }
+
+/* ===== GRID DE TARJETAS (productos y cursos comparten estilo) ===== */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.producto-card {
+    background: #12161e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+    border: 1px solid #1f2533;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    border-color: #00bcd4;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.producto-imagen {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #1a1f2e, #0f1117);
+}
+
+.producto-info { padding: 20px; }
+
+.producto-codigo {
+    font-family: 'Azonix', sans-serif;
+    color: #00bcd4;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.producto-nombre {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.producto-descripcion {
+    font-size: 0.85rem;
+    color: #9aa3b5;
+    margin-bottom: 15px;
+}
+
+.producto-precio {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00bcd4;
+    margin: 12px 0;
+}
+
+.producto-stock {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.stock-alto { background: #1e3a2f; color: #4ade80; }
+.stock-medio { background: #3a2e1e; color: #fbbf24; }
+.stock-bajo { background: #3a1e1e; color: #f87171; }
+
+.btn-comprar {
+    background: #00bcd4;
+    color: #0a0c10;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.btn-comprar:hover { background: #fff; transform: scale(1.02); }
+
+/* ===== CARRITO ===== */
+.carrito-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background: #12161e;
+    border: 1px solid #1f2533;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.carrito-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carrito-item-info { flex: 1; }
+
+.carrito-item-precio { color: #00bcd4; font-weight: bold; }
+
+.carrito-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.carrito-qty button {
+    background: #1a1f2e;
+    border: 1px solid #2a2f3a;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.carrito-eliminar {
+    background: none;
+    border: none;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.carrito-resumen {
+    background: #151a24;
+    border-radius: 16px;
+    padding: 28px;
+    position: sticky;
+    top: 110px;
+}
+
+.carrito-total-linea {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #9aa3b5;
+}
+
+.carrito-total-final {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    border-top: 1px solid #2a2f3a;
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.carrito-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+}
+
+.carrito-vacio {
+    text-align: center;
+    padding: 60px 20px;
+    color: #9aa3b5;
+}
+
+/* ===== ADMIN ===== */
+.admin-login {
+    max-width: 400px;
+    margin: 140px auto;
+    background: #151a24;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.admin-login input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 16px 0;
+    background: #1a1f2e;
+    border: 1px solid #2a2f3a;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.admin-panel { padding: 140px 20px 60px; max-width: 1000px; margin: 0 auto; }
+
+.admin-box {
+    background: #151a24;
+    border: 1px solid #2a2f3a;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.admin-box h3 { color: #00bcd4; margin-bottom: 12px; }
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 0.85rem;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #2a2f3a;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.admin-table th { background: #1a1f2e; color: #00bcd4; }
+
+/* ===== FOOTER ===== */
+footer {
+    background: #05070a;
+    padding: 48px 0 32px;
+    border-top: 1px solid #1a1f2a;
+    text-align: center;
+}
+
+footer a { color: #00bcd4; }
+footer a:hover { color: #fff; }
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .carrito-layout { grid-template-columns: 1fr; }
+    .carrito-resumen { position: static; }
+}
+
+@media (max-width: 768px) {
+    .page-hero h1 { font-size: 2rem; }
+    .nav-links { gap: 14px; }
+    .section-title { font-size: 1.8rem; }
+    .filtros-container { flex-direction: column; }
+    .filtros { width: 100%; }
+    .filtros select { flex: 1; }
+}
