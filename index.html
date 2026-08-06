@@ -7,6 +7,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ============================================================ -->
+    <!-- LISTA DE IMÁGENES A CARGAR EN EL REPOSITORIO GITHUB         -->
+    <!-- Guarda estos archivos en la carpeta raíz o en /images/      -->
+    <!-- ============================================================ -->
+    <!--                                                            -->
+    <!-- 1. flag.png           → Fondo del Hero                     -->
+    <!-- 2. logo.jpg           → Logo principal (ya existente)      -->
+    <!-- 3. icon-consultoria.png    → Ícono Consultoría ISO 17025   -->
+    <!-- 4. icon-fabricacion.png    → Ícono Fabricación Equipos     -->
+    <!-- 5. icon-capacitacion.png   → Ícono Capacitaciones          -->
+    <!-- 6. icon-instrumentacion.png→ Ícono Instrumentación         -->
+    <!--                                                            -->
+    <!-- Tamaño recomendado íconos: 80x80px, fondo transparente     -->
+    <!-- Formato: PNG o SVG                                         -->
+    <!-- Ruta en el código: images/nombre-del-archivo.png           -->
+    <!-- ============================================================ -->
+    
     <style>
         /* ===== ANIMACIONES Y ESTILOS BASE ===== */
         @keyframes fadeInUp {
@@ -31,21 +49,21 @@
             to { opacity: 1; transform: translateX(0); }
         }
         
-        /* ===== HERO SECTION MEJORADO ===== */
+        /* ===== HERO SECTION - ALINEADO A LA IZQUIERDA ===== */
         .hero {
             min-height: 70vh;
             background: linear-gradient(135deg, 
                 rgba(10,12,16,0.92), 
                 rgba(10,12,16,0.88), 
                 rgba(0, 60, 80, 0.85)),
-                url('flag.png');
+                url('flag.png');                                    /* ← IMAGEN: flag.png */
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            justify-content: flex-start;                           /* ← Alineado a la izquierda */
+            text-align: left;                                      /* ← Texto a la izquierda */
             padding: 120px 20px 80px;
             margin-top: 80px;
             position: relative;
@@ -65,6 +83,8 @@
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
+            max-width: 900px;
+            margin-left: 5%;                                        /* ← Margen izquierdo para mejor estética */
         }
         .hero-content .badge {
             display: inline-block;
@@ -87,24 +107,26 @@
             background-clip: text; 
             color: transparent;
             line-height: 1.2;
+            text-align: left;                                       /* ← Título alineado izquierda */
         }
         .hero-content .subtitle {
             font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            max-width: 700px;
+            margin: 0 0 40px 0;                                     /* ← Sin centrado automático */
             font-weight: 300;
             color: #b0b7c5;
             line-height: 1.6;
+            text-align: left;
         }
         .hero-stats {
             display: flex;
             gap: 48px;
-            justify-content: center;
+            justify-content: flex-start;                            /* ← Estadísticas a la izquierda */
             margin: 40px 0;
             flex-wrap: wrap;
         }
         .stat-item {
-            text-align: center;
+            text-align: left;                                       /* ← Stats alineadas izquierda */
         }
         .stat-number {
             font-size: 2.5rem;
@@ -117,6 +139,10 @@
             color: #8892a4;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        .hero .btn {
+            display: inline-block;                                  /* ← Botón se mantiene inline */
+            margin-left: 0;                                         /* ← Pegado a la izquierda */
         }
         
         /* ===== SERVICIOS PRINCIPALES ===== */
@@ -263,6 +289,7 @@
             .stat-number { font-size: 2rem; }
             .services-grid { grid-template-columns: 1fr; }
             .service-icon { width: 60px; height: 60px; }
+            .hero-content { margin-left: 5%; }
         }
     </style>
 </head>
@@ -272,7 +299,7 @@
         <div class="container">
             <nav>
                 <a href="index.html">
-                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">  <!-- ← IMAGEN: logo.jpg -->
                     <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
                 </a>
                 <ul class="nav-links">
@@ -330,9 +357,8 @@
             
             <div class="services-grid">
                 <!-- Servicio 1: Consultoría -->
-                <!-- GUARDA TU ÍCONO COMO: images/icon-consultoria.png -->
                 <div class="service-card" onclick="location.href='consultoria.html'">
-                    <img src="images/icon-consultoria.png" alt="Consultoría ISO 17025" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="images/icon-consultoria.png" alt="Consultoría ISO 17025" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-consultoria.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">📋</span>
                     <h3>Consultoría & Auditoría ISO 17025</h3>
                     <p>
@@ -344,9 +370,8 @@
                 </div>
                 
                 <!-- Servicio 2: Fabricación -->
-                <!-- GUARDA TU ÍCONO COMO: images/icon-fabricacion.png -->
                 <div class="service-card" onclick="location.href='productos.html'">
-                    <img src="images/icon-fabricacion.png" alt="Fabricación de Equipos" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="images/icon-fabricacion.png" alt="Fabricación de Equipos" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-fabricacion.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">⚙️</span>
                     <h3>Fabricación de Equipos de Laboratorio</h3>
                     <p>
@@ -358,9 +383,8 @@
                 </div>
                 
                 <!-- Servicio 3: Capacitación -->
-                <!-- GUARDA TU ÍCONO COMO: images/icon-capacitacion.png -->
                 <div class="service-card" onclick="location.href='academia.html'">
-                    <img src="images/icon-capacitacion.png" alt="Capacitaciones" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="images/icon-capacitacion.png" alt="Capacitaciones" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-capacitacion.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">🎓</span>
                     <h3>Capacitaciones ISO 17025 & Técnicas</h3>
                     <p>
@@ -372,9 +396,8 @@
                 </div>
                 
                 <!-- Servicio 4: Instrumentación -->
-                <!-- GUARDA TU ÍCONO COMO: images/icon-instrumentacion.png -->
                 <div class="service-card" onclick="location.href='productos.html'">
-                    <img src="images/icon-instrumentacion.png" alt="Instrumentación Industrial" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="images/icon-instrumentacion.png" alt="Instrumentación Industrial" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-instrumentacion.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">🔧</span>
                     <h3>Instrumentación Industrial</h3>
                     <p>
