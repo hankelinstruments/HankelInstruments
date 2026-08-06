@@ -3,35 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hankel Instruments | MCUs de Vanguardia en Perú</title>
+    <title>Hankel Instruments | Ingeniería & Consultoría ISO 17025 en Perú</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* ===== ANIMACIONES Y ESTILOS BASE ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(0, 188, 212, 0); }
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* ===== HERO SECTION MEJORADO ===== */
         .hero {
-            min-height: 60vh;
-            background: linear-gradient(135deg, rgba(10,12,16,0.85), rgba(10,12,16,0.95)), url('flag.png');
+            min-height: 70vh;
+            background: linear-gradient(135deg, 
+                rgba(10,12,16,0.92), 
+                rgba(10,12,16,0.88), 
+                rgba(0, 60, 80, 0.85)),
+                url('engineering-bg.jpg');
             background-size: cover;
             background-position: center center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 120px 20px 80px;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-content h1 { font-size: 3.4rem; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #00bcd4); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero-content p { font-size: 1.3rem; max-width: 700px; margin: 0 auto 32px; font-weight: 300; }
-        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; }
-        .mission-card { background: #151a24; padding: 32px; border-radius: 16px; border: 1px solid #2a2f3a; transition: all 0.3s; }
-        .mission-card:hover { border-color: #00bcd4; transform: translateY(-6px); }
-        .mission-card h3 { color: #00bcd4; font-size: 1.6rem; margin-bottom: 16px; }
-        .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 48px; }
-        .repo-card { background: #12161e; padding: 28px; border-radius: 20px; border-left: 4px solid #00bcd4; }
-        .repo-card h3 a { color: #fff; font-size: 1.4rem; }
-        .repo-card h3 a:hover { color: #00bcd4; }
-        .repo-card p { color: #b0b7c5; margin: 16px 0; }
-        .repo-tag { display: inline-block; background: #1e2a3a; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: #00bcd4; margin-right: 8px; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(0,188,212,0.1), transparent 70%);
+            animation: pulse 3s infinite;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-content .badge {
+            display: inline-block;
+            background: rgba(0,188,212,0.15);
+            border: 1px solid rgba(0,188,212,0.3);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #00bcd4;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+        .hero-content h1 { 
+            font-size: 3.8rem; 
+            margin-bottom: 24px; 
+            background: linear-gradient(135deg, #fff 0%, #00bcd4 50%, #4dd0e1 100%); 
+            background-size: 200% 200%;
+            animation: gradientBG 3s ease infinite;
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent;
+            line-height: 1.2;
+        }
+        .hero-content .subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            color: #b0b7c5;
+            line-height: 1.6;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #00bcd4;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8892a4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== SERVICIOS PRINCIPALES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .service-card {
+            background: linear-gradient(145deg, #151a24, #1a1f2b);
+            padding: 40px 32px;
+            border-radius: 20px;
+            border: 1px solid #2a2f3a;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #00bcd4, #4dd0e1);
+            transition: left 0.6s ease;
+        }
+        .service-card:hover::before {
+            left: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #00bcd4;
+            box-shadow: 0 20px 40px rgba(0, 188, 212, 0.15);
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            display: block;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        .service-card h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .service-card p {
+            color: #8892a4;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .service-card .service-link {
+            color: #00bcd4;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+        .service-card:hover .service-link {
+            gap: 16px;
+        }
+        
+        /* ===== TRUST BADGES ===== */
+        .trust-section {
+            background: linear-gradient(135deg, #0d1117, #151a24);
+            padding: 80px 0;
+            border-top: 1px solid #1e2a3a;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 48px;
+        }
+        .trust-item {
+            text-align: center;
+            padding: 32px;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+        .trust-item:nth-child(1) { animation-delay: 0.1s; }
+        .trust-item:nth-child(2) { animation-delay: 0.3s; }
+        .trust-item:nth-child(3) { animation-delay: 0.5s; }
+        .trust-item:nth-child(4) { animation-delay: 0.7s; }
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .trust-item h4 {
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .trust-item p {
+            color: #8892a4;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #00bcd4, #008ba3);
+            padding: 80px 0;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        .cta-section h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+        }
+        .cta-button {
+            background: #fff;
+            color: #008ba3;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-stats { gap: 24px; }
+            .stat-number { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-icon { width: 60px; height: 60px; }
+        }
     </style>
 </head>
 <body>
@@ -45,9 +277,11 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="academia.html">Hankel Academy</a></li>
-                    <li><a href="index.html#mision">Visión</a></li>
+                    <li><a href="consultoria.html">Consultoría ISO</a></li>
                     <li><a href="index.html#contacto">Contacto</a></li>
                     <li><a href="admin.html" class="admin-link" title="Panel Admin">🔒</a></li>
                     <li><a href="carrito.html" class="cart-icon">🛒<span class="cart-badge" id="cartBadge">0</span></a></li>
@@ -56,63 +290,157 @@
         </div>
     </header>
 
+    <!-- ===== HERO PRINCIPAL ===== -->
     <section id="inicio" class="hero">
         <div class="container hero-content">
-            <h1>Hardware de Vanguardia.<br>Hecho en Perú.</h1>
-            <p>MCUs avanzados: de la distribución a la fabricación de instrumentos científicos propios.</p>
-            <a href="productos.html" class="btn">Ver Catálogo</a>
+            <div class="badge">🔬 ISO 17025 · Ingeniería de Precisión · Perú</div>
+            <h1>Ingeniería que Transforma<br>Laboratorios en Perú</h1>
+            <p class="subtitle">
+                De la consultoría a la fabricación: equipos de laboratorio, auditorías ISO 17025, 
+                capacitación especializada e instrumentación industrial de vanguardia.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Años Experiencia</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Proyectos Entregados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Satisfacción Cliente</span>
+                </div>
+            </div>
+            <a href="#servicios" class="btn" style="animation: pulse 2s infinite;">Explorar Servicios ↓</a>
         </div>
     </section>
 
-    <section id="mision">
+    <!-- ===== SECCIÓN DE SERVICIOS PRINCIPALES ===== -->
+    <section id="servicios" style="padding: 80px 0;">
         <div class="container">
-            <h2 class="section-title">De Texas Instruments a Nuestro Propio Tesla</h2>
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <h3>⚡ Fase 1: MCUs Accesibles</h3>
-                    <p>Distribuimos microcontroladores de última generación a precios justos. Democratizamos el hardware en Perú con el respaldo de ingeniería local.</p>
+            <h2 class="section-title" style="animation: slideInLeft 0.8s ease-out;">
+                Nuestros 4 Pilares de Ingeniería
+            </h2>
+            <p style="text-align:center; max-width:700px; margin:0 auto 48px; color:#9aa3b5; animation: slideInRight 0.8s ease-out;">
+                Soluciones integrales para laboratorios acreditados y proyectos industriales 
+                que exigen precisión, cumplimiento normativo y excelencia técnica.
+            </p>
+            
+            <div class="services-grid">
+                <!-- Servicio 1: Consultoría -->
+                <!-- GUARDA TU ÍCONO COMO: images/icon-consultoria.png -->
+                <div class="service-card" onclick="location.href='consultoria.html'">
+                    <img src="images/icon-consultoria.png" alt="Consultoría ISO 17025" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none; font-size:3rem; margin-bottom:20px;">📋</span>
+                    <h3>Consultoría & Auditoría ISO 17025</h3>
+                    <p>
+                        Preparación para acreditación, auditorías internas, 
+                        validación de métodos y gestión de calidad. 
+                        Más de 7 años liderando laboratorios acreditados.
+                    </p>
+                    <span class="service-link">Ver servicios →</span>
                 </div>
-                <div class="mission-card">
-                    <h3>🔬 Fase 2: I+D Avanzado</h3>
-                    <p>Desarrollamos nuestra propia línea de instrumentos científicos: PCBs personalizados, bajo consumo extremo y sensores plasmónicos.</p>
+                
+                <!-- Servicio 2: Fabricación -->
+                <!-- GUARDA TU ÍCONO COMO: images/icon-fabricacion.png -->
+                <div class="service-card" onclick="location.href='productos.html'">
+                    <img src="images/icon-fabricacion.png" alt="Fabricación de Equipos" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none; font-size:3rem; margin-bottom:20px;">⚙️</span>
+                    <h3>Fabricación de Equipos de Laboratorio</h3>
+                    <p>
+                        Diseño, fabricación y mantenimiento de equipos 
+                        hardware y software para laboratorio. Análisis 
+                        especializado y soluciones a medida para tu infraestructura.
+                    </p>
+                    <span class="service-link">Ver equipos →</span>
                 </div>
-                <div class="mission-card">
-                    <h3>🇵🇪 Fase 3: Fabricación Nacional</h3>
-                    <p>Hankel Instruments construirá la próxima generación de instrumentación peruana con nanotecnología.</p>
+                
+                <!-- Servicio 3: Capacitación -->
+                <!-- GUARDA TU ÍCONO COMO: images/icon-capacitacion.png -->
+                <div class="service-card" onclick="location.href='academia.html'">
+                    <img src="images/icon-capacitacion.png" alt="Capacitaciones" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none; font-size:3rem; margin-bottom:20px;">🎓</span>
+                    <h3>Capacitaciones ISO 17025 & Técnicas</h3>
+                    <p>
+                        Cursos especializados en metrología, incertidumbre, 
+                        ensayos mecánicos y gestión de laboratorios. 
+                        Formación práctica con casos reales.
+                    </p>
+                    <span class="service-link">Ver cursos →</span>
+                </div>
+                
+                <!-- Servicio 4: Instrumentación -->
+                <!-- GUARDA TU ÍCONO COMO: images/icon-instrumentacion.png -->
+                <div class="service-card" onclick="location.href='productos.html'">
+                    <img src="images/icon-instrumentacion.png" alt="Instrumentación Industrial" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none; font-size:3rem; margin-bottom:20px;">🔧</span>
+                    <h3>Instrumentación Industrial</h3>
+                    <p>
+                        Venta de MCUs, sensores y equipos de medición. 
+                        Asesoría técnica para selección e implementación 
+                        en entornos industriales exigentes.
+                    </p>
+                    <span class="service-link">Ver catálogo →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="repositorios">
+    <!-- ===== SECCIÓN DE CONFIANZA ===== -->
+    <section class="trust-section">
         <div class="container">
-            <h2 class="section-title">Repositorios Flagship</h2>
-            <p style="text-align:center; max-width:700px; margin:0 auto 24px; color:#9aa3b5;">Código abierto, drivers y templates para ingenieros que construyen el mañana.</p>
-            <div class="repo-grid">
-                <div class="repo-card">
-                    <h3><a href="#">mcu-peru-examples</a></h3>
-                    <p>Librerías optimizadas y ejemplos para MCUs ARM de alto rendimiento.</p>
-                    <span class="repo-tag">C</span><span class="repo-tag">STM32</span><span class="repo-tag">Rust</span>
+            <h2 class="section-title" style="text-align:center;">¿Por qué Hankel Instruments?</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">🎯</div>
+                    <h4>Expertise Comprobado</h4>
+                    <p>Staff de ingenieros especializados con más de 10 años de experiencia en proyectos nacionales e internacionales.</p>
                 </div>
-                <div class="repo-card">
-                    <h3><a href="#">iot-sensor-drivers</a></h3>
-                    <p>Controladores avanzados para sensores IoT con consumo en nanoamperios.</p>
-                    <span class="repo-tag">Embedded</span><span class="repo-tag">I2C/SPI</span>
+                <div class="trust-item">
+                    <div class="trust-icon">📐</div>
+                    <h4>Ingeniería de Precisión</h4>
+                    <p>Cálculos estructurales, memorias técnicas y diseños validados bajo estándares internacionales.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🔬</div>
+                    <h4>Conocimiento de Equipos</h4>
+                    <p>Experiencia directa con instrumentación de laboratorio y equipos de ensayos especializados.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🇵🇪</div>
+                    <h4>Fabricación Nacional</h4>
+                    <p>Equipos construidos en Perú con soporte local, mantenimiento garantizado y precios competitivos.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contacto">
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2>¿Listo para llevar tu laboratorio al siguiente nivel?</h2>
+            <p>Agenda una consultoría gratuita de 30 minutos. Analizamos tu caso sin compromiso.</p>
+            <a href="mailto:info@hankelinstruments.com" class="cta-button">
+                Solicitar Consultoría Gratuita →
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="proyectos.html">Proyectos</a>
                 <a href="productos.html">Productos</a>
                 <a href="academia.html">Hankel Academy</a>
-                <a href="mailto:info@hankelinstruments.com">Email</a>
+                <a href="consultoria.html">Consultoría ISO</a>
             </div>
             <p>📩 <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
-            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería que inspira</p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería que inspira confianza</p>
         </div>
     </footer>
 
