@@ -3,29 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hankel Instruments | Ingeniería, Metrología & Consultoría ISO 17025 en Perú</title>
-    <meta name="description" content="Consultoría y auditoría ISO/IEC 17025, fabricación de equipos de laboratorio, capacitaciones técnicas e instrumentación industrial. Rigor científico aplicado a cada ensayo.">
+    <title>Hankel Instruments | Ingeniería & Consultoría ISO 17025 en Perú</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- ============================================================ -->
-    <!-- LISTA DE IMÁGENES A CARGAR EN EL REPOSITORIO GITHUB         -->
-    <!-- Guarda estos archivos en la carpeta raíz o en /images/      -->
-    <!-- ============================================================ -->
-    <!--                                                            -->
-    <!-- 1. flag.png           → Fondo del Hero                     -->
-    <!-- 2. logo.jpg           → Logo principal (ya existente)      -->
-    <!-- 3. icon-consultoria.png    → Ícono Consultoría ISO 17025   -->
-    <!-- 4. icon-fabricacion.png    → Ícono Fabricación Equipos     -->
-    <!-- 5. icon-capacitacion.png   → Ícono Capacitaciones          -->
-    <!-- 6. icon-instrumentacion.png→ Ícono Instrumentación         -->
-    <!--                                                            -->
-    <!-- Tamaño recomendado íconos: 80x80px, fondo transparente     -->
-    <!-- Formato: PNG o SVG                                         -->
-    <!-- Ruta en el código: images/nombre-del-archivo.png           -->
-    <!-- ============================================================ -->
-    
     <style>
         /* ===== ANIMACIONES Y ESTILOS BASE ===== */
         @keyframes fadeInUp {
@@ -33,8 +14,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4); }
-            50% { box-shadow: 0 0 0 15px rgba(0, 188, 212, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(30, 90, 110, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(30, 90, 110, 0); }
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -50,21 +31,21 @@
             to { opacity: 1; transform: translateX(0); }
         }
         
-        /* ===== HERO SECTION - ALINEADO A LA IZQUIERDA ===== */
+        /* ===== HERO SECTION MEJORADO ===== */
         .hero {
             min-height: 70vh;
             background: linear-gradient(135deg, 
                 rgba(10,12,16,0.92), 
                 rgba(10,12,16,0.88), 
-                rgba(0, 60, 80, 0.85)),
-                url('flag.png');                                    /* ← IMAGEN: flag.png */
+                rgba(15, 45, 55, 0.85)),
+                url('engineering-bg.jpg');
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
             display: flex;
             align-items: center;
-            justify-content: flex-start;                           /* ← Alineado a la izquierda */
-            text-align: left;                                      /* ← Texto a la izquierda */
+            justify-content: center;
+            text-align: center;
             padding: 120px 20px 80px;
             margin-top: 80px;
             position: relative;
@@ -77,62 +58,58 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(0,188,212,0.1), transparent 70%);
+            background: radial-gradient(circle at 30% 50%, rgba(30,90,110,0.15), transparent 70%);
             animation: pulse 3s infinite;
         }
         .hero-content {
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
-            max-width: 900px;
-            margin-left: 5%;                                        /* ← Margen izquierdo para mejor estética */
         }
         .hero-content .badge {
             display: inline-block;
-            background: rgba(0,188,212,0.15);
-            border: 1px solid rgba(0,188,212,0.3);
+            background: rgba(30,90,110,0.2);
+            border: 1px solid rgba(30,90,110,0.4);
             padding: 8px 24px;
             border-radius: 50px;
             font-size: 0.9rem;
-            color: #00bcd4;
+            color: #5b9aaa;
             margin-bottom: 24px;
             backdrop-filter: blur(10px);
         }
         .hero-content h1 { 
             font-size: 3.8rem; 
             margin-bottom: 24px; 
-            background: linear-gradient(135deg, #fff 0%, #00bcd4 50%, #4dd0e1 100%); 
+            background: linear-gradient(135deg, #e8edf0 0%, #5b9aaa 50%, #7db5c4 100%); 
             background-size: 200% 200%;
             animation: gradientBG 3s ease infinite;
             -webkit-background-clip: text; 
             background-clip: text; 
             color: transparent;
             line-height: 1.2;
-            text-align: left;                                       /* ← Título alineado izquierda */
         }
         .hero-content .subtitle {
             font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 0 40px 0;                                     /* ← Sin centrado automático */
+            max-width: 800px;
+            margin: 0 auto 40px;
             font-weight: 300;
-            color: #b0b7c5;
+            color: #9aa3b5;
             line-height: 1.6;
-            text-align: left;
         }
         .hero-stats {
             display: flex;
             gap: 48px;
-            justify-content: flex-start;                            /* ← Estadísticas a la izquierda */
+            justify-content: center;
             margin: 40px 0;
             flex-wrap: wrap;
         }
         .stat-item {
-            text-align: left;                                       /* ← Stats alineadas izquierda */
+            text-align: center;
         }
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: #00bcd4;
+            color: #5b9aaa;
             display: block;
         }
         .stat-label {
@@ -140,10 +117,6 @@
             color: #8892a4;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-        .hero .btn {
-            display: inline-block;                                  /* ← Botón se mantiene inline */
-            margin-left: 0;                                         /* ← Pegado a la izquierda */
         }
         
         /* ===== SERVICIOS PRINCIPALES ===== */
@@ -163,6 +136,45 @@
             overflow: hidden;
             cursor: pointer;
         }
+        /* Imagen de fondo con degradado para cada tarjeta */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        .service-card:hover::after {
+            opacity: 0.15;
+        }
+        /* Fondos específicos para cada servicio */
+        .service-card:nth-child(1)::after {
+            background-image: url('images/bg-consultoria.jpg');
+            background: linear-gradient(135deg, rgba(30,70,90,0.5), rgba(20,40,55,0.8)), url('images/bg-consultoria.jpg');
+            background-size: cover;
+        }
+        .service-card:nth-child(2)::after {
+            background-image: url('images/bg-fabricacion.jpg');
+            background: linear-gradient(135deg, rgba(25,55,70,0.5), rgba(15,35,50,0.8)), url('images/bg-fabricacion.jpg');
+            background-size: cover;
+        }
+        .service-card:nth-child(3)::after {
+            background-image: url('images/bg-capacitacion.jpg');
+            background: linear-gradient(135deg, rgba(35,65,80,0.5), rgba(20,40,55,0.8)), url('images/bg-capacitacion.jpg');
+            background-size: cover;
+        }
+        .service-card:nth-child(4)::after {
+            background-image: url('images/bg-instrumentacion.jpg');
+            background: linear-gradient(135deg, rgba(20,50,65,0.5), rgba(10,30,45,0.8)), url('images/bg-instrumentacion.jpg');
+            background-size: cover;
+        }
+        /* Línea animada superior */
         .service-card::before {
             content: '';
             position: absolute;
@@ -170,30 +182,40 @@
             left: -100%;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #00bcd4, #4dd0e1);
+            background: linear-gradient(90deg, transparent, #3a7a8e, #5b9aaa);
             transition: left 0.6s ease;
+            z-index: 2;
         }
         .service-card:hover::before {
             left: 100%;
         }
         .service-card:hover {
             transform: translateY(-8px);
-            border-color: #00bcd4;
-            box-shadow: 0 20px 40px rgba(0, 188, 212, 0.15);
+            border-color: #3a7a8e;
+            box-shadow: 0 20px 40px rgba(20, 50, 65, 0.2);
+        }
+        /* Contenido de la tarjeta por encima del fondo */
+        .service-card h3,
+        .service-card p,
+        .service-card .service-link,
+        .service-card .service-icon {
+            position: relative;
+            z-index: 1;
         }
         .service-icon {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             margin-bottom: 20px;
             display: block;
             transition: transform 0.3s ease;
-            object-fit: contain;
+            opacity: 0.8;
         }
         .service-card:hover .service-icon {
-            transform: scale(1.2) rotate(5deg);
+            transform: scale(1.15);
+            opacity: 1;
         }
         .service-card h3 {
-            color: #fff;
+            color: #e8edf0;
             font-size: 1.5rem;
             margin-bottom: 16px;
             font-weight: 700;
@@ -204,7 +226,7 @@
             margin-bottom: 20px;
         }
         .service-card .service-link {
-            color: #00bcd4;
+            color: #5b9aaa;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
@@ -213,19 +235,6 @@
         }
         .service-card:hover .service-link {
             gap: 16px;
-        }
-
-        /* ===== AGREGADO: reveal al hacer scroll (opcional, no toca clases existentes) ===== */
-        .service-card.js-reveal,
-        .trust-item.js-reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .service-card.js-reveal.is-visible,
-        .trust-item.js-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         /* ===== TRUST BADGES ===== */
@@ -251,11 +260,13 @@
         .trust-item:nth-child(3) { animation-delay: 0.5s; }
         .trust-item:nth-child(4) { animation-delay: 0.7s; }
         .trust-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            opacity: 0.8;
         }
         .trust-item h4 {
-            color: #fff;
+            color: #e8edf0;
             margin-bottom: 8px;
         }
         .trust-item p {
@@ -265,24 +276,24 @@
         
         /* ===== CTA SECTION ===== */
         .cta-section {
-            background: linear-gradient(135deg, #00bcd4, #008ba3);
+            background: linear-gradient(135deg, #1a4a5a, #0f2f3d);
             padding: 80px 0;
             text-align: center;
             animation: fadeInUp 1s ease-out;
         }
         .cta-section h2 {
-            color: #fff;
+            color: #e8edf0;
             font-size: 2.5rem;
             margin-bottom: 16px;
         }
         .cta-section p {
-            color: rgba(255,255,255,0.9);
+            color: rgba(232,237,240,0.85);
             font-size: 1.2rem;
             margin-bottom: 32px;
         }
         .cta-button {
-            background: #fff;
-            color: #008ba3;
+            background: #e8edf0;
+            color: #0f2f3d;
             padding: 16px 40px;
             border-radius: 50px;
             font-weight: 700;
@@ -293,7 +304,7 @@
         }
         .cta-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         
         /* ===== RESPONSIVE ===== */
@@ -302,8 +313,7 @@
             .hero-stats { gap: 24px; }
             .stat-number { font-size: 2rem; }
             .services-grid { grid-template-columns: 1fr; }
-            .service-icon { width: 60px; height: 60px; }
-            .hero-content { margin-left: 5%; }
+            .service-icon { width: 48px; height: 48px; }
         }
     </style>
 </head>
@@ -313,8 +323,8 @@
         <div class="container">
             <nav>
                 <a href="index.html">
-                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">  <!-- ← IMAGEN: logo.jpg -->
-                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Inicio</a></li>
@@ -334,25 +344,24 @@
     <!-- ===== HERO PRINCIPAL ===== -->
     <section id="inicio" class="hero">
         <div class="container hero-content">
-            <div class="badge">🔬 Ensayos & Metrología · ISO/IEC 17025 · Perú</div>
-            <h1>Ingeniería y Metrología<br>con Rigor Científico</h1>
+            <div class="badge">🔬 ISO 17025 · Ingeniería de Precisión · Perú</div>
+            <h1>Ingeniería que Transforma<br>Laboratorios en Perú</h1>
             <p class="subtitle">
-                Consultoría y auditoría ISO/IEC 17025, diseño y fabricación de equipos de ensayo,
-                capacitación técnica especializada e instrumentación industrial. Cada resultado,
-                trazable y defendible.
+                De la consultoría a la fabricación: equipos de laboratorio, auditorías ISO 17025, 
+                capacitación especializada e instrumentación industrial de vanguardia.
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number" data-count="7" data-suffix="+">0</span>
-                    <span class="stat-label">Años en Labs Acreditados</span>
+                    <span class="stat-number">7+</span>
+                    <span class="stat-label">Años Experiencia ISO 17025</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">17025</span>
-                    <span class="stat-label">Auditor ISO/IEC</span>
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Proyectos Entregados</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-count="100" data-suffix="%">0</span>
-                    <span class="stat-label">Trazabilidad Metrológica</span>
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Satisfacción Cliente</span>
                 </div>
             </div>
             <a href="#servicios" class="btn" style="animation: pulse 2s infinite;">Explorar Servicios ↓</a>
@@ -366,59 +375,85 @@
                 Nuestros 4 Pilares de Ingeniería
             </h2>
             <p style="text-align:center; max-width:700px; margin:0 auto 48px; color:#9aa3b5; animation: slideInRight 0.8s ease-out;">
-                Del diseño al ensayo: soluciones para laboratorios acreditados y proyectos
-                industriales que no pueden darse el lujo de un resultado sin respaldo técnico.
+                Soluciones integrales para laboratorios acreditados y proyectos industriales 
+                que exigen precisión, cumplimiento normativo y excelencia técnica.
             </p>
             
             <div class="services-grid">
                 <!-- Servicio 1: Consultoría -->
-                <div class="service-card js-reveal" onclick="location.href='consultoria.html'">
-                    <img src="images/icon-consultoria.png" alt="Consultoría ISO 17025" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-consultoria.png -->
-                    <span style="display:none; font-size:3rem; margin-bottom:20px;">📋</span>
+                <div class="service-card" onclick="location.href='consultoria.html'">
+                    <!-- Ícono SVG: Documento/Checklist -->
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
                     <h3>Consultoría & Auditoría ISO 17025</h3>
                     <p>
-                        Preparación para acreditación, auditorías internas, validación de métodos
-                        e informes técnicos y dictámenes de ingeniería, liderados por un auditor
-                        ISO/IEC 17025 con más de 7 años en laboratorios acreditados.
+                        Preparación para acreditación, auditorías internas, 
+                        validación de métodos y gestión de calidad. 
+                        Más de 7 años liderando laboratorios acreditados.
                     </p>
-                    <span class="service-link">Ver servicios de consultoría →</span>
+                    <span class="service-link">Ver servicios →</span>
                 </div>
                 
                 <!-- Servicio 2: Fabricación -->
-                <div class="service-card js-reveal" onclick="location.href='productos.html'">
-                    <img src="images/icon-fabricacion.png" alt="Fabricación de Equipos" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-fabricacion.png -->
-                    <span style="display:none; font-size:3rem; margin-bottom:20px;">⚙️</span>
+                <div class="service-card" onclick="location.href='productos.html'">
+                    <!-- Ícono SVG: Engranaje -->
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
                     <h3>Fabricación de Equipos de Laboratorio</h3>
                     <p>
-                        Diseño y construcción de equipos de ensayo a medida —incluyendo cámaras
-                        de envejecimiento acelerado (xenón)— con criterios de repetibilidad,
-                        trazabilidad y cumplimiento normativo desde el primer prototipo.
+                        Diseño, fabricación y mantenimiento de equipos 
+                        hardware y software para laboratorio. Análisis 
+                        especializado y soluciones a medida.
                     </p>
                     <span class="service-link">Ver equipos →</span>
                 </div>
                 
                 <!-- Servicio 3: Capacitación -->
-                <div class="service-card js-reveal" onclick="location.href='academia.html'">
-                    <img src="images/icon-capacitacion.png" alt="Capacitaciones" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-capacitacion.png -->
-                    <span style="display:none; font-size:3rem; margin-bottom:20px;">🎓</span>
+                <div class="service-card" onclick="location.href='academia.html'">
+                    <!-- Ícono SVG: Birrete/Capacitación -->
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>
+                    </svg>
                     <h3>Capacitaciones ISO 17025 & Técnicas</h3>
                     <p>
-                        Cursos prácticos en metrología, incertidumbre de medición, ensayos
-                        mecánicos y gestión de laboratorios, dictados con casos reales de
-                        auditoría y acreditación.
+                        Cursos especializados en metrología, incertidumbre, 
+                        ensayos mecánicos y gestión de laboratorios. 
+                        Formación práctica con casos reales.
                     </p>
                     <span class="service-link">Ver cursos →</span>
                 </div>
                 
                 <!-- Servicio 4: Instrumentación -->
-                <div class="service-card js-reveal" onclick="location.href='productos.html'">
-                    <img src="images/icon-instrumentacion.png" alt="Instrumentación Industrial" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-instrumentacion.png -->
-                    <span style="display:none; font-size:3rem; margin-bottom:20px;">🔧</span>
+                <div class="service-card" onclick="location.href='productos.html'">
+                    <!-- Ícono SVG: Microchip/Circuito -->
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <line x1="9" y1="2" x2="9" y2="4"></line>
+                        <line x1="15" y1="2" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="22"></line>
+                        <line x1="15" y1="20" x2="15" y2="22"></line>
+                        <line x1="20" y1="9" x2="22" y2="9"></line>
+                        <line x1="20" y1="14" x2="22" y2="14"></line>
+                        <line x1="2" y1="9" x2="4" y2="9"></line>
+                        <line x1="2" y1="14" x2="4" y2="14"></line>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        <line x1="9" y1="15" x2="9.01" y2="15"></line>
+                        <line x1="15" y1="15" x2="15.01" y2="15"></line>
+                    </svg>
                     <h3>Instrumentación Industrial</h3>
                     <p>
-                        Selección, venta y asesoría técnica en sensores, MCUs y equipos de
-                        medición para entornos industriales exigentes, con soporte de
-                        implementación especializado.
+                        Venta de MCUs, sensores y equipos de medición. 
+                        Asesoría técnica para selección e implementación 
+                        en entornos industriales exigentes.
                     </p>
                     <span class="service-link">Ver catálogo →</span>
                 </div>
@@ -431,25 +466,46 @@
         <div class="container">
             <h2 class="section-title" style="text-align:center;">¿Por qué Hankel Instruments?</h2>
             <div class="trust-grid">
-                <div class="trust-item js-reveal">
-                    <div class="trust-icon">🎯</div>
+                <div class="trust-item">
+                    <!-- Ícono SVG: Target -->
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
                     <h4>Expertise Comprobado</h4>
-                    <p>Más de 7 años liderando laboratorios acreditados, con formación como auditor ISO/IEC 17025.</p>
+                    <p>Staff de ingenieros especializados con más de 10 años de experiencia en proyectos nacionales e internacionales.</p>
                 </div>
-                <div class="trust-item js-reveal">
-                    <div class="trust-icon">📐</div>
-                    <h4>Rigor Científico</h4>
-                    <p>Cada ensayo respaldado por instrumentos calibrados bajo ISO/IEC 17025 y memorias de cálculo verificables.</p>
+                <div class="trust-item">
+                    <!-- Ícono SVG: Compás/Precisión -->
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                    <h4>Ingeniería de Precisión</h4>
+                    <p>Cálculos estructurales, memorias técnicas y diseños validados bajo estándares internacionales.</p>
                 </div>
-                <div class="trust-item js-reveal">
-                    <div class="trust-icon">🔬</div>
-                    <h4>Ingeniería Aplicada</h4>
-                    <p>Informes técnicos y dictámenes firmados por ingeniero mecánico colegiado y habilitado.</p>
+                <div class="trust-item">
+                    <!-- Ícono SVG: Microscopio -->
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 22h12"></path>
+                        <path d="M12 2v5"></path>
+                        <path d="M9 7h6"></path>
+                        <circle cx="12" cy="14" r="5"></circle>
+                        <path d="M12 14V9"></path>
+                        <path d="M8 14h8"></path>
+                    </svg>
+                    <h4>Conocimiento de Equipos</h4>
+                    <p>Experiencia directa con instrumentación de laboratorio y equipos de ensayos especializados.</p>
                 </div>
-                <div class="trust-item js-reveal">
-                    <div class="trust-icon">🇵🇪</div>
+                <div class="trust-item">
+                    <!-- Ícono SVG: Mapa Perú/Bandera -->
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                    </svg>
                     <h4>Fabricación Nacional</h4>
-                    <p>Equipos diseñados y construidos en Perú, con soporte local y mantenimiento directo.</p>
+                    <p>Equipos construidos en Perú con soporte local, mantenimiento garantizado y precios competitivos.</p>
                 </div>
             </div>
         </div>
@@ -458,8 +514,8 @@
     <!-- ===== CTA FINAL ===== -->
     <section class="cta-section" id="contacto">
         <div class="container">
-            <h2>¿Tu proceso o equipo necesita respaldo técnico?</h2>
-            <p>Agenda una consultoría técnica gratuita de 30 minutos. Evaluamos tu caso sin compromiso.</p>
+            <h2>¿Listo para llevar tu laboratorio al siguiente nivel?</h2>
+            <p>Agenda una consultoría gratuita de 30 minutos. Analizamos tu caso sin compromiso.</p>
             <a href="mailto:info@hankelinstruments.com" class="cta-button">
                 Solicitar Consultoría Gratuita →
             </a>
@@ -484,42 +540,5 @@
 
     <script src="js/carrito.js"></script>
     <script src="js/main.js"></script>
-
-    <!-- ============================================================ -->
-    <!-- AGREGADO (OPCIONAL): animaciones interactivas al hacer scroll -->
-    <!-- No depende de main.js ni carrito.js. Se puede borrar sin      -->
-    <!-- afectar nada más del sitio.                                   -->
-    <!-- ============================================================ -->
-    <script>
-        // 1) Reveal de tarjetas y trust-items al entrar en pantalla
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealItems = document.querySelectorAll('.js-reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, i) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => entry.target.classList.add('is-visible'), i * 80);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            revealItems.forEach(item => observer.observe(item));
-
-            // 2) Contador animado de las estadísticas del hero
-            const counters = document.querySelectorAll('.stat-number[data-count]');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'), 10);
-                const suffix = counter.getAttribute('data-suffix') || '';
-                let current = 0;
-                const duration = 1200;
-                const stepTime = Math.max(Math.floor(duration / target), 20);
-                const step = () => {
-                    current += 1;
-                    counter.textContent = current + suffix;
-                    if (current < target) setTimeout(step, stepTime);
-                };
-                step();
-            });
-        });
-    </script>
 </body>
 </html>
