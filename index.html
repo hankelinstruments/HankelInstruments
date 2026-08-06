@@ -7,6 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ============================================================ -->
+    <!-- 📁 LISTA MAESTRA DE RECURSOS VISUALES                        -->
+    <!-- ============================================================ -->
+    <!--                                                            -->
+    <!--  [1] logo.jpg                              → Raíz del repo -->
+    <!--  [2] engineering-bg.jpg                    → Raíz del repo -->
+    <!--  [3] images/bg-consultoria.jpg             → /images/      -->
+    <!--  [4] images/bg-fabricacion.jpg             → /images/      -->
+    <!--  [5] images/bg-capacitacion.jpg            → /images/      -->
+    <!--  [6] images/bg-instrumentacion.jpg         → /images/      -->
+    <!--                                                            -->
+    <!-- 📌 Si las imágenes [3] a [6] no existen, se mostrará      -->
+    <!--    un degradado azul petróleo como fallback elegante.       -->
+    <!-- ============================================================ -->
+    
     <style>
         /* ===== ANIMACIONES Y ESTILOS BASE ===== */
         @keyframes fadeInUp {
@@ -31,14 +47,14 @@
             to { opacity: 1; transform: translateX(0); }
         }
         
-        /* ===== HERO SECTION MEJORADO ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 70vh;
             background: linear-gradient(135deg, 
                 rgba(10,12,16,0.92), 
                 rgba(10,12,16,0.88), 
                 rgba(15, 45, 55, 0.85)),
-                url('engineering-bg.jpg');
+                url('flag.png');                         /* ← 🖼️ RECURSO [2]: engineering-bg.jpg */
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
@@ -155,22 +171,22 @@
         }
         /* Fondos específicos para cada servicio */
         .service-card:nth-child(1)::after {
-            background-image: url('images/bg-consultoria.jpg');
+            /* 🖼️ RECURSO [3]: images/bg-consultoria.jpg */
             background: linear-gradient(135deg, rgba(30,70,90,0.5), rgba(20,40,55,0.8)), url('images/bg-consultoria.jpg');
             background-size: cover;
         }
         .service-card:nth-child(2)::after {
-            background-image: url('images/bg-fabricacion.jpg');
+            /* 🖼️ RECURSO [4]: images/bg-fabricacion.jpg */
             background: linear-gradient(135deg, rgba(25,55,70,0.5), rgba(15,35,50,0.8)), url('images/bg-fabricacion.jpg');
             background-size: cover;
         }
         .service-card:nth-child(3)::after {
-            background-image: url('images/bg-capacitacion.jpg');
+            /* 🖼️ RECURSO [5]: images/bg-capacitacion.jpg */
             background: linear-gradient(135deg, rgba(35,65,80,0.5), rgba(20,40,55,0.8)), url('images/bg-capacitacion.jpg');
             background-size: cover;
         }
         .service-card:nth-child(4)::after {
-            background-image: url('images/bg-instrumentacion.jpg');
+            /* 🖼️ RECURSO [6]: images/bg-instrumentacion.jpg */
             background: linear-gradient(135deg, rgba(20,50,65,0.5), rgba(10,30,45,0.8)), url('images/bg-instrumentacion.jpg');
             background-size: cover;
         }
@@ -323,6 +339,7 @@
         <div class="container">
             <nav>
                 <a href="index.html">
+                    <!-- 🖼️ RECURSO [1]: logo.jpg -->
                     <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
                     <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
                 </a>
@@ -342,6 +359,7 @@
     </header>
 
     <!-- ===== HERO PRINCIPAL ===== -->
+    <!-- (Hero usa RECURSO [2]: engineering-bg.jpg en el CSS) -->
     <section id="inicio" class="hero">
         <div class="container hero-content">
             <div class="badge">🔬 ISO 17025 · Ingeniería de Precisión · Perú</div>
@@ -369,6 +387,7 @@
     </section>
 
     <!-- ===== SECCIÓN DE SERVICIOS PRINCIPALES ===== -->
+    <!-- (Las tarjetas usan RECURSOS [3] a [6] en el CSS) -->
     <section id="servicios" style="padding: 80px 0;">
         <div class="container">
             <h2 class="section-title" style="animation: slideInLeft 0.8s ease-out;">
@@ -382,7 +401,6 @@
             <div class="services-grid">
                 <!-- Servicio 1: Consultoría -->
                 <div class="service-card" onclick="location.href='consultoria.html'">
-                    <!-- Ícono SVG: Documento/Checklist -->
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
@@ -401,7 +419,6 @@
                 
                 <!-- Servicio 2: Fabricación -->
                 <div class="service-card" onclick="location.href='productos.html'">
-                    <!-- Ícono SVG: Engranaje -->
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -417,7 +434,6 @@
                 
                 <!-- Servicio 3: Capacitación -->
                 <div class="service-card" onclick="location.href='academia.html'">
-                    <!-- Ícono SVG: Birrete/Capacitación -->
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                         <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>
@@ -433,7 +449,6 @@
                 
                 <!-- Servicio 4: Instrumentación -->
                 <div class="service-card" onclick="location.href='productos.html'">
-                    <!-- Ícono SVG: Microchip/Circuito -->
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
                         <line x1="9" y1="2" x2="9" y2="4"></line>
@@ -467,7 +482,6 @@
             <h2 class="section-title" style="text-align:center;">¿Por qué Hankel Instruments?</h2>
             <div class="trust-grid">
                 <div class="trust-item">
-                    <!-- Ícono SVG: Target -->
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <circle cx="12" cy="12" r="6"></circle>
@@ -477,7 +491,6 @@
                     <p>Staff de ingenieros especializados con más de 10 años de experiencia en proyectos nacionales e internacionales.</p>
                 </div>
                 <div class="trust-item">
-                    <!-- Ícono SVG: Compás/Precisión -->
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
@@ -486,7 +499,6 @@
                     <p>Cálculos estructurales, memorias técnicas y diseños validados bajo estándares internacionales.</p>
                 </div>
                 <div class="trust-item">
-                    <!-- Ícono SVG: Microscopio -->
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M6 22h12"></path>
                         <path d="M12 2v5"></path>
@@ -499,7 +511,6 @@
                     <p>Experiencia directa con instrumentación de laboratorio y equipos de ensayos especializados.</p>
                 </div>
                 <div class="trust-item">
-                    <!-- Ícono SVG: Mapa Perú/Bandera -->
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
                         <line x1="4" y1="22" x2="4" y2="15"></line>
