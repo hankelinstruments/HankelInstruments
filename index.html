@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hankel Instruments | Ingeniería & Consultoría ISO 17025 en Perú</title>
+    <title>Hankel Instruments | Ingeniería, Metrología & Consultoría ISO 17025 en Perú</title>
+    <meta name="description" content="Consultoría y auditoría ISO/IEC 17025, fabricación de equipos de laboratorio, capacitaciones técnicas e instrumentación industrial. Rigor científico aplicado a cada ensayo.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -213,6 +214,19 @@
         .service-card:hover .service-link {
             gap: 16px;
         }
+
+        /* ===== AGREGADO: reveal al hacer scroll (opcional, no toca clases existentes) ===== */
+        .service-card.js-reveal,
+        .trust-item.js-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .service-card.js-reveal.is-visible,
+        .trust-item.js-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
         /* ===== TRUST BADGES ===== */
         .trust-section {
@@ -320,24 +334,25 @@
     <!-- ===== HERO PRINCIPAL ===== -->
     <section id="inicio" class="hero">
         <div class="container hero-content">
-            <div class="badge">🔬 ISO 17025 · Ingeniería de Precisión · Perú</div>
-            <h1>Ingeniería que Transforma<br>Laboratorios en Perú</h1>
+            <div class="badge">🔬 Ensayos & Metrología · ISO/IEC 17025 · Perú</div>
+            <h1>Ingeniería y Metrología<br>con Rigor Científico</h1>
             <p class="subtitle">
-                De la consultoría a la fabricación: equipos de laboratorio, auditorías ISO 17025, 
-                capacitación especializada e instrumentación industrial de vanguardia.
+                Consultoría y auditoría ISO/IEC 17025, diseño y fabricación de equipos de ensayo,
+                capacitación técnica especializada e instrumentación industrial. Cada resultado,
+                trazable y defendible.
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Años Experiencia</span>
+                    <span class="stat-number" data-count="7" data-suffix="+">0</span>
+                    <span class="stat-label">Años en Labs Acreditados</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Proyectos Entregados</span>
+                    <span class="stat-number">17025</span>
+                    <span class="stat-label">Auditor ISO/IEC</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Satisfacción Cliente</span>
+                    <span class="stat-number" data-count="100" data-suffix="%">0</span>
+                    <span class="stat-label">Trazabilidad Metrológica</span>
                 </div>
             </div>
             <a href="#servicios" class="btn" style="animation: pulse 2s infinite;">Explorar Servicios ↓</a>
@@ -351,59 +366,59 @@
                 Nuestros 4 Pilares de Ingeniería
             </h2>
             <p style="text-align:center; max-width:700px; margin:0 auto 48px; color:#9aa3b5; animation: slideInRight 0.8s ease-out;">
-                Soluciones integrales para laboratorios acreditados y proyectos industriales 
-                que exigen precisión, cumplimiento normativo y excelencia técnica.
+                Del diseño al ensayo: soluciones para laboratorios acreditados y proyectos
+                industriales que no pueden darse el lujo de un resultado sin respaldo técnico.
             </p>
             
             <div class="services-grid">
                 <!-- Servicio 1: Consultoría -->
-                <div class="service-card" onclick="location.href='consultoria.html'">
+                <div class="service-card js-reveal" onclick="location.href='consultoria.html'">
                     <img src="images/icon-consultoria.png" alt="Consultoría ISO 17025" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-consultoria.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">📋</span>
                     <h3>Consultoría & Auditoría ISO 17025</h3>
                     <p>
-                        Preparación para acreditación, auditorías internas, 
-                        validación de métodos y gestión de calidad. 
-                        Más de 7 años liderando laboratorios acreditados.
+                        Preparación para acreditación, auditorías internas, validación de métodos
+                        e informes técnicos y dictámenes de ingeniería, liderados por un auditor
+                        ISO/IEC 17025 con más de 7 años en laboratorios acreditados.
                     </p>
-                    <span class="service-link">Ver servicios →</span>
+                    <span class="service-link">Ver servicios de consultoría →</span>
                 </div>
                 
                 <!-- Servicio 2: Fabricación -->
-                <div class="service-card" onclick="location.href='productos.html'">
+                <div class="service-card js-reveal" onclick="location.href='productos.html'">
                     <img src="images/icon-fabricacion.png" alt="Fabricación de Equipos" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-fabricacion.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">⚙️</span>
                     <h3>Fabricación de Equipos de Laboratorio</h3>
                     <p>
-                        Diseño, fabricación y mantenimiento de equipos 
-                        hardware y software para laboratorio. Análisis 
-                        especializado y soluciones a medida para tu infraestructura.
+                        Diseño y construcción de equipos de ensayo a medida —incluyendo cámaras
+                        de envejecimiento acelerado (xenón)— con criterios de repetibilidad,
+                        trazabilidad y cumplimiento normativo desde el primer prototipo.
                     </p>
                     <span class="service-link">Ver equipos →</span>
                 </div>
                 
                 <!-- Servicio 3: Capacitación -->
-                <div class="service-card" onclick="location.href='academia.html'">
+                <div class="service-card js-reveal" onclick="location.href='academia.html'">
                     <img src="images/icon-capacitacion.png" alt="Capacitaciones" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-capacitacion.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">🎓</span>
                     <h3>Capacitaciones ISO 17025 & Técnicas</h3>
                     <p>
-                        Cursos especializados en metrología, incertidumbre, 
-                        ensayos mecánicos y gestión de laboratorios. 
-                        Formación práctica con casos reales.
+                        Cursos prácticos en metrología, incertidumbre de medición, ensayos
+                        mecánicos y gestión de laboratorios, dictados con casos reales de
+                        auditoría y acreditación.
                     </p>
                     <span class="service-link">Ver cursos →</span>
                 </div>
                 
                 <!-- Servicio 4: Instrumentación -->
-                <div class="service-card" onclick="location.href='productos.html'">
+                <div class="service-card js-reveal" onclick="location.href='productos.html'">
                     <img src="images/icon-instrumentacion.png" alt="Instrumentación Industrial" class="service-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">  <!-- ← IMAGEN: images/icon-instrumentacion.png -->
                     <span style="display:none; font-size:3rem; margin-bottom:20px;">🔧</span>
                     <h3>Instrumentación Industrial</h3>
                     <p>
-                        Venta de MCUs, sensores y equipos de medición. 
-                        Asesoría técnica para selección e implementación 
-                        en entornos industriales exigentes.
+                        Selección, venta y asesoría técnica en sensores, MCUs y equipos de
+                        medición para entornos industriales exigentes, con soporte de
+                        implementación especializado.
                     </p>
                     <span class="service-link">Ver catálogo →</span>
                 </div>
@@ -416,25 +431,25 @@
         <div class="container">
             <h2 class="section-title" style="text-align:center;">¿Por qué Hankel Instruments?</h2>
             <div class="trust-grid">
-                <div class="trust-item">
+                <div class="trust-item js-reveal">
                     <div class="trust-icon">🎯</div>
                     <h4>Expertise Comprobado</h4>
-                    <p>Staff de ingenieros especializados con más de 10 años de experiencia en proyectos nacionales e internacionales.</p>
+                    <p>Más de 7 años liderando laboratorios acreditados, con formación como auditor ISO/IEC 17025.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item js-reveal">
                     <div class="trust-icon">📐</div>
-                    <h4>Ingeniería de Precisión</h4>
-                    <p>Cálculos estructurales, memorias técnicas y diseños validados bajo estándares internacionales.</p>
+                    <h4>Rigor Científico</h4>
+                    <p>Cada ensayo respaldado por instrumentos calibrados bajo ISO/IEC 17025 y memorias de cálculo verificables.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item js-reveal">
                     <div class="trust-icon">🔬</div>
-                    <h4>Conocimiento de Equipos</h4>
-                    <p>Experiencia directa con instrumentación de laboratorio y equipos de ensayos especializados.</p>
+                    <h4>Ingeniería Aplicada</h4>
+                    <p>Informes técnicos y dictámenes firmados por ingeniero mecánico colegiado y habilitado.</p>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item js-reveal">
                     <div class="trust-icon">🇵🇪</div>
                     <h4>Fabricación Nacional</h4>
-                    <p>Equipos construidos en Perú con soporte local, mantenimiento garantizado y precios competitivos.</p>
+                    <p>Equipos diseñados y construidos en Perú, con soporte local y mantenimiento directo.</p>
                 </div>
             </div>
         </div>
@@ -443,8 +458,8 @@
     <!-- ===== CTA FINAL ===== -->
     <section class="cta-section" id="contacto">
         <div class="container">
-            <h2>¿Listo para llevar tu laboratorio al siguiente nivel?</h2>
-            <p>Agenda una consultoría gratuita de 30 minutos. Analizamos tu caso sin compromiso.</p>
+            <h2>¿Tu proceso o equipo necesita respaldo técnico?</h2>
+            <p>Agenda una consultoría técnica gratuita de 30 minutos. Evaluamos tu caso sin compromiso.</p>
             <a href="mailto:info@hankelinstruments.com" class="cta-button">
                 Solicitar Consultoría Gratuita →
             </a>
@@ -469,5 +484,42 @@
 
     <script src="js/carrito.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- ============================================================ -->
+    <!-- AGREGADO (OPCIONAL): animaciones interactivas al hacer scroll -->
+    <!-- No depende de main.js ni carrito.js. Se puede borrar sin      -->
+    <!-- afectar nada más del sitio.                                   -->
+    <!-- ============================================================ -->
+    <script>
+        // 1) Reveal de tarjetas y trust-items al entrar en pantalla
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealItems = document.querySelectorAll('.js-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('is-visible'), i * 80);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealItems.forEach(item => observer.observe(item));
+
+            // 2) Contador animado de las estadísticas del hero
+            const counters = document.querySelectorAll('.stat-number[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'), 10);
+                const suffix = counter.getAttribute('data-suffix') || '';
+                let current = 0;
+                const duration = 1200;
+                const stepTime = Math.max(Math.floor(duration / target), 20);
+                const step = () => {
+                    current += 1;
+                    counter.textContent = current + suffix;
+                    if (current < target) setTimeout(step, stepTime);
+                };
+                step();
+            });
+        });
+    </script>
 </body>
 </html>
