@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hankel Instruments Company</title>
+    <title>Hankel Instruments — Ingeniería y Metrología Industrial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
     <!-- ============================================================ -->
-    <!-- 📁 LISTA MAESTRA DE RECURSOS VISUALES                        -->
+    <!-- LISTA MAESTRA DE RECURSOS VISUALES                          -->
     <!-- ============================================================ -->
     <!--                                                            -->
-    <!--  [1] logo.jpg                              → Raíz del repo -->
-    <!--  [2] flag.png                              → Raíz del repo -->
-    <!--  [3] images/bg-consultoria.png             → /images/      -->
-    <!--  [4] images/bg-fabricacion.jpg             → /images/      -->
-    <!--  [5] images/bg-capacitacion.jpg            → /images/      -->
-    <!--  [6] images/bg-instrumentacion.jpg         → /images/      -->
+    <!--  [1] logo.jpg                              -> Raíz del repo -->
+    <!--  [2] flag.png                              -> Raíz del repo -->
+    <!--  [3] images/bg-consultoria.png             -> /images/      -->
+    <!--  [4] images/bg-fabricacion.jpg             -> /images/      -->
+    <!--  [5] images/bg-capacitacion.jpg            -> /images/      -->
+    <!--  [6] images/bg-instrumentacion.jpg         -> /images/      -->
     <!--                                                            -->
-    <!-- 📌 Si las imágenes [3] a [6] no existen, se mostrará      -->
-    <!--    un degradado azul petróleo como fallback elegante.       -->
+    <!-- Si las imágenes [3] a [6] no existen, se mostrará un       -->
+    <!-- degradado azul petróleo como fallback.                     -->
     <!-- ============================================================ -->
     
     <style>
@@ -54,14 +54,14 @@
                 rgba(10,12,16,0.92), 
                 rgba(10,12,16,0.88), 
                 rgba(15, 45, 55, 0.85)),
-                url('flag.png');                         /* ← 🖼️ RECURSO [2]: flag.png */
+                url('flag.png');                         /* RECURSO [2]: flag.png */
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            text-align: left;
             padding: 120px 20px 80px;
             margin-top: 80px;
             position: relative;
@@ -107,7 +107,7 @@
         .hero-content .subtitle {
             font-size: 1.4rem;
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 0 40px;
             font-weight: 300;
             color: #9aa3b5;
             line-height: 1.6;
@@ -115,7 +115,7 @@
         .hero-stats {
             display: flex;
             gap: 48px;
-            justify-content: center;
+            justify-content: flex-start;
             margin: 40px 0;
             flex-wrap: wrap;
         }
@@ -171,22 +171,22 @@
         }
         /* Fondos específicos para cada servicio */
         .service-card:nth-child(1)::after {
-            /* 🖼️ RECURSO [3]: images/bg-consultoria.png */
+            /* RECURSO [3]: images/bg-consultoria.png */
             background: linear-gradient(135deg, rgba(30,70,90,0.5), rgba(20,40,55,0.8)), url('images/bg-consultoria.png');
             background-size: cover;
         }
         .service-card:nth-child(2)::after {
-            /* 🖼️ RECURSO [4]: images/bg-fabricacion.jpg */
+            /* RECURSO [4]: images/bg-fabricacion.jpg */
             background: linear-gradient(135deg, rgba(25,55,70,0.5), rgba(15,35,50,0.8)), url('images/bg-fabricacion.jpg');
             background-size: cover;
         }
         .service-card:nth-child(3)::after {
-            /* 🖼️ RECURSO [5]: images/bg-capacitacion.jpg */
+            /* RECURSO [5]: images/bg-capacitacion.jpg */
             background: linear-gradient(135deg, rgba(35,65,80,0.5), rgba(20,40,55,0.8)), url('images/bg-capacitacion.jpg');
             background-size: cover;
         }
         .service-card:nth-child(4)::after {
-            /* 🖼️ RECURSO [6]: images/bg-instrumentacion.jpg */
+            /* RECURSO [6]: images/bg-instrumentacion.jpg */
             background: linear-gradient(135deg, rgba(20,50,65,0.5), rgba(10,30,45,0.8)), url('images/bg-instrumentacion.jpg');
             background-size: cover;
         }
@@ -294,7 +294,7 @@
         .cta-section {
             background: linear-gradient(135deg, #1a4a5a, #0f2f3d);
             padding: 80px 0;
-            text-align: center;
+            text-align: left;
             animation: fadeInUp 1s ease-out;
         }
         .cta-section h2 {
@@ -339,7 +339,7 @@
         <div class="container">
             <nav>
                 <a href="index.html">
-                    <!-- 🖼️ RECURSO [1]: logo.jpg -->
+                    <!-- RECURSO [1]: logo.jpg -->
                     <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
                     <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
                 </a>
@@ -351,8 +351,8 @@
                     <li><a href="academia.html">Hankel Academy</a></li>
                     <li><a href="consultoria.html">Consultoría ISO</a></li>
                     <li><a href="index.html#contacto">Contacto</a></li>
-                    <li><a href="admin.html" class="admin-link" title="Panel Admin">🔒</a></li>
-                    <li><a href="carrito.html" class="cart-icon">🛒<span class="cart-badge" id="cartBadge">0</span></a></li>
+                    <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
+                    <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -361,24 +361,25 @@
     <!-- ===== HERO PRINCIPAL ===== -->
     <section id="inicio" class="hero">
         <div class="container hero-content">
-            <div class="badge">Instrumentación industrial</div>
-            <h1>Instrumentación avanzada y ciencias aplicadas<br>para la industria y laboratorios especializados</h1>
+            <div class="badge">Ingeniería, Metrología e Instrumentación</div>
+            <h1>Instrumentación de precisión y ciencias aplicadas<br>para la industria y los laboratorios de ensayo y calibración</h1>
             <p class="subtitle">
-                De la consultoría a la fabricación: equipos de laboratorio, auditorías ISO 17025, 
-                capacitación especializada e instrumentación industrial de vanguardia.
+                Desarrollamos soluciones de ingeniería para laboratorios y entornos industriales, desde la consultoría técnica 
+                bajo la norma ISO/IEC 17025 hasta el diseño, la fabricación y la capacitación en instrumentación de medición, 
+                conforme a criterios de trazabilidad metrológica reconocidos internacionalmente.
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number">7+</span>
-                    <span class="stat-label">Años Experiencia ISO 17025</span>
+                    <span class="stat-label">Años de experiencia en gestión de calidad ISO/IEC 17025</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">50+</span>
-                    <span class="stat-label">Proyectos Entregados</span>
+                    <span class="stat-label">Proyectos de ingeniería ejecutados</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Satisfacción Cliente</span>
+                    <span class="stat-number">17025</span>
+                    <span class="stat-label">Norma técnica de referencia</span>
                 </div>
             </div>
             <a href="#servicios" class="btn" style="animation: pulse 2s infinite;">Explorar Servicios ↓</a>
@@ -386,15 +387,15 @@
     </section>
 
     <!-- ===== SECCIÓN DE SERVICIOS ===== -->
-    <!-- ✅ ENLAZADA CON EL HEADER: href="index.html#servicios" -->
+    <!-- ENLAZADA CON EL HEADER: href="index.html#servicios" -->
     <section id="servicios" style="padding: 80px 0;">
         <div class="container">
-            <h2 class="section-title" style="animation: slideInLeft 0.8s ease-out;">
-                Servicios de Ingeniería
+            <h2 class="section-title" style="text-align:left; animation: slideInLeft 0.8s ease-out;">
+                Servicios de Ingeniería y Metrología
             </h2>
-            <p style="text-align:center; max-width:700px; margin:0 auto 48px; color:#9aa3b5; animation: slideInRight 0.8s ease-out;">
-                Soluciones integrales para laboratorios de ensayo y calibración, proyectos industriales 
-                que exigen precisión, cumplimiento normativo y excelencia técnica.
+            <p style="text-align:left; max-width:700px; margin:0 0 48px; color:#9aa3b5; animation: slideInRight 0.8s ease-out;">
+                Servicios técnicos orientados a laboratorios de ensayo y calibración, y a proyectos industriales que requieren 
+                precisión dimensional, trazabilidad metrológica y cumplimiento normativo.
             </p>
             
             <div class="services-grid">
@@ -407,11 +408,10 @@
                         <line x1="16" y1="17" x2="8" y2="17"></line>
                         <polyline points="10 9 9 9 8 9"></polyline>
                     </svg>
-                    <h3>Consultoría & Auditoría ISO 17025</h3>
+                    <h3>Consultoría y Auditoría Técnica ISO/IEC 17025</h3>
                     <p>
-                        Preparación para acreditación, auditorías internas, 
-                        validación de métodos y gestión de calidad. 
-                        Más de 7 años liderando laboratorios acreditados.
+                        Acompañamiento en procesos de acreditación, auditorías internas, validación y verificación de métodos, 
+                        y gestión documental del sistema de calidad, conforme a los requisitos de la norma ISO/IEC 17025.
                     </p>
                     <span class="service-link">Ver servicios →</span>
                 </div>
@@ -422,11 +422,10 @@
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                     </svg>
-                    <h3>Fabricación de Equipos de Laboratorio</h3>
+                    <h3>Diseño y Fabricación de Equipos de Laboratorio</h3>
                     <p>
-                        Diseño, fabricación y mantenimiento de equipos 
-                        hardware y software para laboratorio. Análisis 
-                        especializado y soluciones a medida.
+                        Diseño, fabricación y mantenimiento de equipos de laboratorio, con desarrollo de hardware y software 
+                        especializado, adaptados a los requerimientos técnicos de cada ensayo o proceso de medición.
                     </p>
                     <span class="service-link">Ver equipos →</span>
                 </div>
@@ -437,11 +436,10 @@
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                         <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>
                     </svg>
-                    <h3>Capacitaciones ISO 17025 & Técnicas</h3>
+                    <h3>Capacitación Técnica y Normativa ISO/IEC 17025</h3>
                     <p>
-                        Cursos especializados en metrología, incertidumbre, 
-                        ensayos mecánicos y gestión de laboratorios. 
-                        Formación práctica con casos reales.
+                        Programas de formación en metrología, cálculo de incertidumbre, ensayos mecánicos y gestión de 
+                        laboratorios, estructurados a partir de casos técnicos aplicados.
                     </p>
                     <span class="service-link">Ver cursos →</span>
                 </div>
@@ -465,9 +463,8 @@
                     </svg>
                     <h3>Instrumentación Industrial</h3>
                     <p>
-                        Venta de MCUs, sensores y equipos de medición. 
-                        Asesoría técnica para selección e implementación 
-                        en entornos industriales exigentes.
+                        Suministro de microcontroladores, sensores y equipos de medición, con asesoría técnica para su 
+                        selección, integración y puesta en marcha en entornos industriales de alta exigencia.
                     </p>
                     <span class="service-link">Ver catálogo →</span>
                 </div>
@@ -478,7 +475,7 @@
     <!-- ===== SECCIÓN DE CONFIANZA ===== -->
     <section class="trust-section">
         <div class="container">
-            <h2 class="section-title" style="text-align:center;">¿Por qué Hankel Instruments?</h2>
+            <h2 class="section-title" style="text-align:left;">Principios que Sustentan Nuestro Trabajo</h2>
             <div class="trust-grid">
                 <div class="trust-item">
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -486,8 +483,8 @@
                         <circle cx="12" cy="12" r="6"></circle>
                         <circle cx="12" cy="12" r="2"></circle>
                     </svg>
-                    <h4>Expertise Comprobado</h4>
-                    <p>Staff de ingenieros especializados con más de 10 años de experiencia en proyectos nacionales e internacionales.</p>
+                    <h4>Trayectoria Técnica</h4>
+                    <p>Equipo de ingenieros especializados con más de 10 años de experiencia en proyectos de ingeniería nacionales e internacionales.</p>
                 </div>
                 <div class="trust-item">
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -495,7 +492,7 @@
                         <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
                     </svg>
                     <h4>Ingeniería de Precisión</h4>
-                    <p>Cálculos estructurales, memorias técnicas y diseños validados bajo estándares internacionales.</p>
+                    <p>Cálculos estructurales, memorias técnicas y diseños desarrollados y validados conforme a estándares técnicos internacionales.</p>
                 </div>
                 <div class="trust-item">
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -506,8 +503,8 @@
                         <path d="M12 14V9"></path>
                         <path d="M8 14h8"></path>
                     </svg>
-                    <h4>Conocimiento de Equipos</h4>
-                    <p>Experiencia directa con instrumentación de laboratorio y equipos de ensayos especializados.</p>
+                    <h4>Dominio Técnico de Instrumentación</h4>
+                    <p>Experiencia directa en la operación, calibración y mantenimiento de instrumentación de laboratorio y equipos de ensayo especializados.</p>
                 </div>
                 <div class="trust-item">
                     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -515,7 +512,7 @@
                         <line x1="4" y1="22" x2="4" y2="15"></line>
                     </svg>
                     <h4>Fabricación Nacional</h4>
-                    <p>Equipos construidos en Perú con soporte local, mantenimiento garantizado y precios competitivos.</p>
+                    <p>Equipos diseñados y fabricados en Perú, con soporte técnico local y mantenimiento bajo procedimientos documentados.</p>
                 </div>
             </div>
         </div>
@@ -524,10 +521,10 @@
     <!-- ===== CTA FINAL ===== -->
     <section class="cta-section" id="contacto">
         <div class="container">
-            <h2>¿Listo para llevar tu laboratorio al siguiente nivel?</h2>
-            <p>Agenda una consultoría gratuita de 30 minutos. Analizamos tu caso sin compromiso.</p>
+            <h2>Consultoría Técnica para Laboratorios e Instalaciones Industriales</h2>
+            <p>Solicite una evaluación técnica inicial para identificar los requerimientos normativos y de instrumentación de su laboratorio o proceso industrial.</p>
             <a href="mailto:info@hankelinstruments.com" class="cta-button">
-                Solicitar Consultoría Gratuita →
+                Solicitar Evaluación Técnica →
             </a>
         </div>
     </section>
@@ -543,8 +540,8 @@
                 <a href="academia.html">Hankel Academy</a>
                 <a href="consultoria.html">Consultoría ISO</a>
             </div>
-            <p>📩 <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
-            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Alta Ingeniería y Ciencias aplicadas para la industria</p>
+            <p><a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería y Metrología Aplicada a la Industria</p>
         </div>
     </footer>
 
