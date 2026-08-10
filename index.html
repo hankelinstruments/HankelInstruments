@@ -13,8 +13,8 @@
     <!-- ============================================================ -->
     <!--                                                            -->
     <!--  [1] logo.jpg                              → Raíz del repo -->
-    <!--  [2] engineering-bg.jpg                    → Raíz del repo -->
-    <!--  [3] images/bg-consultoria.jpg             → /images/      -->
+    <!--  [2] flag.png                              → Raíz del repo -->
+    <!--  [3] images/bg-consultoria.png             → /images/      -->
     <!--  [4] images/bg-fabricacion.jpg             → /images/      -->
     <!--  [5] images/bg-capacitacion.jpg            → /images/      -->
     <!--  [6] images/bg-instrumentacion.jpg         → /images/      -->
@@ -54,7 +54,7 @@
                 rgba(10,12,16,0.92), 
                 rgba(10,12,16,0.88), 
                 rgba(15, 45, 55, 0.85)),
-                url('flag.png');                         /* ← 🖼️ RECURSO [2]: engineering-bg.jpg */
+                url('flag.png');                         /* ← 🖼️ RECURSO [2]: flag.png */
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
@@ -171,7 +171,7 @@
         }
         /* Fondos específicos para cada servicio */
         .service-card:nth-child(1)::after {
-            /* 🖼️ RECURSO [3]: images/bg-consultoria.jpg */
+            /* 🖼️ RECURSO [3]: images/bg-consultoria.png */
             background: linear-gradient(135deg, rgba(30,70,90,0.5), rgba(20,40,55,0.8)), url('images/bg-consultoria.png');
             background-size: cover;
         }
@@ -345,7 +345,7 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
                     <li><a href="proyectos.html">Proyectos</a></li>
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="academia.html">Hankel Academy</a></li>
@@ -358,72 +358,39 @@
         </div>
     </header>
 
-<!-- ===== HERO PRINCIPAL ===== -->
-    <!-- (Hero usa RECURSO [2]: engineering-bg.jpg en el CSS) -->
-    
-    <!-- <section>: Define la sección principal de bienvenida de la página (conocida como "Hero").
-         id="inicio": Actúa como un ancla. Permite que los enlaces del menú te lleven directamente a esta parte.
-         class="hero": Vincula esta sección con las reglas de estilo CSS para darle su diseño visual (fondo, tamaño, etc.). -->
+    <!-- ===== HERO PRINCIPAL ===== -->
     <section id="inicio" class="hero">
-        
-        <!-- <div>: Contenedor general para agrupar el contenido interno.
-             class="container hero-content": Generalmente se usa en CSS para centrar el contenido, establecer un ancho máximo y dar márgenes internos. -->
         <div class="container hero-content">
-            
-            <!-- <div> con clase "badge": Crea una pequeña etiqueta visual (como una píldora o medalla) encima del título para resaltar el rubro principal. -->
             <div class="badge">Instrumentación industrial</div>
-            
-            <!-- <h1>: El título principal de la página, fundamental para el SEO (posicionamiento en Google). 
-                 La etiqueta <br> sirve para forzar un salto de línea visual en el texto. -->
-            <h1>Instrumentación avanzada y ciencias aplicadas para<br> para la industria y laboratorios especializados </h1>
-            
-            <!-- <p>: Un párrafo que actúa como subtítulo. 
-                 class="subtitle": Aplica un diseño de texto específico (quizás un color más claro o un tamaño de fuente medio). -->
+            <h1>Instrumentación avanzada y ciencias aplicadas<br>para la industria y laboratorios especializados</h1>
             <p class="subtitle">
                 De la consultoría a la fabricación: equipos de laboratorio, auditorías ISO 17025, 
                 capacitación especializada e instrumentación industrial de vanguardia.
             </p>
-            
-            <!-- <div> con clase "hero-stats": Es una caja contenedora que agrupa todos los números y estadísticas para mostrarlos juntos (usualmente en formato de fila o columnas). -->
             <div class="hero-stats">
-                
-                <!-- Primer bloque de estadística -->
                 <div class="stat-item">
-                    <!-- <span>: Etiqueta en línea para el número destacado. -->
                     <span class="stat-number">7+</span>
-                    <!-- <span>: Etiqueta en línea para el texto que explica qué significa el número. -->
                     <span class="stat-label">Años Experiencia ISO 17025</span>
                 </div>
-                
-                <!-- Segundo bloque de estadística -->
                 <div class="stat-item">
                     <span class="stat-number">50+</span>
                     <span class="stat-label">Proyectos Entregados</span>
                 </div>
-                
-                <!-- Tercer bloque de estadística -->
                 <div class="stat-item">
                     <span class="stat-number">100%</span>
                     <span class="stat-label">Satisfacción Cliente</span>
                 </div>
-                
             </div>
-            
-            <!-- <a>: Es un enlace que funciona como botón de "Llamada a la acción".
-                 href="#servicios": Al hacer clic, hace que la página se desplace hacia abajo hasta la sección que tenga el id "servicios".
-                 class="btn": Le da apariencia de botón mediante CSS.
-                 style="animation: pulse 2s infinite;": Es CSS en línea que hace que el botón tenga un efecto de palpitación o latido infinito para llamar la atención del usuario. -->
             <a href="#servicios" class="btn" style="animation: pulse 2s infinite;">Explorar Servicios ↓</a>
-            
         </div>
     </section>
 
-    <!-- ===== SECCIÓN DE SERVICIOS PRINCIPALES ===== -->
-    <!-- (Las tarjetas usan RECURSOS [3] a [6] en el CSS) -->
+    <!-- ===== SECCIÓN DE SERVICIOS ===== -->
+    <!-- ✅ ENLAZADA CON EL HEADER: href="index.html#servicios" -->
     <section id="servicios" style="padding: 80px 0;">
         <div class="container">
             <h2 class="section-title" style="animation: slideInLeft 0.8s ease-out;">
-                Nuestros 4 Pilares de Ingeniería
+                Servicios de Ingeniería
             </h2>
             <p style="text-align:center; max-width:700px; margin:0 auto 48px; color:#9aa3b5; animation: slideInRight 0.8s ease-out;">
                 Soluciones integrales para laboratorios de ensayo y calibración, proyectos industriales 
@@ -570,7 +537,7 @@
         <div class="container">
             <div class="footer-links">
                 <a href="index.html">Inicio</a>
-                <a href="servicios.html">Servicios</a>
+                <a href="index.html#servicios">Servicios</a>
                 <a href="proyectos.html">Proyectos</a>
                 <a href="productos.html">Productos</a>
                 <a href="academia.html">Hankel Academy</a>
