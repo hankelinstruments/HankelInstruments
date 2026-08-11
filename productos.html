@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- ============================================================ -->
+    <!-- 📁 RECURSOS VISUALES                                         -->
+    <!-- ============================================================ -->
+    <!--                                                            -->
+    <!--  [1] logo.jpg                     → Raíz del repo          -->
+    <!--  [2] images/HI01.jpg a HI34.jpg   → /images/               -->
+    <!--                                                            -->
+    <!-- ============================================================ -->
+
+    <!-- ============================================================ -->
     <!-- Estilos específicos de esta página (catálogo de productos). -->
     <!-- Definidos con prefijo propio para no interferir con las      -->
     <!-- reglas ya existentes en css/style.css.                       -->
@@ -23,8 +32,46 @@
             --texto-secundario: #8892a4;
             --fondo-card: #151a24;
             --borde: #2a2f3a;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #1ea952;
         }
 
+        /* ===== HERO DE PRODUCTOS ===== */
+        .page-hero {
+            background: linear-gradient(135deg, 
+                rgba(10,12,16,0.94), 
+                rgba(10,12,16,0.90), 
+                rgba(15, 45, 55, 0.88));
+            padding: 120px 20px 60px;
+            margin-top: 80px;
+            text-align: left;
+        }
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #e8edf0 0%, #5b9aaa 50%, #7db5c4 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 3s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            color: #9aa3b5;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== FILTROS ===== */
         .filtros-container {
             display: flex;
             flex-direction: column;
@@ -62,6 +109,7 @@
             margin-top: 4px;
         }
 
+        /* ===== GRID DE PRODUCTOS ===== */
         .productos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -71,7 +119,7 @@
             background: linear-gradient(145deg, #151a24, #1a1f2b);
             border: 1px solid var(--borde);
             border-radius: 16px;
-            padding: 24px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: border-color 0.3s ease, transform 0.3s ease;
@@ -80,11 +128,56 @@
             border-color: var(--petroleo-acento);
             transform: translateY(-4px);
         }
+
+        /* ===== IMAGEN DEL PRODUCTO CON DEGRADADO PROGRESIVO ===== */
+        .producto-imagen {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            background-size: cover !important;
+            background-position: center !important;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        /* Overlay con degradado progresivo para transparencia */
+        .producto-imagen-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Degradado progresivo: más oscuro abajo, transparente arriba */
+            background: linear-gradient(
+                to bottom,
+                rgba(21, 26, 36, 0.1) 0%,
+                rgba(21, 26, 36, 0.3) 40%,
+                rgba(21, 26, 36, 0.7) 70%,
+                rgba(21, 26, 36, 0.95) 100%
+            );
+        }
+        .producto-imagen-texto {
+            position: relative;
+            z-index: 1;
+            color: rgba(232, 237, 240, 0.5);
+            font-size: 0.75rem;
+            padding: 12px 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== CUERPO DE LA TARJETA ===== */
+        .producto-card-body {
+            padding: 20px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
         .producto-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .producto-categoria {
             font-size: 0.72rem;
@@ -149,25 +242,41 @@
             justify-content: space-between;
             gap: 12px;
             margin-top: auto;
+            flex-wrap: wrap;
         }
-        .btn-agregar-carrito {
-            background: var(--petroleo-acento);
+
+        /* ===== BOTÓN WHATSAPP ===== */
+        .btn-whatsapp-producto {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--whatsapp);
             color: #fff;
-            border: none;
             padding: 10px 18px;
             border-radius: 10px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
             cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
+            white-space: nowrap;
         }
-        .btn-agregar-carrito:hover {
-            background: var(--petroleo-claro);
+        .btn-whatsapp-producto:hover {
+            background: var(--whatsapp-hover);
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
         }
-        .btn-agregar-carrito:disabled {
-            opacity: 0.7;
-            cursor: default;
+        .btn-whatsapp-producto:active {
+            transform: scale(0.97);
         }
+        .btn-whatsapp-producto .wp-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
         .producto-link {
             color: var(--petroleo-claro);
             font-size: 0.85rem;
@@ -187,22 +296,28 @@
 
         @media (max-width: 640px) {
             .productos-grid { grid-template-columns: 1fr; }
+            .page-hero h1 { font-size: 2rem; }
+            .producto-imagen { height: 150px; }
         }
     </style>
 </head>
 <body>
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="container">
             <nav>
                 <a href="index.html">
+                    <!-- 🖼️ RECURSO [1]: logo.jpg -->
                     <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
-                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#00bcd4;">HANKEL</span>
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
                     <li><a href="productos.html" class="active">Productos</a></li>
                     <li><a href="academia.html">Hankel Academy</a></li>
-                    <li><a href="index.html#mision">Visión</a></li>
+                    <li><a href="consultoria.html">Consultoría ISO</a></li>
                     <li><a href="index.html#contacto">Contacto</a></li>
                     <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
                     <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
@@ -210,12 +325,19 @@
             </nav>
         </div>
     </header>
-    <div class="page-hero" style="text-align:left;">
-        <h1>Instrumentación y Microcontroladores</h1>
-        <p>Catálogo técnico de microcontroladores, placas de desarrollo, SBC y kits de evaluación, con especificaciones de referencia para selección técnica.</p>
-    </div>
-    <section>
+
+    <!-- ===== HERO ===== -->
+    <div class="page-hero">
         <div class="container">
+            <h1>Instrumentación y Microcontroladores</h1>
+            <p>Catálogo técnico de microcontroladores, placas de desarrollo, SBC y kits de evaluación, con especificaciones de referencia para selección técnica.</p>
+        </div>
+    </div>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <section style="padding: 60px 0 80px;">
+        <div class="container">
+            <!-- Filtros -->
             <div class="filtros-container">
                 <div class="busqueda">
                     <input type="text" id="searchInput" placeholder="Buscar producto por nombre, SoC o categoría...">
@@ -232,22 +354,31 @@
                 </div>
                 <p class="resultados-contador" id="resultadosContador"></p>
             </div>
+
+            <!-- Grid de productos -->
             <div id="productosContainer" class="productos-grid">
                 <div style="text-align:center; padding:60px; grid-column:1/-1; color:#8892a4;">Cargando productos...</div>
             </div>
         </div>
     </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="index.html">Inicio</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="proyectos.html">Proyectos</a>
                 <a href="productos.html">Productos</a>
                 <a href="academia.html">Hankel Academy</a>
-                <a href="mailto:info@hankelinstruments.com">Email</a>
+                <a href="consultoria.html">Consultoría ISO</a>
             </div>
-            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments</p>
+            <p><a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Alta Ingeniería y Ciencias aplicadas para la industria</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
     <script src="js/carrito.js"></script>
     <script src="js/config.js"></script>
     <script src="js/productos.js"></script>
