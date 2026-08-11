@@ -7,9 +7,190 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- ============================================================ -->
+    <!-- Estilos específicos de esta página (catálogo de productos). -->
+    <!-- Definidos con prefijo propio para no interferir con las      -->
+    <!-- reglas ya existentes en css/style.css.                       -->
+    <!-- ============================================================ -->
+    <style>
+        :root {
+            --petroleo-oscuro: #0f2f3d;
+            --petroleo-medio: #1a4a5a;
+            --petroleo-acento: #3a7a8e;
+            --petroleo-claro: #5b9aaa;
+            --texto-principal: #e8edf0;
+            --texto-secundario: #8892a4;
+            --fondo-card: #151a24;
+            --borde: #2a2f3a;
+        }
+
+        .filtros-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .busqueda input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--borde);
+            background: var(--fondo-card);
+            color: var(--texto-principal);
+            font-size: 1rem;
+        }
+        .busqueda input::placeholder {
+            color: var(--texto-secundario);
+        }
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .filtros select {
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--borde);
+            background: var(--fondo-card);
+            color: var(--texto-principal);
+            font-size: 0.95rem;
+        }
+        .resultados-contador {
+            color: var(--texto-secundario);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .producto-card {
+            background: linear-gradient(145deg, #151a24, #1a1f2b);
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .producto-card:hover {
+            border-color: var(--petroleo-acento);
+            transform: translateY(-4px);
+        }
+        .producto-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .producto-categoria {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--petroleo-claro);
+            background: rgba(58, 122, 142, 0.15);
+            border: 1px solid rgba(58, 122, 142, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .producto-precio {
+            font-weight: 700;
+            color: var(--texto-principal);
+            font-size: 1.05rem;
+        }
+        .producto-nombre {
+            color: var(--texto-principal);
+            font-size: 1.15rem;
+            margin: 4px 0 2px;
+        }
+        .producto-tipo {
+            color: var(--texto-secundario);
+            font-size: 0.88rem;
+            margin-bottom: 12px;
+        }
+        .producto-specs {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-top: 1px solid var(--borde);
+            border-bottom: 1px solid var(--borde);
+            padding: 10px 0;
+        }
+        .producto-specs li {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.82rem;
+        }
+        .spec-etiqueta {
+            color: var(--texto-secundario);
+            flex-shrink: 0;
+        }
+        .spec-valor {
+            color: var(--texto-principal);
+            text-align: right;
+        }
+        .producto-ficha {
+            color: var(--texto-secundario);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+        .producto-acciones {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .btn-agregar-carrito {
+            background: var(--petroleo-acento);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .btn-agregar-carrito:hover {
+            background: var(--petroleo-claro);
+        }
+        .btn-agregar-carrito:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+        .producto-link {
+            color: var(--petroleo-claro);
+            font-size: 0.85rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .producto-link:hover {
+            text-decoration: underline;
+        }
+
+        .productos-vacio {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--texto-secundario);
+        }
+
+        @media (max-width: 640px) {
+            .productos-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-
     <header>
         <div class="container">
             <nav>
@@ -23,45 +204,39 @@
                     <li><a href="academia.html">Hankel Academy</a></li>
                     <li><a href="index.html#mision">Visión</a></li>
                     <li><a href="index.html#contacto">Contacto</a></li>
-                    <li><a href="admin.html" class="admin-link" title="Panel Admin">🔒</a></li>
-                    <li><a href="carrito.html" class="cart-icon">🛒<span class="cart-badge" id="cartBadge">0</span></a></li>
+                    <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
+                    <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-    <div class="page-hero">
-        <h1>Nuestros Productos</h1>
-        <p>Microcontroladores de última generación para tus proyectos.</p>
+    <div class="page-hero" style="text-align:left;">
+        <h1>Instrumentación y Microcontroladores</h1>
+        <p>Catálogo técnico de microcontroladores, placas de desarrollo, SBC y kits de evaluación, con especificaciones de referencia para selección técnica.</p>
     </div>
-
     <section>
         <div class="container">
             <div class="filtros-container">
                 <div class="busqueda">
-                    <input type="text" id="searchInput" placeholder="🔍 Buscar producto por nombre o código...">
+                    <input type="text" id="searchInput" placeholder="Buscar producto por nombre, SoC o categoría...">
                 </div>
                 <div class="filtros">
-                    <select id="stockFilter">
-                        <option value="todos">📦 Todos los stocks</option>
-                        <option value="alto">✅ Stock alto (>10)</option>
-                        <option value="medio">⚠️ Stock medio (1-10)</option>
-                        <option value="bajo">🔴 Stock bajo (0)</option>
+                    <select id="categoryFilter">
+                        <option value="todas">Todas las categorías</option>
                     </select>
                     <select id="sortBy">
-                        <option value="codigo">🔤 Ordenar por código</option>
-                        <option value="precio-asc">💰 Precio: menor a mayor</option>
-                        <option value="precio-desc">💰 Precio: mayor a menor</option>
-                        <option value="stock">📦 Stock: mayor a menor</option>
+                        <option value="nombre">Ordenar por nombre</option>
+                        <option value="precio-asc">Precio: menor a mayor</option>
+                        <option value="precio-desc">Precio: mayor a menor</option>
                     </select>
                 </div>
+                <p class="resultados-contador" id="resultadosContador"></p>
             </div>
             <div id="productosContainer" class="productos-grid">
-                <div style="text-align:center; padding:60px; grid-column:1/-1;">📡 Cargando productos...</div>
+                <div style="text-align:center; padding:60px; grid-column:1/-1; color:#8892a4;">Cargando productos...</div>
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -73,7 +248,6 @@
             <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments</p>
         </div>
     </footer>
-
     <script src="js/carrito.js"></script>
     <script src="js/config.js"></script>
     <script src="js/productos.js"></script>
