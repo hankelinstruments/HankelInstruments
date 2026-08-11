@@ -1,24 +1,20 @@
-/* ===============================================
-   CONFIGURACIÓN CENTRAL DEL SITIO
-   ===============================================
-   Este es el ÚNICO archivo que necesitas tocar para que
-   el stock (Google Sheet) se actualice para TODOS los
-   visitantes de la web — no solo en tu propio navegador.
+/* ============================================================
+   js/config.js — Hankel Instruments
+   Configuración global del sitio. Ajustar aquí valores como el
+   número de WhatsApp o el correo de contacto para que se
+   reflejen automáticamente en carrito.js y productos.js.
+   ============================================================ */
 
-   ¿Por qué no basta con escribirlo en admin.html?
-   Este sitio es HTML/CSS/JS estático (sin base de datos).
-   Lo que guardes desde el panel admin en tu navegador
-   (localStorage) solo lo ve TU computadora, no tus clientes.
-   Por eso el panel admin te ayuda a generar este valor y
-   probarlo, pero para que quede "en vivo" para todo el
-   mundo, debes pegarlo aquí y subir el cambio a GitHub
-   (toma 20 segundos, ver instrucciones en admin.html).
+window.HANKEL_CONFIG = {
+  // Número de WhatsApp en formato internacional, sin "+" ni espacios
+  WHATSAPP_NUMBER: '51935344937',
 
-   Cómo obtener tu SHEET_ID:
-   En la URL de tu Google Sheet:
-   https://docs.google.com/spreadsheets/d/ESTE_ES_TU_ID/edit
-   =============================================== */
+  // Correo de contacto
+  CONTACT_EMAIL: 'info@hankelinstruments.com',
 
-const SHEET_ID = "1-aSFnmMXIPyWzR33bKRlmQKPiawQ2bvUYpsBbuBcZ9c"; // 🔧 Pega aquí tu ID (o hazlo desde el panel Admin y copia el código que te da)
+  // Símbolo de moneda usado en precios
+  CURRENCY_SYMBOL: 'S/.',
 
-
+  // Nombre del sitio, usado en el encabezado del mensaje de WhatsApp
+  SITE_NAME: 'Hankel Instruments'
+};

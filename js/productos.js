@@ -1,137 +1,835 @@
-/* ===============================================
-   PRODUCTOS - LEÍDOS DESDE GOOGLE SHEETS
-   ===============================================
-   ¿Cómo funciona?
-   1. Tienes una hoja de Google Sheets con columnas:
-      codigo | nombre | precio | stock | descripcion | imagen
-   2. La conviertes en un enlace JSON gratis con opensheet.elk.sh
-      (ver instrucciones completas en README.md)
-   3. Esta página la lee cada vez que alguien visita productos.html
-   4. Tú actualizas el stock/precio/imagen editando la hoja
-      (o importando tu Excel: Archivo > Importar > Reemplazar hoja)
-      y el cambio se ve en la web al instante, sin tocar código.
-   =============================================== */
+/* ============================================================
+   js/productos.js — Hankel Instruments
+   Catálogo de productos (microcontroladores, SBC, kits de
+   evaluación e instrumentación). Datos embebidos localmente
+   (sin llamadas externas ni a IA) para carga rápida en un
+   sitio estático.
+   Requiere: js/config.js (HANKEL_CONFIG) y js/carrito.js
+   (HankelCart) cargados antes que este archivo.
+   ============================================================ */
 
-// El ID viene de js/config.js (SHEET_ID). Si el admin lo probó desde el
-// panel en este mismo navegador, se usa esa versión de prueba primero.
-function obtenerSheetIdActivo() {
-    return localStorage.getItem('hankel_sheet_id_preview') || (typeof SHEET_ID !== 'undefined' ? SHEET_ID : '');
-}
-
-function construirSheetUrl() {
-    const id = obtenerSheetIdActivo();
-    return id ? `https://opensheet.elk.sh/${id}/Productos` : null;
-}
-
-// Datos de respaldo por si el Sheet aún no está configurado o falla la red
-const productosRespaldo = [
-    { codigo: "HI01", nombre: "MCU ARM Cortex-M4", precio: "45.90", stock: "12", descripcion: "Microcontrolador de alto rendimiento 32-bit con DSP", imagen: "" },
-    { codigo: "HI02", nombre: "STM32F103C8T6", precio: "28.50", stock: "8", descripcion: "Blue Pill - Ideal para prototipado y proyectos educativos", imagen: "" },
+const PRODUCTS = 
+[
+  {
+    "id": "seeed-xiao-ra4m1",
+    "categoria": "MCU / Desarrollo",
+    "nombre": "Seeed XIAO RA4M1",
+    "soc": "Renesas RA4M1 (R7FA4M1AB3CNE)",
+    "tipo": "MCU compacto",
+    "precio": 37.0,
+    "cpu": "Arm Cortex-M4F",
+    "nucleos": "1",
+    "frecuencia_mhz": "48",
+    "ram": "32 KB SRAM",
+    "flash": "256 KB Flash + 8 KB Data Flash",
+    "conectividad_principal": "Sin radio; CAN y USB 2.0",
+    "perifericos": "19 GPIO; 6 entradas analógicas; 2× I2C, 2× UART, 2× SPI; ADC de 14 bits; DAC de 12 bits; CAN; USB-C; gestión/carga de batería",
+    "ide": "Arduino IDE, MicroPython, PlatformIO",
+    "ficha": "Placa XIAO basada en Renesas RA4M1, con núcleo Arm Cortex-M4F a 48 MHz, 256 KB de Flash y 32 KB de SRAM. Expone 19 GPIO, ADC de 14 bits, DAC de 12 bits, CAN, USB 2.0 y buses I2C/UART/SPI; integra gestión de batería en el formato compacto XIAO.",
+    "link": "https://wiki.seeedstudio.com/getting_started_xiao_ra4m1/"
+  },
+  {
+    "id": "firebeetle-2-esp32-c6",
+    "categoria": "MCU IoT",
+    "nombre": "FireBeetle 2 ESP32-C6",
+    "soc": "Espressif ESP32-C6",
+    "tipo": "MCU inalámbrico IoT",
+    "precio": 45.0,
+    "cpu": "RISC-V 32-bit",
+    "nucleos": "1",
+    "frecuencia_mhz": "160",
+    "ram": "512 KB SRAM",
+    "flash": "320 KB ROM + 4 MB Flash",
+    "conectividad_principal": "Wi-Fi 6 2.4 GHz; Bluetooth 5 LE; IEEE 802.15.4 (Zigbee/Thread)",
+    "perifericos": "19 I/O digitales; 6 PWM; ADC de 12 bits; SPI; 3× UART; 2× I2C; I2S; USB 2.0; conector GDI; carga de batería/solar",
+    "ide": "ESP-IDF, Arduino IDE, MicroPython",
+    "ficha": "FireBeetle 2 basada en ESP32-C6, con CPU RISC-V a 160 MHz, 512 KB de SRAM, 320 KB de ROM y 4 MB de Flash. Añade Wi-Fi 6, Bluetooth LE e IEEE 802.15.4 para Zigbee/Thread, además de 19 I/O digitales y múltiples buses y ADC.",
+    "link": "https://wiki.dfrobot.com/dfr1075/"
+  },
+  {
+    "id": "seeed-xiao-rp2350",
+    "categoria": "MCU / Desarrollo",
+    "nombre": "Seeed XIAO RP2350",
+    "soc": "Raspberry Pi RP2350",
+    "tipo": "MCU compacto",
+    "precio": 45.0,
+    "cpu": "Dual Arm Cortex-M33 / dual Hazard3 RISC-V (seleccionable)",
+    "nucleos": "2",
+    "frecuencia_mhz": "150",
+    "ram": "520 KB SRAM",
+    "flash": "2 MB Flash onboard",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "19 GPIO multifunción; USB-C; PIO; ADC; PWM; RGB; gestión y medición de batería",
+    "ide": "Raspberry Pi Pico C/C++ SDK, MicroPython, Arduino IDE",
+    "ficha": "XIAO basada en RP2350, capaz de usar dos núcleos Arm Cortex-M33 o dos núcleos Hazard3 RISC-V a hasta 150 MHz. Integra 520 KB de SRAM y 2 MB de Flash en la placa, con 19 GPIO y el ecosistema de periféricos/PIO del RP2350.",
+    "link": "https://wiki.seeedstudio.com/getting-started-xiao-rp2350/"
+  },
+  {
+    "id": "milk-v-duo-256m",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "Milk-V Duo 256M",
+    "soc": "SOPHGO SG2002",
+    "tipo": "SBC Linux/RTOS + TPU",
+    "precio": 45.0,
+    "cpu": "RISC-V C906 + Arm Cortex-A53 seleccionable + 8051",
+    "nucleos": "2",
+    "frecuencia_mhz": "1000",
+    "ram": "256 MB DRAM",
+    "flash": "microSD; SD NAND según variante",
+    "conectividad_principal": "Ethernet 100 Mb/s mediante PHY; sin radio integrado",
+    "perifericos": "C906 principal hasta 1 GHz; C906 secundario hasta 700 MHz; A53 alternativo hasta 1 GHz; MIPI CSI; USB-C; hasta 26 GPIO; TPU INT8 de 1 TOPS",
+    "ide": "Milk-V SDK, Linux, RTOS",
+    "ficha": "Milk-V Duo 256M usa el SoC SG2002 con 256 MB de DRAM. El núcleo principal puede ser RISC-V C906 o Arm Cortex-A53 a 1 GHz, acompañado por otro C906 a 700 MHz y un 8051; incorpora TPU de 1 TOPS, MIPI CSI, USB y opciones de almacenamiento microSD/SD NAND.",
+    "link": "https://milkv.io/duo"
+  },
+  {
+    "id": "seeed-xiao-samd21",
+    "categoria": "MCU / Desarrollo",
+    "nombre": "Seeed XIAO SAMD21",
+    "soc": "Microchip ATSAMD21G18A",
+    "tipo": "MCU compacto",
+    "precio": 49.0,
+    "cpu": "Arm Cortex-M0+",
+    "nucleos": "1",
+    "frecuencia_mhz": "48",
+    "ram": "32 KB SRAM",
+    "flash": "256 KB Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "11 pines digitales; hasta 11 entradas analógicas; 10 PWM; 1 DAC; I2C, SPI y UART; USB-C",
+    "ide": "Arduino IDE, PlatformIO, MicroPython, CircuitPython",
+    "ficha": "XIAO SAMD21 utiliza el ATSAMD21G18A, un Arm Cortex-M0+ a 48 MHz con 256 KB de Flash y 32 KB de SRAM. En su formato compacto ofrece GPIO, entradas analógicas, PWM, DAC, I2C, SPI, UART y USB-C, sin conectividad inalámbrica integrada.",
+    "link": "https://wiki.seeedstudio.com/Seeeduino-XIAO/"
+  },
+  {
+    "id": "raspberry-pi-pico-w",
+    "categoria": "MCU IoT",
+    "nombre": "Raspberry Pi Pico W",
+    "soc": "RP2040 + Infineon CYW43439",
+    "tipo": "MCU inalámbrico",
+    "precio": 50.0,
+    "cpu": "Dual Arm Cortex-M0+",
+    "nucleos": "2",
+    "frecuencia_mhz": "133",
+    "ram": "264 KB SRAM",
+    "flash": "2 MB QSPI Flash",
+    "conectividad_principal": "Wi-Fi 2.4 GHz 802.11n; Bluetooth 5.2 / BLE",
+    "perifericos": "26 GPIO; 3 ADC; 2× UART, 2× SPI, 2× I2C; 16 PWM; 8 máquinas PIO; USB 1.1; sensor de temperatura",
+    "ide": "Raspberry Pi Pico C/C++ SDK, MicroPython",
+    "ficha": "Raspberry Pi Pico W combina el RP2040 dual-core a 133 MHz con 264 KB de SRAM y 2 MB de Flash, más el CYW43439 para Wi-Fi 2.4 GHz y Bluetooth 5.2/BLE. Expone 26 GPIO y los periféricos PIO, ADC, PWM, UART, SPI e I2C del RP2040.",
+    "link": "https://www.raspberrypi.com/products/raspberry-pi-pico/"
+  },
+  {
+    "id": "raspberry-pi-pico-2-w",
+    "categoria": "MCU IoT",
+    "nombre": "Raspberry Pi Pico 2 W",
+    "soc": "RP2350 + Infineon CYW43439",
+    "tipo": "MCU inalámbrico",
+    "precio": 58.0,
+    "cpu": "Dual Arm Cortex-M33 / dual Hazard3 RISC-V (seleccionable)",
+    "nucleos": "2",
+    "frecuencia_mhz": "150",
+    "ram": "520 KB SRAM",
+    "flash": "4 MB QSPI Flash",
+    "conectividad_principal": "Wi-Fi 2.4 GHz 802.11n; Bluetooth 5.2 / BLE",
+    "perifericos": "26 GPIO; 3 ADC; 2× UART, 2× SPI, 2× I2C; PWM; 12 máquinas PIO; USB 1.1; funciones de seguridad del RP2350",
+    "ide": "Raspberry Pi Pico C/C++ SDK, MicroPython",
+    "ficha": "Pico 2 W incorpora RP2350 a 150 MHz con arquitectura dual Cortex-M33 o dual Hazard3 RISC-V seleccionable, 520 KB de SRAM y 4 MB de Flash. El CYW43439 aporta Wi-Fi 2.4 GHz y Bluetooth 5.2/BLE.",
+    "link": "https://www.raspberrypi.com/products/raspberry-pi-pico-2/"
+  },
+  {
+    "id": "stm32g474ce",
+    "categoria": "MCU / Desarrollo",
+    "nombre": "STM32G474CE",
+    "soc": "STMicroelectronics STM32G474CE",
+    "tipo": "MCU de señal mixta/control",
+    "precio": 62.0,
+    "cpu": "Arm Cortex-M4F",
+    "nucleos": "1",
+    "frecuencia_mhz": "170",
+    "ram": "128 KB SRAM",
+    "flash": "512 KB Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "ADC de 12 bits de alta velocidad; DAC; comparadores y op-amps; FDCAN; USB FS/UCPD; I2C, SPI, UART/USART; temporizadores de alta resolución",
+    "ide": "STM32CubeIDE, STM32CubeMX, IAR, Keil",
+    "ficha": "STM32G474CE es un microcontrolador Arm Cortex-M4F a 170 MHz con 512 KB de Flash y 128 KB de SRAM. Está orientado a control y señal mixta, con ADC/DAC, comparadores, amplificadores operacionales, temporizadores de alta resolución, FDCAN, USB y buses serie.",
+    "link": "https://www.st.com/en/microcontrollers-microprocessors/stm32g474ce.html"
+  },
+  {
+    "id": "microchip-sam-d21-curiosity-nano",
+    "categoria": "Microchip Curiosity",
+    "nombre": "Microchip SAM D21 Curiosity Nano",
+    "soc": "Microchip SAMD21G17D",
+    "tipo": "Kit de evaluación MCU",
+    "precio": 76.0,
+    "cpu": "Arm Cortex-M0+",
+    "nucleos": "1",
+    "frecuencia_mhz": "48",
+    "ram": "16 KB SRAM",
+    "flash": "128 KB Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "Depurador/programador integrado; Virtual COM; USB; LED y pulsador de usuario; pines de expansión; periféricos ADC, timers, I2C/SPI/UART del SAMD21",
+    "ide": "MPLAB X IDE, MPLAB Harmony / MCC",
+    "ficha": "SAM D21 Curiosity Nano evalúa el SAMD21G17D, un Cortex-M0+ de hasta 48 MHz con 128 KB de Flash y 16 KB de SRAM. El kit integra depurador/programador, puerto COM virtual, alimentación USB, LED/pulsador y acceso a los pines del MCU.",
+    "link": "https://www.microchip.com/en-us/development-tool/dm320119"
+  },
+  {
+    "id": "microchip-sam-e51-curiosity-nano",
+    "categoria": "Microchip Curiosity",
+    "nombre": "Microchip SAM E51 Curiosity Nano",
+    "soc": "Microchip SAME51J20A",
+    "tipo": "Kit de evaluación MCU",
+    "precio": 76.0,
+    "cpu": "Arm Cortex-M4F",
+    "nucleos": "1",
+    "frecuencia_mhz": "120",
+    "ram": "256 KB SRAM",
+    "flash": "1 MB Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "Depurador integrado; USB; LED/pulsador; pines de expansión; ADC/DAC y buses I2C/SPI/UART del SAME51",
+    "ide": "MPLAB X IDE, MPLAB Harmony / MCC",
+    "ficha": "SAM E51 Curiosity Nano está basada en SAME51J20A, un Cortex-M4F a 120 MHz con 1 MB de Flash y 256 KB de SRAM. La placa incorpora depurador/programador, USB, LED y pulsador de usuario y acceso directo a los periféricos del microcontrolador.",
+    "link": "https://www.microchip.com/en-us/development-tool/ev76s68a"
+  },
+  {
+    "id": "avr64dd32-curiosity-nano",
+    "categoria": "Microchip Curiosity",
+    "nombre": "AVR64DD32 Curiosity Nano",
+    "soc": "Microchip AVR64DD32",
+    "tipo": "Kit de evaluación MCU",
+    "precio": 76.0,
+    "cpu": "AVR 8-bit",
+    "nucleos": "1",
+    "frecuencia_mhz": "24",
+    "ram": "8 KB SRAM",
+    "flash": "64 KB Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "MVIO; ADC; DAC; UART, SPI e I2C/TWI; temporizadores; LED/pulsador; depurador integrado; tensión objetivo ajustable",
+    "ide": "MPLAB X IDE, MCC, Microchip Studio",
+    "ficha": "AVR64DD32 Curiosity Nano evalúa el AVR64DD32 de 8 bits a hasta 24 MHz, con 64 KB de Flash y 8 KB de SRAM. Incluye MVIO, periféricos analógicos y serie, depurador integrado, LED/pulsador y alimentación objetivo configurable.",
+    "link": "https://www.microchip.com/en-us/development-tool/ev72y42a"
+  },
+  {
+    "id": "avr64du32-curiosity-nano",
+    "categoria": "Microchip Curiosity",
+    "nombre": "AVR64DU32 Curiosity Nano",
+    "soc": "Microchip AVR64DU32",
+    "tipo": "Kit de evaluación MCU con USB",
+    "precio": 76.0,
+    "cpu": "AVR 8-bit",
+    "nucleos": "1",
+    "frecuencia_mhz": "24",
+    "ram": "8 KB SRAM",
+    "flash": "64 KB Flash",
+    "conectividad_principal": "USB 2.0 Full-Speed; sin radio",
+    "perifericos": "USB FS integrado; MVIO; ADC; UART, SPI e I2C/TWI; temporizadores; depurador integrado; conectividad USB-C",
+    "ide": "MPLAB X IDE, MCC, Microchip Studio",
+    "ficha": "AVR64DU32 Curiosity Nano usa el AVR64DU32 de 8 bits a 24 MHz, con 64 KB de Flash y 8 KB de SRAM. A diferencia de la familia DD, la familia DU integra USB 2.0 Full-Speed; el kit expone además MVIO y los buses/periféricos del MCU.",
+    "link": "https://www.microchip.com/en-us/development-tool/ev59f82a"
+  },
+  {
+    "id": "pic32cm-curiosity-nano-touch",
+    "categoria": "Microchip Curiosity",
+    "nombre": "PIC32CM Curiosity Nano+ Touch",
+    "soc": "Microchip PIC32CM5164JH01048",
+    "tipo": "Kit de evaluación MCU + touch",
+    "precio": 76.0,
+    "cpu": "Arm Cortex-M0+",
+    "nucleos": "1",
+    "frecuencia_mhz": "48",
+    "ram": "64 KB SRAM",
+    "flash": "512 KB Flash",
+    "conectividad_principal": "CAN/LIN; sin radio",
+    "perifericos": "Botón táctil; depurador integrado; USB; CAN y LIN; LED/pulsador; ADC y buses serie del PIC32CM",
+    "ide": "MPLAB X IDE, MPLAB Harmony / MCC",
+    "ficha": "PIC32CM JH01 Curiosity Nano+ Touch utiliza el PIC32CM5164JH01048, Cortex-M0+ a 48 MHz con 512 KB de Flash y 64 KB de SRAM. El kit añade botón táctil, depuración integrada y conectividad CAN/LIN, además del acceso a los periféricos del MCU.",
+    "link": "https://www.microchip.com/en-us/development-tool/ev29g58a"
+  },
+  {
+    "id": "dspic33-curiosity-nano",
+    "categoria": "Microchip Curiosity",
+    "nombre": "dsPIC33 Curiosity Nano",
+    "soc": "Microchip dsPIC33CK64MC105",
+    "tipo": "Kit de evaluación DSC",
+    "precio": 76.0,
+    "cpu": "dsPIC33 16-bit DSC",
+    "nucleos": "1",
+    "frecuencia_mhz": "100",
+    "ram": "8 KB RAM",
+    "flash": "64 KB ECC Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "ADC de 12 bits; PWM de alta velocidad; op-amps/comparadores/DAC; buses serie; depurador integrado; LED/pulsador",
+    "ide": "MPLAB X IDE, MCC",
+    "ficha": "dsPIC33 Curiosity Nano está basada en dsPIC33CK64MC105, un controlador digital de señales de 16 bits que opera hasta 100 MHz, con 64 KB de Flash ECC y 8 KB de RAM. Está orientado a control digital, con ADC, PWM rápido y recursos analógicos integrados.",
+    "link": "https://www.microchip.com/en-us/development-tool/ev88g73a"
+  },
+  {
+    "id": "esp32-c6-devkitc-1",
+    "categoria": "MCU IoT",
+    "nombre": "ESP32-C6-DevKitC-1",
+    "soc": "Espressif ESP32-C6 (módulo ESP32-C6-WROOM-1)",
+    "tipo": "Kit de desarrollo MCU inalámbrico",
+    "precio": 80.0,
+    "cpu": "RISC-V 32-bit",
+    "nucleos": "1",
+    "frecuencia_mhz": "160",
+    "ram": "512 KB SRAM",
+    "flash": "320 KB ROM + 8 MB SPI Flash",
+    "conectividad_principal": "Wi-Fi 6 2.4 GHz; Bluetooth 5 LE; IEEE 802.15.4 (Thread/Zigbee)",
+    "perifericos": "USB nativo y USB-UART; GPIO; ADC; SPI/I2C/UART/I2S; headers de expansión; botones Boot/Reset",
+    "ide": "ESP-IDF, Arduino IDE",
+    "ficha": "ESP32-C6-DevKitC-1 es la placa oficial de desarrollo para ESP32-C6, con CPU RISC-V a 160 MHz, 512 KB de SRAM y módulo con Flash SPI. Integra Wi-Fi 6, Bluetooth LE e IEEE 802.15.4 para Thread/Zigbee, además de USB y headers para los GPIO del SoC.",
+    "link": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitc-1/user_guide.html"
+  },
+  {
+    "id": "seeed-xiao-mg24",
+    "categoria": "MCU IoT",
+    "nombre": "Seeed XIAO MG24",
+    "soc": "Silicon Labs EFR32MG24",
+    "tipo": "MCU inalámbrico multiprotocolo",
+    "precio": 83.0,
+    "cpu": "Arm Cortex-M33",
+    "nucleos": "1",
+    "frecuencia_mhz": "78",
+    "ram": "256 KB RAM",
+    "flash": "1.5 MB Flash interna + 4 MB Flash onboard",
+    "conectividad_principal": "Bluetooth 5.3 LE; Matter/Thread; Zigbee",
+    "perifericos": "GPIO; ADC; UART/SPI/I2C; USB-C; RGB; gestión de batería; radio multiprotocolo 2.4 GHz",
+    "ide": "Arduino IDE, Simplicity Studio, Zephyr / SDK Silicon Labs",
+    "ficha": "XIAO MG24 usa el EFR32MG24, Cortex-M33 a 78 MHz con 256 KB de RAM y 1.5 MB de Flash interna, complementada por 4 MB de Flash en placa. Su radio 2.4 GHz soporta Bluetooth LE, Matter/Thread y Zigbee en un formato XIAO compacto.",
+    "link": "https://wiki.seeedstudio.com/xiao_mg24_getting_started/"
+  },
+  {
+    "id": "luckfox-pico",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "LuckFox Pico",
+    "soc": "Rockchip RV1103",
+    "tipo": "SBC Linux + NPU",
+    "precio": 98.0,
+    "cpu": "Arm Cortex-A7 + coprocesador RISC-V",
+    "nucleos": "1",
+    "frecuencia_mhz": "1200",
+    "ram": "64 MB DDR2",
+    "flash": "microSD",
+    "conectividad_principal": "Sin Wi-Fi/Bluetooth; Ethernet no integrado en el modelo base",
+    "perifericos": "MIPI CSI de 2 lanes; USB 2.0 host/device; 24 GPIO; NPU de 0.5 TOPS; audio/serial según pines",
+    "ide": "LuckFox SDK, Buildroot, Ubuntu 22.04",
+    "ficha": "LuckFox Pico base utiliza RV1103 con Cortex-A7 a 1.2 GHz, coprocesador RISC-V, 64 MB de DDR2 y NPU de 0.5 TOPS. Dispone de cámara MIPI CSI, USB, microSD y GPIO; el modelo base no incorpora radio inalámbrica ni Ethernet integrado.",
+    "link": "https://wiki.luckfox.com/Luckfox-Pico/Luckfox-Pico-RV1103/"
+  },
+  {
+    "id": "sipeed-licheerv-nano",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "Sipeed LicheeRV Nano",
+    "soc": "SOPHGO SG2002",
+    "tipo": "SBC Linux/RTOS + NPU",
+    "precio": 111.0,
+    "cpu": "RISC-V C906 + Arm Cortex-A53 seleccionable + 8051",
+    "nucleos": "2",
+    "frecuencia_mhz": "1000",
+    "ram": "256 MB DDR3",
+    "flash": "microSD; SD NAND según versión",
+    "conectividad_principal": "Ethernet 100 Mb/s y/o Wi-Fi 6 + Bluetooth 5.4 según versión",
+    "perifericos": "C906 principal 1 GHz; C906 secundario 700 MHz; A53 alternativo 1 GHz; USB-C OTG; MIPI CSI/DSI; audio; NPU de 1 TOPS",
+    "ide": "Sipeed SDK, Buildroot Linux, Debian, RTOS",
+    "ficha": "LicheeRV Nano se basa en SG2002 con 256 MB DDR3. Puede ejecutar el núcleo principal RISC-V C906 o Arm Cortex-A53 a 1 GHz, acompañado por otro C906 a 700 MHz, e integra NPU de 1 TOPS. Las variantes añaden Ethernet y/o Wi-Fi 6 con Bluetooth.",
+    "link": "https://wiki.sipeed.com/hardware/en/lichee/RV_Nano/1_intro.html"
+  },
+  {
+    "id": "m5stamp-pico-diy-kit",
+    "categoria": "MCU IoT",
+    "nombre": "M5Stamp Pico DIY Kit",
+    "soc": "Espressif ESP32-PICO-D4",
+    "tipo": "MCU inalámbrico compacto",
+    "precio": 121.0,
+    "cpu": "Dual Xtensa LX6",
+    "nucleos": "2",
+    "frecuencia_mhz": "240",
+    "ram": "520 KB SRAM",
+    "flash": "4 MB Flash",
+    "conectividad_principal": "Wi-Fi 2.4 GHz 802.11b/g/n; Bluetooth Classic + BLE",
+    "perifericos": "12 GPIO; ADC/DAC; touch; SPI/I2C/UART/I2S; RGB SK6812; botón; kit con programador USB y headers",
+    "ide": "UIFlow, Arduino IDE, ESP-IDF, PlatformIO",
+    "ficha": "M5Stamp Pico DIY Kit se basa en el SiP ESP32-PICO-D4 dual-core a 240 MHz, con 520 KB de SRAM y 4 MB de Flash. Integra Wi-Fi y Bluetooth; el kit aporta el Stamp Pico, programador USB, headers y accesorios para prototipado.",
+    "link": "https://shop.m5stack.com/products/m5stamp-pico-diy-kit"
+  },
+  {
+    "id": "raspberry-pi-zero-2-w",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "Raspberry Pi Zero 2 W",
+    "soc": "Broadcom BCM2710A1 en RP3A0 SiP",
+    "tipo": "SBC Linux",
+    "precio": 125.0,
+    "cpu": "Quad Arm Cortex-A53",
+    "nucleos": "4",
+    "frecuencia_mhz": "1000",
+    "ram": "512 MB SDRAM",
+    "flash": "microSD",
+    "conectividad_principal": "Wi-Fi 2.4 GHz 802.11b/g/n; Bluetooth 4.2 / BLE",
+    "perifericos": "mini HDMI; micro-USB OTG; micro-USB power; CSI-2; footprint GPIO de 40 pines; decodificación H.264",
+    "ide": "Raspberry Pi OS, Linux",
+    "ficha": "Raspberry Pi Zero 2 W integra el SiP RP3A0 con CPU quad-core Cortex-A53 a 1 GHz y 512 MB de SDRAM. Añade Wi-Fi 2.4 GHz y Bluetooth 4.2/BLE, microSD, mini HDMI, USB OTG, cámara CSI-2 y el footprint GPIO de 40 pines.",
+    "link": "https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/"
+  },
+  {
+    "id": "esp32-c61-devkitc-1",
+    "categoria": "MCU IoT",
+    "nombre": "ESP32-C61-DevKitC-1",
+    "soc": "Espressif ESP32-C61 (ESP32-C61-WROOM-1)",
+    "tipo": "Kit de desarrollo MCU inalámbrico",
+    "precio": 126.0,
+    "cpu": "RISC-V 32-bit",
+    "nucleos": "1",
+    "frecuencia_mhz": "160",
+    "ram": "320 KB SRAM + 2 MB PSRAM",
+    "flash": "256 KB ROM + hasta 8 MB SPI Flash",
+    "conectividad_principal": "Wi-Fi 6 2.4 GHz; Bluetooth 5 LE",
+    "perifericos": "USB nativo + USB-UART; GPIO; ADC; buses serie; botones Boot/Reset; RGB; headers de expansión",
+    "ide": "ESP-IDF",
+    "ficha": "ESP32-C61-DevKitC-1 utiliza ESP32-C61, CPU RISC-V de hasta 160 MHz. La configuración de la placa incluye SRAM interna y PSRAM externa, con Flash SPI, Wi-Fi 6 y Bluetooth LE; expone dos interfaces USB y los GPIO/periféricos del SoC.",
+    "link": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c61/esp32-c61-devkitc-1/user_guide.html"
+  },
+  {
+    "id": "stm32-nucleo-f401re",
+    "categoria": "Arduino / STM32",
+    "nombre": "STM32 Nucleo-F401RE",
+    "soc": "STMicroelectronics STM32F401RE",
+    "tipo": "Nucleo-64 MCU",
+    "precio": 127.0,
+    "cpu": "Arm Cortex-M4F",
+    "nucleos": "1",
+    "frecuencia_mhz": "84",
+    "ram": "96 KB SRAM",
+    "flash": "512 KB Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "Headers Arduino Uno V3 y ST Morpho; ST-LINK/V2-1; USB; LED y botón de usuario; acceso a ADC, timers, SPI/I2C/UART del MCU",
+    "ide": "STM32CubeIDE, STM32CubeMX, IAR, Keil",
+    "ficha": "NUCLEO-F401RE incorpora STM32F401RE, Cortex-M4F a 84 MHz con 512 KB de Flash y 96 KB de SRAM. La placa Nucleo-64 añade ST-LINK/V2-1 y headers Arduino Uno V3/ST Morpho para acceder a los periféricos del MCU; no integra Wi-Fi ni Bluetooth.",
+    "link": "https://www.st.com/en/evaluation-tools/nucleo-f401re.html"
+  },
+  {
+    "id": "m5stickc-plus2",
+    "categoria": "MCU IoT",
+    "nombre": "M5StickC PLUS2",
+    "soc": "Espressif ESP32-PICO-V3-02",
+    "tipo": "Dispositivo MCU IoT con pantalla",
+    "precio": 151.0,
+    "cpu": "Dual Xtensa LX6",
+    "nucleos": "2",
+    "frecuencia_mhz": "240",
+    "ram": "520 KB SRAM + 2 MB PSRAM",
+    "flash": "8 MB Flash",
+    "conectividad_principal": "Wi-Fi 2.4 GHz; Bluetooth Classic + BLE",
+    "perifericos": "TFT 1.14 in 135×240; IMU MPU6886; micrófono; RTC; buzzer; IR; botones; USB-C; HY2.0",
+    "ide": "UIFlow 1/2, Arduino IDE, ESP-IDF, PlatformIO",
+    "ficha": "M5StickC PLUS2 es un dispositivo compacto basado en ESP32-PICO-V3-02 dual-core a 240 MHz, con 8 MB de Flash y 2 MB de PSRAM. Integra Wi-Fi/Bluetooth, pantalla TFT, IMU, micrófono, RTC, buzzer, IR, botones y USB-C.",
+    "link": "https://docs.m5stack.com/en/core/M5StickC%20PLUS2"
+  },
+  {
+    "id": "arduino-uno-r4-wifi",
+    "categoria": "Arduino",
+    "nombre": "Arduino UNO R4 WiFi",
+    "soc": "Renesas RA4M1 + Espressif ESP32-S3-MINI-1",
+    "tipo": "Placa Arduino con coprocesador inalámbrico",
+    "precio": 156.0,
+    "cpu": "Arm Cortex-M4F + Xtensa LX7 (coprocesador)",
+    "nucleos": "1",
+    "frecuencia_mhz": "48",
+    "ram": "32 KB SRAM (RA4M1)",
+    "flash": "256 KB Flash (RA4M1) + memoria del módulo ESP32-S3",
+    "conectividad_principal": "Wi-Fi 2.4 GHz; Bluetooth LE mediante ESP32-S3",
+    "perifericos": "14 I/O digitales; 6 entradas analógicas; CAN; DAC 12-bit; ADC hasta 14-bit; USB-C HID; Qwiic; matriz LED 12×8",
+    "ide": "Arduino IDE, Arduino Cloud",
+    "ficha": "UNO R4 WiFi combina el Renesas RA4M1 Cortex-M4F a 48 MHz con 256 KB de Flash y 32 KB de SRAM, y un módulo ESP32-S3 para Wi-Fi/Bluetooth. Mantiene el formato UNO y añade CAN, DAC, ADC de mayor resolución, USB-C HID, Qwiic y matriz LED 12×8.",
+    "link": "https://docs.arduino.cc/hardware/uno-r4-wifi"
+  },
+  {
+    "id": "radxa-zero-3w",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "Radxa ZERO 3W",
+    "soc": "Rockchip RK3566",
+    "tipo": "SBC Linux/Android",
+    "precio": 159.0,
+    "cpu": "Quad Arm Cortex-A55",
+    "nucleos": "4",
+    "frecuencia_mhz": "1600",
+    "ram": "1/2/4/8 GB LPDDR4",
+    "flash": "microSD + eMMC según configuración",
+    "conectividad_principal": "Wi-Fi 6; Bluetooth 5.4",
+    "perifericos": "micro HDMI; USB-C/USB; GPIO; interfaces de cámara/display según placa; GPU Mali-G52",
+    "ide": "Radxa OS, Debian, Ubuntu, Android",
+    "ficha": "Radxa ZERO 3W es una SBC compacta con RK3566 quad-core Cortex-A55 a hasta 1.6 GHz y opciones de 1 a 8 GB de LPDDR4. Incorpora Wi-Fi 6 y Bluetooth, salida HDMI, USB, GPIO y opciones de almacenamiento microSD/eMMC.",
+    "link": "https://radxa.com/products/zeros/zero3w/"
+  },
+  {
+    "id": "orange-pi-zero-2w",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "Orange Pi Zero 2W",
+    "soc": "Allwinner H618",
+    "tipo": "SBC Linux/Android",
+    "precio": 197.0,
+    "cpu": "Quad Arm Cortex-A53",
+    "nucleos": "4",
+    "frecuencia_mhz": "1500",
+    "ram": "1/1.5/2/4 GB LPDDR4",
+    "flash": "microSD/TF + 16 MB SPI Flash",
+    "conectividad_principal": "Wi-Fi 5 dual-band 802.11a/b/g/n/ac; Bluetooth 5.0",
+    "perifericos": "mini HDMI 2.0; USB Type-C; header de expansión de 40 pines y conector adicional; GPU Mali-G31 MP2",
+    "ide": "Orange Pi OS, Android, Debian, Ubuntu",
+    "ficha": "Orange Pi Zero 2W emplea Allwinner H618 quad-core Cortex-A53 a hasta 1.5 GHz, con 1 a 4 GB de LPDDR4, microSD y 16 MB de SPI Flash. Integra Wi-Fi dual-band 802.11ac, Bluetooth 5.0, HDMI, USB-C y expansión GPIO.",
+    "link": "https://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html"
+  },
+  {
+    "id": "luckfox-pico-pro-max",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "LuckFox Pico Pro / Max",
+    "soc": "Rockchip RV1106G2 (Pro) / RV1106G3 (Max)",
+    "tipo": "SBC Linux + NPU",
+    "precio": 265.0,
+    "cpu": "Arm Cortex-A7 + coprocesador RISC-V",
+    "nucleos": "1",
+    "frecuencia_mhz": "1200",
+    "ram": "128 MB DDR3L (Pro) / 256 MB DDR3L (Max)",
+    "flash": "256 MB SPI NAND + microSD",
+    "conectividad_principal": "Ethernet 10/100 Mb/s; sin radio integrado",
+    "perifericos": "MIPI CSI; USB 2.0 host/device; 26 GPIO; NPU 0.5 TOPS (Pro) / 1 TOPS (Max)",
+    "ide": "LuckFox SDK, Buildroot, Ubuntu 22.04",
+    "ficha": "LuckFox Pico Pro y Max usan RV1106: Pro incorpora 128 MB DDR3L y NPU de 0.5 TOPS, mientras Max incorpora 256 MB y NPU de 1 TOPS. Ambos operan con Cortex-A7 a 1.2 GHz, 256 MB SPI NAND, Ethernet, cámara MIPI y microSD.",
+    "link": "https://wiki.luckfox.com/Luckfox-Pico-Pro-Max/"
+  },
+  {
+    "id": "milk-v-duo-s",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "Milk-V Duo S",
+    "soc": "SOPHGO SG2000",
+    "tipo": "SBC Linux/RTOS + TPU",
+    "precio": 326.0,
+    "cpu": "RISC-V C906 + Arm Cortex-A53 seleccionable + 8051",
+    "nucleos": "2",
+    "frecuencia_mhz": "1000",
+    "ram": "512 MB SiP DRAM",
+    "flash": "microSD + pads eMMC",
+    "conectividad_principal": "Ethernet 100 Mb/s onboard; Wi-Fi 6 + Bluetooth 5 opcional",
+    "perifericos": "C906 principal 1 GHz; C906 secundario 700 MHz; A53 alternativo 1 GHz; USB-C/USB host; MIPI CSI/DSI; hasta 39 GPIO; TPU 0.5 TOPS",
+    "ide": "Milk-V SDK, Linux, RTOS",
+    "ficha": "Milk-V Duo S usa SG2000 con 512 MB de DRAM. Combina C906 RISC-V, un Cortex-A53 seleccionable para el núcleo principal y otro C906 a 700 MHz, además de un 8051. Incluye Ethernet 100 Mb/s, interfaces MIPI, USB y TPU de 0.5 TOPS; Wi-Fi 6/Bluetooth es opcional.",
+    "link": "https://milkv.io/duo-s"
+  },
+  {
+    "id": "nanopi-neo3",
+    "categoria": "Placas Linux / SBC",
+    "nombre": "NanoPi NEO3",
+    "soc": "Rockchip RK3328",
+    "tipo": "SBC Linux",
+    "precio": 338.0,
+    "cpu": "Quad Arm Cortex-A53",
+    "nucleos": "4",
+    "frecuencia_mhz": "1300",
+    "ram": "1/2 GB DDR4",
+    "flash": "microSD",
+    "conectividad_principal": "Gigabit Ethernet; sin Wi-Fi/Bluetooth integrado",
+    "perifericos": "USB 3.0 Type-A; USB 2.0 en header; header GPIO de 26 pines; I2C/UART/SPI/I2S; USB-C power; UART de depuración",
+    "ide": "FriendlyWrt, FriendlyCore/Ubuntu, Debian",
+    "ficha": "NanoPi NEO3 es una SBC de 48×48 mm basada en RK3328 quad-core Cortex-A53 a hasta 1.3 GHz, con 1 o 2 GB DDR4. Incluye Gigabit Ethernet, USB 3.0, microSD y header GPIO de 26 pines; no integra Wi-Fi ni Bluetooth.",
+    "link": "https://wiki.friendlyelec.com/wiki/index.php/NanoPi_NEO3"
+  },
+  {
+    "id": "stm32-nucleo-h753zi",
+    "categoria": "Arduino / STM32",
+    "nombre": "STM32 NUCLEO-H753ZI",
+    "soc": "STMicroelectronics STM32H753ZI",
+    "tipo": "Nucleo-144 MCU alto rendimiento",
+    "precio": 394.0,
+    "cpu": "Arm Cortex-M7",
+    "nucleos": "1",
+    "frecuencia_mhz": "480",
+    "ram": "1 MB RAM",
+    "flash": "2 MB Flash",
+    "conectividad_principal": "Ethernet 10/100 Mb/s; sin radio",
+    "perifericos": "ST Zio/Arduino y ST Morpho; ST-LINK; Ethernet; USB OTG FS; GPIO y periféricos avanzados; conectores de expansión",
+    "ide": "STM32CubeIDE, STM32CubeMX, IAR, Keil",
+    "ficha": "NUCLEO-H753ZI incorpora STM32H753ZI, un único Cortex-M7 a hasta 480 MHz con 2 MB de Flash y 1 MB de RAM. La Nucleo-144 ofrece ST-LINK, headers Zio/Morpho, Ethernet y USB para evaluación del amplio conjunto de periféricos del H753; no integra Wi-Fi/Bluetooth.",
+    "link": "https://www.st.com/en/evaluation-tools/nucleo-h753zi.html"
+  },
+  {
+    "id": "arduino-giga-r1-wifi",
+    "categoria": "Arduino",
+    "nombre": "Arduino GIGA R1 WiFi",
+    "soc": "STMicroelectronics STM32H747XI",
+    "tipo": "Placa Arduino dual-core de alto rendimiento",
+    "precio": 553.0,
+    "cpu": "Arm Cortex-M7 + Cortex-M4",
+    "nucleos": "2",
+    "frecuencia_mhz": "480 / 240",
+    "ram": "1 MB SRAM interna + 8 MB SDRAM",
+    "flash": "2 MB Flash interna + 16 MB Flash externa",
+    "conectividad_principal": "Wi-Fi; Bluetooth mediante módulo Murata 1DX",
+    "perifericos": "76 I/O; entradas analógicas y DAC; USB-C device/HID; USB-A host; jack de audio; conectores de cámara/display; UART/I2C/SPI/CAN",
+    "ide": "Arduino IDE, Arduino Cloud, MicroPython",
+    "ficha": "Arduino GIGA R1 WiFi usa STM32H747XI dual-core: Cortex-M7 a 480 MHz y Cortex-M4 a 240 MHz. Integra 1 MB de SRAM y 2 MB de Flash en el MCU, más 8 MB SDRAM y 16 MB de Flash externas, junto con Wi-Fi/Bluetooth, abundantes I/O, USB host/device, audio y conectores multimedia.",
+    "link": "https://docs.arduino.cc/hardware/giga-r1-wifi"
+  },
+  {
+    "id": "arduino-portenta-h7-lite",
+    "categoria": "Arduino",
+    "nombre": "Arduino Portenta H7 Lite",
+    "soc": "STMicroelectronics STM32H747XI",
+    "tipo": "Módulo Arduino dual-core alto rendimiento",
+    "precio": 601.0,
+    "cpu": "Arm Cortex-M7 + Cortex-M4",
+    "nucleos": "2",
+    "frecuencia_mhz": "480 / 240",
+    "ram": "1 MB SRAM interna + 8 MB SDRAM",
+    "flash": "2 MB Flash interna + 16 MB QSPI Flash",
+    "conectividad_principal": "Sin Wi-Fi/Bluetooth",
+    "perifericos": "Ethernet PHY; USB-C; dos conectores de alta densidad de 80 pines; cámara y buses de alta velocidad; elemento seguro",
+    "ide": "Arduino IDE, Mbed OS, MicroPython",
+    "ficha": "Portenta H7 Lite conserva el STM32H747XI dual-core a 480/240 MHz y la memoria externa de la familia Portenta H7, pero elimina el módulo Wi-Fi/Bluetooth. Ofrece USB-C, Ethernet mediante PHY, conectores de alta densidad y recursos para aplicaciones industriales/embebidas.",
+    "link": "https://docs.arduino.cc/hardware/portenta-h7-lite"
+  },
+  {
+    "id": "arduino-portenta-h7",
+    "categoria": "Arduino",
+    "nombre": "Arduino Portenta H7",
+    "soc": "STMicroelectronics STM32H747XI",
+    "tipo": "Módulo Arduino dual-core alto rendimiento",
+    "precio": 864.0,
+    "cpu": "Arm Cortex-M7 + Cortex-M4",
+    "nucleos": "2",
+    "frecuencia_mhz": "480 / 240",
+    "ram": "1 MB SRAM interna + 8 MB SDRAM",
+    "flash": "2 MB Flash interna + 16 MB QSPI Flash",
+    "conectividad_principal": "Wi-Fi 802.11b/g/n; Bluetooth 5.1 mediante Murata 1DX",
+    "perifericos": "Ethernet PHY; USB-C con DisplayPort; dos conectores de alta densidad de 80 pines; cámara; buses de alta velocidad; elemento seguro",
+    "ide": "Arduino IDE, Mbed OS, MicroPython, Arduino Cloud",
+    "ficha": "Portenta H7 integra STM32H747XI con Cortex-M7 a 480 MHz y Cortex-M4 a 240 MHz, además de 8 MB SDRAM y 16 MB QSPI Flash externos. El módulo Murata 1DX añade Wi-Fi y Bluetooth 5.1; también incluye USB-C/DisplayPort, Ethernet PHY y conectores de alta densidad.",
+    "link": "https://docs.arduino.cc/hardware/portenta-h7"
+  },
+  {
+    "id": "rp2040-zero",
+    "categoria": "MCU / Desarrollo",
+    "nombre": "RP2040-Zero",
+    "soc": "Raspberry Pi RP2040",
+    "tipo": "MCU compacto",
+    "precio": 36.0,
+    "cpu": "Dual Arm Cortex-M0+",
+    "nucleos": "2",
+    "frecuencia_mhz": "133",
+    "ram": "264 KB SRAM",
+    "flash": "2 MB onboard Flash",
+    "conectividad_principal": "Sin radio",
+    "perifericos": "20 GPIO expuestos; 2× SPI, 2× I2C, 2× UART; ADC de 12 bits; PWM; PIO; USB Type-C; LED RGB WS2812",
+    "ide": "Raspberry Pi Pico C/C++ SDK, MicroPython",
+    "ficha": "Waveshare RP2040-Zero es una placa compacta basada en RP2040 dual-core Cortex-M0+ a 133 MHz, con 264 KB de SRAM y 2 MB de Flash. Expone 20 GPIO en el pequeño formato de la placa e incluye USB-C, ADC, PWM, PIO y un LED RGB WS2812; no dispone de Wi-Fi integrado.",
+    "link": "https://www.waveshare.com/wiki/RP2040-Zero"
+  }
 ];
 
-let productosCache = [];
+/* ---------- Utilidades ---------- */
 
-function getStockClass(stock) {
-    if (stock > 10) return 'stock-alto';
-    if (stock > 0) return 'stock-medio';
-    return 'stock-bajo';
+function formatoPrecio(valor) {
+  const simbolo = (window.HANKEL_CONFIG && window.HANKEL_CONFIG.CURRENCY_SYMBOL) || 'S/.';
+  if (valor === null || valor === undefined || isNaN(valor)) return 'Consultar';
+  return simbolo + ' ' + valor.toFixed(2).replace(/\.00$/, '');
 }
 
-function getStockTexto(stock) {
-    if (stock > 10) return `✓ ${stock} unidades disponibles`;
-    if (stock > 0) return `⚠️ Solo ${stock} unidades`;
-    return '❌ Agotado';
+function normalizarTexto(texto) {
+  return (texto || '')
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
 }
 
-function generarImagenGenerica(codigo) {
-    return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231a1f2e'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%2300bcd4' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3E${codigo}%3C/text%3E%3C/svg%3E`;
+function truncar(texto, maxLen) {
+  if (!texto) return '';
+  if (texto.length <= maxLen) return texto;
+  return texto.slice(0, maxLen).replace(/\s+\S*$/, '') + '…';
 }
 
-function mostrarProductos(lista) {
-    const container = document.getElementById('productosContainer');
-    if (!container) return;
-
-    if (lista.length === 0) {
-        container.innerHTML = '<div style="text-align:center;padding:60px;grid-column:1/-1;">🔍 No se encontraron productos</div>';
-        return;
-    }
-
-    container.innerHTML = lista.map(prod => {
-        const precio = parseFloat(prod.precio) || 0;
-        const stock = parseInt(prod.stock) || 0;
-        const imgSrc = prod.imagen && prod.imagen.trim() !== '' ? prod.imagen : generarImagenGenerica(prod.codigo);
-
-        return `
-        <div class="producto-card">
-            <img src="${imgSrc}" alt="${prod.nombre}" class="producto-imagen"
-                 onerror="this.src='${generarImagenGenerica(prod.codigo)}'">
-            <div class="producto-info">
-                <div class="producto-codigo">${prod.codigo}</div>
-                <div class="producto-nombre">${prod.nombre}</div>
-                <div class="producto-descripcion">${prod.descripcion}</div>
-                <div class="producto-precio">S/ ${precio.toFixed(2)}</div>
-                <div class="producto-stock ${getStockClass(stock)}">${getStockTexto(stock)}</div>
-                <button class="btn-comprar ${stock === 0 ? 'sin-stock' : ''}" ${stock === 0 ? 'disabled' : ''}
-                        onclick="agregarAlCarrito('${prod.codigo}', '${prod.nombre.replace(/'/g, "\\'")}', ${precio}, '${imgSrc.replace(/'/g, "\\'")}', 'producto')">
-                    ${stock > 0 ? '🛒 Agregar al carrito' : '❌ Sin stock'}
-                </button>
-            </div>
-        </div>`;
-    }).join('');
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
 }
 
-function filtrarYOrdenar() {
-    const busqueda = (document.getElementById('searchInput')?.value || '').toLowerCase();
-    const stockFiltro = document.getElementById('stockFilter')?.value || 'todos';
-    const sortBy = document.getElementById('sortBy')?.value || 'codigo';
+/* ---------- Estado de filtros ---------- */
 
-    let filtrados = productosCache.filter(prod => {
-        const stock = parseInt(prod.stock) || 0;
-        const match = prod.nombre.toLowerCase().includes(busqueda) ||
-                      prod.codigo.toLowerCase().includes(busqueda) ||
-                      (prod.descripcion || '').toLowerCase().includes(busqueda);
-        if (!match) return false;
-        if (stockFiltro === 'alto') return stock > 10;
-        if (stockFiltro === 'medio') return stock > 0 && stock <= 10;
-        if (stockFiltro === 'bajo') return stock === 0;
-        return true;
+const state = {
+  query: '',
+  categoria: 'todas',
+  orden: 'nombre'
+};
+
+/* ---------- Construcción de la interfaz de filtros ---------- */
+
+function poblarFiltroCategorias() {
+  const select = document.getElementById('categoryFilter');
+  if (!select) return;
+  const categorias = Array.from(new Set(PRODUCTS.map(p => p.categoria))).sort();
+  categorias.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    select.appendChild(opt);
+  });
+}
+
+/* ---------- Filtrado y orden ---------- */
+
+function obtenerProductosFiltrados() {
+  let lista = PRODUCTS.slice();
+
+  if (state.query) {
+    const q = normalizarTexto(state.query);
+    lista = lista.filter(p => {
+      const campos = [p.nombre, p.soc, p.categoria, p.tipo, p.cpu];
+      return campos.some(campo => normalizarTexto(campo).includes(q));
     });
+  }
 
-    if (sortBy === 'precio-asc') filtrados.sort((a, b) => parseFloat(a.precio) - parseFloat(b.precio));
-    if (sortBy === 'precio-desc') filtrados.sort((a, b) => parseFloat(b.precio) - parseFloat(a.precio));
-    if (sortBy === 'codigo') filtrados.sort((a, b) => a.codigo.localeCompare(b.codigo));
-    if (sortBy === 'stock') filtrados.sort((a, b) => (parseInt(b.stock) || 0) - (parseInt(a.stock) || 0));
+  if (state.categoria !== 'todas') {
+    lista = lista.filter(p => p.categoria === state.categoria);
+  }
 
-    mostrarProductos(filtrados);
+  switch (state.orden) {
+    case 'precio-asc':
+      lista.sort((a, b) => (a.precio ?? Infinity) - (b.precio ?? Infinity));
+      break;
+    case 'precio-desc':
+      lista.sort((a, b) => (b.precio ?? -Infinity) - (a.precio ?? -Infinity));
+      break;
+    case 'nombre':
+    default:
+      lista.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+      break;
+  }
+
+  return lista;
 }
 
-async function cargarProductos() {
-    const container = document.getElementById('productosContainer');
-    const sheetUrl = construirSheetUrl();
+/* ---------- Renderizado de tarjetas ---------- */
 
-    if (!sheetUrl) {
-        console.warn('SHEET_ID no configurado (ver js/config.js o el panel Admin). Usando datos de respaldo.');
-        productosCache = productosRespaldo;
-        filtrarYOrdenar();
-        return;
-    }
+function crearTarjetaProducto(producto) {
+  const card = document.createElement('article');
+  card.className = 'producto-card';
+  card.dataset.id = producto.id;
 
-    try {
-        const res = await fetch(sheetUrl);
-        if (!res.ok) throw new Error('No se pudo leer el Google Sheet');
-        productosCache = await res.json();
-        if (!Array.isArray(productosCache) || productosCache.length === 0) throw new Error('Sheet vacío');
-    } catch (err) {
-        console.warn('Usando datos de respaldo:', err.message);
-        productosCache = productosRespaldo;
-    }
-    filtrarYOrdenar();
+  const specs = [
+    { etiqueta: 'SoC', valor: producto.soc },
+    { etiqueta: 'CPU', valor: producto.cpu },
+    { etiqueta: 'Núcleos', valor: producto.nucleos },
+    { etiqueta: 'Frecuencia', valor: producto.frecuencia_mhz ? producto.frecuencia_mhz + ' MHz' : '' },
+    { etiqueta: 'RAM', valor: producto.ram },
+    { etiqueta: 'Flash', valor: producto.flash },
+    { etiqueta: 'Conectividad', valor: producto.conectividad_principal }
+  ].filter(s => s.valor);
+
+  card.innerHTML = `
+    <div class="producto-card-header">
+      <span class="producto-categoria">${escapeHTML(producto.categoria)}</span>
+      <span class="producto-precio">${formatoPrecio(producto.precio)}</span>
+    </div>
+    <h3 class="producto-nombre">${escapeHTML(producto.nombre)}</h3>
+    <p class="producto-tipo">${escapeHTML(producto.tipo)}</p>
+    <ul class="producto-specs">
+      ${specs.map(s => `<li><span class="spec-etiqueta">${escapeHTML(s.etiqueta)}</span><span class="spec-valor">${escapeHTML(s.valor)}</span></li>`).join('')}
+    </ul>
+    <p class="producto-ficha">${escapeHTML(truncar(producto.ficha, 160))}</p>
+    <div class="producto-acciones">
+      <button type="button" class="btn-agregar-carrito" data-id="${escapeHTML(producto.id)}">
+        Añadir al carrito
+      </button>
+      ${producto.link ? `<a href="${escapeHTML(producto.link)}" target="_blank" rel="noopener noreferrer" class="producto-link">Ficha técnica →</a>` : ''}
+    </div>
+  `;
+
+  return card;
 }
+
+function renderizarProductos() {
+  const contenedor = document.getElementById('productosContainer');
+  if (!contenedor) return;
+
+  const lista = obtenerProductosFiltrados();
+  contenedor.innerHTML = '';
+
+  const contador = document.getElementById('resultadosContador');
+  if (contador) {
+    contador.textContent = lista.length === 1
+      ? '1 producto encontrado'
+      : lista.length + ' productos encontrados';
+  }
+
+  if (lista.length === 0) {
+    contenedor.innerHTML = `
+      <div class="productos-vacio">
+        No se encontraron productos con los criterios de búsqueda actuales.
+      </div>`;
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  lista.forEach(p => fragment.appendChild(crearTarjetaProducto(p)));
+  contenedor.appendChild(fragment);
+}
+
+/* ---------- Eventos ---------- */
+
+function inicializarEventos() {
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', e => {
+      state.query = e.target.value;
+      renderizarProductos();
+    });
+  }
+
+  const categoryFilter = document.getElementById('categoryFilter');
+  if (categoryFilter) {
+    categoryFilter.addEventListener('change', e => {
+      state.categoria = e.target.value;
+      renderizarProductos();
+    });
+  }
+
+  const sortBy = document.getElementById('sortBy');
+  if (sortBy) {
+    sortBy.addEventListener('change', e => {
+      state.orden = e.target.value;
+      renderizarProductos();
+    });
+  }
+
+  const contenedor = document.getElementById('productosContainer');
+  if (contenedor) {
+    contenedor.addEventListener('click', e => {
+      const boton = e.target.closest('.btn-agregar-carrito');
+      if (!boton) return;
+      const producto = PRODUCTS.find(p => p.id === boton.dataset.id);
+      if (!producto || !window.HankelCart) return;
+
+      window.HankelCart.add({
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        categoria: producto.categoria
+      });
+
+      const textoOriginal = boton.textContent;
+      boton.textContent = 'Añadido';
+      boton.disabled = true;
+      setTimeout(() => {
+        boton.textContent = textoOriginal;
+        boton.disabled = false;
+      }, 1200);
+    });
+  }
+}
+
+/* ---------- Inicialización ---------- */
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!document.getElementById('productosContainer')) return;
-    cargarProductos();
-    document.getElementById('searchInput')?.addEventListener('input', filtrarYOrdenar);
-    document.getElementById('stockFilter')?.addEventListener('change', filtrarYOrdenar);
-    document.getElementById('sortBy')?.addEventListener('change', filtrarYOrdenar);
+  poblarFiltroCategorias();
+  inicializarEventos();
+  renderizarProductos();
 });
