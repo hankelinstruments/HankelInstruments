@@ -4,14 +4,16 @@
    evaluación e instrumentación). Datos embebidos localmente
    (sin llamadas externas ni a IA) para carga rápida en un
    sitio estático.
-   Requiere: js/config.js (HANKEL_CONFIG) y js/carrito.js
-   (HankelCart) cargados antes que este archivo.
+   Requiere: js/config.js (HANKEL_CONFIG) cargado antes que este archivo.
    ============================================================ */
 
-const PRODUCTS = 
-[
+// Número de WhatsApp de la empresa para consultas
+const WHATSAPP_NUMBER = '51935344937';
+
+const PRODUCTS = [
   {
     "id": "seeed-xiao-ra4m1",
+    "imagen": "HI01",                         // ← Nombre de imagen sin extensión
     "categoria": "MCU / Desarrollo",
     "nombre": "Seeed XIAO RA4M1",
     "soc": "Renesas RA4M1 (R7FA4M1AB3CNE)",
@@ -30,6 +32,7 @@ const PRODUCTS =
   },
   {
     "id": "firebeetle-2-esp32-c6",
+    "imagen": "HI02",
     "categoria": "MCU IoT",
     "nombre": "FireBeetle 2 ESP32-C6",
     "soc": "Espressif ESP32-C6",
@@ -48,6 +51,7 @@ const PRODUCTS =
   },
   {
     "id": "seeed-xiao-rp2350",
+    "imagen": "HI03",
     "categoria": "MCU / Desarrollo",
     "nombre": "Seeed XIAO RP2350",
     "soc": "Raspberry Pi RP2350",
@@ -66,6 +70,7 @@ const PRODUCTS =
   },
   {
     "id": "milk-v-duo-256m",
+    "imagen": "HI04",
     "categoria": "Placas Linux / SBC",
     "nombre": "Milk-V Duo 256M",
     "soc": "SOPHGO SG2002",
@@ -84,6 +89,7 @@ const PRODUCTS =
   },
   {
     "id": "seeed-xiao-samd21",
+    "imagen": "HI05",
     "categoria": "MCU / Desarrollo",
     "nombre": "Seeed XIAO SAMD21",
     "soc": "Microchip ATSAMD21G18A",
@@ -102,6 +108,7 @@ const PRODUCTS =
   },
   {
     "id": "raspberry-pi-pico-w",
+    "imagen": "HI06",
     "categoria": "MCU IoT",
     "nombre": "Raspberry Pi Pico W",
     "soc": "RP2040 + Infineon CYW43439",
@@ -120,6 +127,7 @@ const PRODUCTS =
   },
   {
     "id": "raspberry-pi-pico-2-w",
+    "imagen": "HI07",
     "categoria": "MCU IoT",
     "nombre": "Raspberry Pi Pico 2 W",
     "soc": "RP2350 + Infineon CYW43439",
@@ -138,6 +146,7 @@ const PRODUCTS =
   },
   {
     "id": "stm32g474ce",
+    "imagen": "HI08",
     "categoria": "MCU / Desarrollo",
     "nombre": "STM32G474CE",
     "soc": "STMicroelectronics STM32G474CE",
@@ -156,6 +165,7 @@ const PRODUCTS =
   },
   {
     "id": "microchip-sam-d21-curiosity-nano",
+    "imagen": "HI09",
     "categoria": "Microchip Curiosity",
     "nombre": "Microchip SAM D21 Curiosity Nano",
     "soc": "Microchip SAMD21G17D",
@@ -174,6 +184,7 @@ const PRODUCTS =
   },
   {
     "id": "microchip-sam-e51-curiosity-nano",
+    "imagen": "HI10",
     "categoria": "Microchip Curiosity",
     "nombre": "Microchip SAM E51 Curiosity Nano",
     "soc": "Microchip SAME51J20A",
@@ -192,6 +203,7 @@ const PRODUCTS =
   },
   {
     "id": "avr64dd32-curiosity-nano",
+    "imagen": "HI11",
     "categoria": "Microchip Curiosity",
     "nombre": "AVR64DD32 Curiosity Nano",
     "soc": "Microchip AVR64DD32",
@@ -210,6 +222,7 @@ const PRODUCTS =
   },
   {
     "id": "avr64du32-curiosity-nano",
+    "imagen": "HI12",
     "categoria": "Microchip Curiosity",
     "nombre": "AVR64DU32 Curiosity Nano",
     "soc": "Microchip AVR64DU32",
@@ -228,6 +241,7 @@ const PRODUCTS =
   },
   {
     "id": "pic32cm-curiosity-nano-touch",
+    "imagen": "HI13",
     "categoria": "Microchip Curiosity",
     "nombre": "PIC32CM Curiosity Nano+ Touch",
     "soc": "Microchip PIC32CM5164JH01048",
@@ -246,6 +260,7 @@ const PRODUCTS =
   },
   {
     "id": "dspic33-curiosity-nano",
+    "imagen": "HI14",
     "categoria": "Microchip Curiosity",
     "nombre": "dsPIC33 Curiosity Nano",
     "soc": "Microchip dsPIC33CK64MC105",
@@ -264,6 +279,7 @@ const PRODUCTS =
   },
   {
     "id": "esp32-c6-devkitc-1",
+    "imagen": "HI15",
     "categoria": "MCU IoT",
     "nombre": "ESP32-C6-DevKitC-1",
     "soc": "Espressif ESP32-C6 (módulo ESP32-C6-WROOM-1)",
@@ -282,6 +298,7 @@ const PRODUCTS =
   },
   {
     "id": "seeed-xiao-mg24",
+    "imagen": "HI16",
     "categoria": "MCU IoT",
     "nombre": "Seeed XIAO MG24",
     "soc": "Silicon Labs EFR32MG24",
@@ -300,6 +317,7 @@ const PRODUCTS =
   },
   {
     "id": "luckfox-pico",
+    "imagen": "HI17",
     "categoria": "Placas Linux / SBC",
     "nombre": "LuckFox Pico",
     "soc": "Rockchip RV1103",
@@ -318,6 +336,7 @@ const PRODUCTS =
   },
   {
     "id": "sipeed-licheerv-nano",
+    "imagen": "HI18",
     "categoria": "Placas Linux / SBC",
     "nombre": "Sipeed LicheeRV Nano",
     "soc": "SOPHGO SG2002",
@@ -336,6 +355,7 @@ const PRODUCTS =
   },
   {
     "id": "m5stamp-pico-diy-kit",
+    "imagen": "HI19",
     "categoria": "MCU IoT",
     "nombre": "M5Stamp Pico DIY Kit",
     "soc": "Espressif ESP32-PICO-D4",
@@ -354,6 +374,7 @@ const PRODUCTS =
   },
   {
     "id": "raspberry-pi-zero-2-w",
+    "imagen": "HI20",
     "categoria": "Placas Linux / SBC",
     "nombre": "Raspberry Pi Zero 2 W",
     "soc": "Broadcom BCM2710A1 en RP3A0 SiP",
@@ -372,6 +393,7 @@ const PRODUCTS =
   },
   {
     "id": "esp32-c61-devkitc-1",
+    "imagen": "HI21",
     "categoria": "MCU IoT",
     "nombre": "ESP32-C61-DevKitC-1",
     "soc": "Espressif ESP32-C61 (ESP32-C61-WROOM-1)",
@@ -390,6 +412,7 @@ const PRODUCTS =
   },
   {
     "id": "stm32-nucleo-f401re",
+    "imagen": "HI22",
     "categoria": "Arduino / STM32",
     "nombre": "STM32 Nucleo-F401RE",
     "soc": "STMicroelectronics STM32F401RE",
@@ -408,6 +431,7 @@ const PRODUCTS =
   },
   {
     "id": "m5stickc-plus2",
+    "imagen": "HI23",
     "categoria": "MCU IoT",
     "nombre": "M5StickC PLUS2",
     "soc": "Espressif ESP32-PICO-V3-02",
@@ -426,6 +450,7 @@ const PRODUCTS =
   },
   {
     "id": "arduino-uno-r4-wifi",
+    "imagen": "HI24",
     "categoria": "Arduino",
     "nombre": "Arduino UNO R4 WiFi",
     "soc": "Renesas RA4M1 + Espressif ESP32-S3-MINI-1",
@@ -444,6 +469,7 @@ const PRODUCTS =
   },
   {
     "id": "radxa-zero-3w",
+    "imagen": "HI25",
     "categoria": "Placas Linux / SBC",
     "nombre": "Radxa ZERO 3W",
     "soc": "Rockchip RK3566",
@@ -462,6 +488,7 @@ const PRODUCTS =
   },
   {
     "id": "orange-pi-zero-2w",
+    "imagen": "HI26",
     "categoria": "Placas Linux / SBC",
     "nombre": "Orange Pi Zero 2W",
     "soc": "Allwinner H618",
@@ -480,6 +507,7 @@ const PRODUCTS =
   },
   {
     "id": "luckfox-pico-pro-max",
+    "imagen": "HI27",
     "categoria": "Placas Linux / SBC",
     "nombre": "LuckFox Pico Pro / Max",
     "soc": "Rockchip RV1106G2 (Pro) / RV1106G3 (Max)",
@@ -498,6 +526,7 @@ const PRODUCTS =
   },
   {
     "id": "milk-v-duo-s",
+    "imagen": "HI28",
     "categoria": "Placas Linux / SBC",
     "nombre": "Milk-V Duo S",
     "soc": "SOPHGO SG2000",
@@ -516,6 +545,7 @@ const PRODUCTS =
   },
   {
     "id": "nanopi-neo3",
+    "imagen": "HI29",
     "categoria": "Placas Linux / SBC",
     "nombre": "NanoPi NEO3",
     "soc": "Rockchip RK3328",
@@ -534,6 +564,7 @@ const PRODUCTS =
   },
   {
     "id": "stm32-nucleo-h753zi",
+    "imagen": "HI30",
     "categoria": "Arduino / STM32",
     "nombre": "STM32 NUCLEO-H753ZI",
     "soc": "STMicroelectronics STM32H753ZI",
@@ -552,6 +583,7 @@ const PRODUCTS =
   },
   {
     "id": "arduino-giga-r1-wifi",
+    "imagen": "HI31",
     "categoria": "Arduino",
     "nombre": "Arduino GIGA R1 WiFi",
     "soc": "STMicroelectronics STM32H747XI",
@@ -570,6 +602,7 @@ const PRODUCTS =
   },
   {
     "id": "arduino-portenta-h7-lite",
+    "imagen": "HI32",
     "categoria": "Arduino",
     "nombre": "Arduino Portenta H7 Lite",
     "soc": "STMicroelectronics STM32H747XI",
@@ -588,6 +621,7 @@ const PRODUCTS =
   },
   {
     "id": "arduino-portenta-h7",
+    "imagen": "HI33",
     "categoria": "Arduino",
     "nombre": "Arduino Portenta H7",
     "soc": "STMicroelectronics STM32H747XI",
@@ -606,6 +640,7 @@ const PRODUCTS =
   },
   {
     "id": "rp2040-zero",
+    "imagen": "HI34",
     "categoria": "MCU / Desarrollo",
     "nombre": "RP2040-Zero",
     "soc": "Raspberry Pi RP2040",
@@ -714,6 +749,18 @@ function crearTarjetaProducto(producto) {
   card.className = 'producto-card';
   card.dataset.id = producto.id;
 
+  // Construir la ruta de la imagen
+  const imagenNombre = producto.imagen || '';
+  // Intentar con .jpg, .jpeg, .png, .webp
+  const extensiones = ['.jpg', '.jpeg', '.png', '.webp'];
+  
+  // Construir el estilo de fondo con degradado + imagen
+  let bgStyle = '';
+  if (imagenNombre) {
+    // Fallback: si la imagen no existe, mostrar "Imagen no disponible"
+    bgStyle = `background: linear-gradient(135deg, rgba(20,40,55,0.85), rgba(15,35,50,0.9)), url('images/${escapeHTML(imagenNombre)}.jpg'); background-size: cover; background-position: center;`;
+  }
+
   const specs = [
     { etiqueta: 'SoC', valor: producto.soc },
     { etiqueta: 'CPU', valor: producto.cpu },
@@ -724,7 +771,15 @@ function crearTarjetaProducto(producto) {
     { etiqueta: 'Conectividad', valor: producto.conectividad_principal }
   ].filter(s => s.valor);
 
+  // Construir el mensaje de WhatsApp
+  const mensajeWhatsApp = encodeURIComponent(`Hola, quiero información sobre el producto: ${producto.nombre} (${producto.soc})`);
+  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeWhatsApp}`;
+
   card.innerHTML = `
+    <div class="producto-imagen" style="${bgStyle}">
+      <div class="producto-imagen-overlay"></div>
+      <span class="producto-imagen-texto">${escapeHTML(producto.nombre)}</span>
+    </div>
     <div class="producto-card-header">
       <span class="producto-categoria">${escapeHTML(producto.categoria)}</span>
       <span class="producto-precio">${formatoPrecio(producto.precio)}</span>
@@ -736,9 +791,12 @@ function crearTarjetaProducto(producto) {
     </ul>
     <p class="producto-ficha">${escapeHTML(truncar(producto.ficha, 160))}</p>
     <div class="producto-acciones">
-      <button type="button" class="btn-agregar-carrito" data-id="${escapeHTML(producto.id)}">
-        Añadir al carrito
-      </button>
+      <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-producto">
+        <svg class="wp-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+        Consultar por WhatsApp
+      </a>
       ${producto.link ? `<a href="${escapeHTML(producto.link)}" target="_blank" rel="noopener noreferrer" class="producto-link">Ficha técnica →</a>` : ''}
     </div>
   `;
@@ -797,31 +855,6 @@ function inicializarEventos() {
     sortBy.addEventListener('change', e => {
       state.orden = e.target.value;
       renderizarProductos();
-    });
-  }
-
-  const contenedor = document.getElementById('productosContainer');
-  if (contenedor) {
-    contenedor.addEventListener('click', e => {
-      const boton = e.target.closest('.btn-agregar-carrito');
-      if (!boton) return;
-      const producto = PRODUCTS.find(p => p.id === boton.dataset.id);
-      if (!producto || !window.HankelCart) return;
-
-      window.HankelCart.add({
-        id: producto.id,
-        nombre: producto.nombre,
-        precio: producto.precio,
-        categoria: producto.categoria
-      });
-
-      const textoOriginal = boton.textContent;
-      boton.textContent = 'Añadido';
-      boton.disabled = true;
-      setTimeout(() => {
-        boton.textContent = textoOriginal;
-        boton.disabled = false;
-      }, 1200);
     });
   }
 }
