@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hankel Academy | Cursos de Metrología & ISO 17025</title>
+    <title>Hankel Academy | Cursos de Metrología e ISO/IEC 17025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
     <!-- ============================================================ -->
-    <!-- 📁 RECURSOS VISUALES DE ESTA PÁGINA                         -->
+    <!-- RECURSOS VISUALES DE ESTA PÁGINA                            -->
     <!-- ============================================================ -->
     <!--                                                            -->
-    <!--  [1] logo.jpg                     → Raíz del repo          -->
-    <!--  [2] images/bg-academy-hero.jpg   → /images/ (opcional)    -->
+    <!--  [1] logo.jpg                     -> Raíz del repo         -->
+    <!--  [2] images/bg-academy-hero.jpg   -> /images/ (opcional)   -->
     <!--                                                            -->
     <!-- ============================================================ -->
     
@@ -63,14 +63,14 @@
                 rgba(10,12,16,0.94), 
                 rgba(10,12,16,0.90), 
                 rgba(15, 45, 55, 0.88)),
-                url('images/bg-academy-hero.jpg');                 /* ← 🖼️ RECURSO [2] (opcional) */
+                url('images/bg-academy-hero.jpg');                 /* RECURSO [2] (opcional) */
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            text-align: left;
             padding: 120px 20px 80px;
             margin-top: 80px;
             position: relative;
@@ -115,7 +115,7 @@
         .academy-hero-content .subtitle {
             font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 32px;
+            margin: 0 0 32px;
             font-weight: 300;
             color: #9aa3b5;
             line-height: 1.6;
@@ -280,7 +280,7 @@
         .cta-academy {
             background: linear-gradient(135deg, #1a4a5a, #0f2f3d);
             padding: 80px 0;
-            text-align: center;
+            text-align: left;
         }
         .cta-academy h2 {
             color: var(--texto-principal);
@@ -292,7 +292,7 @@
             font-size: 1.1rem;
             margin-bottom: 32px;
             max-width: 600px;
-            margin-left: auto;
+            margin-left: 0;
             margin-right: auto;
         }
         
@@ -312,7 +312,7 @@
         <div class="container">
             <nav>
                 <a href="index.html">
-                    <!-- 🖼️ RECURSO [1]: logo.jpg -->
+                    <!-- RECURSO [1]: logo.jpg -->
                     <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
                     <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
                 </a>
@@ -324,8 +324,8 @@
                     <li><a href="academia.html" class="active">Hankel Academy</a></li>
                     <li><a href="consultoria.html">Consultoría ISO</a></li>
                     <li><a href="index.html#contacto">Contacto</a></li>
-                    <li><a href="admin.html" class="admin-link" title="Panel Admin">🔒</a></li>
-                    <li><a href="carrito.html" class="cart-icon">🛒<span class="cart-badge" id="cartBadge">0</span></a></li>
+                    <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
+                    <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -334,11 +334,11 @@
     <!-- ===== HERO ACADEMY ===== -->
     <section class="academy-hero">
         <div class="container academy-hero-content">
-            <div class="badge">📚 Formación Especializada</div>
+            <div class="badge">Formación Técnica Especializada</div>
             <h1>Hankel Academy</h1>
             <p class="subtitle">
-                Cursos de metrología, normativa ISO 17025 e instrumentación analítica 
-                impartidos por ingenieros con experiencia real en laboratorios acreditados.
+                Programas de formación en metrología, normativa ISO/IEC 17025 e instrumentación analítica, 
+                dictados por ingenieros con experiencia en laboratorios acreditados.
             </p>
             <a href="#cursos" class="btn" style="animation: pulse 2.5s infinite;">Ver Cursos ↓</a>
         </div>
@@ -360,8 +360,8 @@
                         <path d="M9 15l2 2 4-4"></path>
                     </svg>
                     <div>
-                        <h2 class="category-title">ISO 17025 & Metrología</h2>
-                        <p class="category-subtitle">Interpretación normativa, aseguramiento de validez y estimación de incertidumbre</p>
+                        <h2 class="category-title">ISO/IEC 17025 y Metrología</h2>
+                        <p class="category-subtitle">Interpretación normativa, aseguramiento de la validez de resultados y estimación de incertidumbre</p>
                     </div>
                 </div>
                 
@@ -377,9 +377,8 @@
                         </svg>
                         <h3>Interpretación de la Norma ISO/IEC 17025:2017</h3>
                         <p>
-                            Análisis detallado de cada requisito de la norma. 
-                            Enfoque práctico para implementar un sistema de gestión 
-                            de calidad en laboratorios de ensayo y calibración.
+                            Análisis técnico de cada requisito de la norma, con enfoque práctico para la implementación 
+                            de un sistema de gestión de calidad en laboratorios de ensayo y calibración.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Requisitos generales</span>
@@ -404,9 +403,8 @@
                         </svg>
                         <h3>Aseguramiento de la Validez de los Resultados</h3>
                         <p>
-                            Control de calidad interno y externo. Cartas de control, 
-                            materiales de referencia, ensayos de aptitud y 
-                            comparaciones interlaboratorio según ISO 17025.
+                            Control de calidad interno y externo: cartas de control, materiales de referencia, ensayos 
+                            de aptitud y comparaciones interlaboratorio, conforme a los requisitos de la norma ISO/IEC 17025.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Cartas de control</span>
@@ -431,9 +429,8 @@
                         </svg>
                         <h3>Vocabulario Internacional de Metrología (VIM)</h3>
                         <p>
-                            Dominio del lenguaje metrológico según JCGM 200:2012. 
-                            Términos fundamentales, magnitudes, unidades y 
-                            conceptos esenciales para laboratorios acreditados.
+                            Manejo del lenguaje metrológico según JCGM 200:2012: términos fundamentales, magnitudes, 
+                            unidades y conceptos requeridos para la operación de laboratorios acreditados.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Magnitudes</span>
@@ -457,9 +454,8 @@
                         </svg>
                         <h3>Fundamentos de Estimación de Incertidumbre según GUM</h3>
                         <p>
-                            Metodología paso a paso para estimar incertidumbre 
-                            de medición. Identificación de fuentes, cálculo de 
-                            componentes combinadas y expresión de resultados.
+                            Metodología estructurada para estimar la incertidumbre de medición: identificación de fuentes, 
+                            cálculo de componentes combinadas y expresión de resultados según la Guía GUM.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Tipo A y B</span>
@@ -493,8 +489,8 @@
                         <polyline points="6 10 9 7 12 10 15 7 18 10"></polyline>
                     </svg>
                     <div>
-                        <h2 class="category-title">Instrumentación & Equipos de Laboratorio</h2>
-                        <p class="category-subtitle">Selección, calibración, mantenimiento y operación de instrumentos</p>
+                        <h2 class="category-title">Instrumentación y Equipos de Laboratorio</h2>
+                        <p class="category-subtitle">Criterios de selección, calibración, mantenimiento y operación de instrumentos de medición</p>
                     </div>
                 </div>
                 
@@ -508,9 +504,8 @@
                         </svg>
                         <h3>Selección y Adquisición de Equipos de Laboratorio</h3>
                         <p>
-                            Criterios técnicos para elegir instrumentos según 
-                            requisitos normativos y de ensayo. Evaluación de 
-                            proveedores y especificaciones metrológicas.
+                            Criterios técnicos para la selección de instrumentos según requisitos normativos y de ensayo, 
+                            con metodología de evaluación de especificaciones metrológicas y de proveedores.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Especificaciones</span>
@@ -540,9 +535,8 @@
                         </svg>
                         <h3>Calibración y Verificación de Instrumentos</h3>
                         <p>
-                            Procedimientos de calibración, intervalos, criterios 
-                            de aceptación y verificación intermedia. Gestión 
-                            metrológica de equipos críticos.
+                            Procedimientos de calibración, definición de intervalos, criterios de aceptación y 
+                            verificación intermedia para la gestión metrológica de equipos críticos.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Intervalos</span>
@@ -573,9 +567,8 @@
                         </svg>
                         <h3>Automatización y Adquisición de Datos</h3>
                         <p>
-                            Integración de sensores, MCUs y software para 
-                            automatizar mediciones. Reducción de errores 
-                            humanos y mejora de productividad.
+                            Integración de sensores, microcontroladores y software para la automatización de mediciones, 
+                            orientada a reducir el error humano y mejorar la productividad del laboratorio.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">MCUs</span>
@@ -606,8 +599,8 @@
                         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                     </svg>
                     <div>
-                        <h2 class="category-title">FTIR & Espectroscopía</h2>
-                        <p class="category-subtitle">Interpretación de espectros, preparación de muestras y análisis cualitativo/cuantitativo</p>
+                        <h2 class="category-title">FTIR y Espectroscopía</h2>
+                        <p class="category-subtitle">Interpretación de espectros, preparación de muestras y análisis cualitativo y cuantitativo</p>
                     </div>
                 </div>
                 
@@ -620,9 +613,8 @@
                         </svg>
                         <h3>Fundamentos de Espectroscopía FTIR</h3>
                         <p>
-                            Principios de absorción infrarroja, modos 
-                            vibracionales y configuración del equipo. 
-                            Introducción práctica a la técnica FTIR.
+                            Principios de absorción infrarroja, modos vibracionales y configuración del equipo. 
+                            Introducción técnica a la operación del método FTIR.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">IR medio</span>
@@ -647,9 +639,8 @@
                         </svg>
                         <h3>Interpretación de Espectros FTIR</h3>
                         <p>
-                            Identificación de grupos funcionales, bandas 
-                            características y correlación estructura-espectro. 
-                            Uso de librerías espectrales y bases de datos.
+                            Identificación de grupos funcionales, bandas características y correlación entre estructura 
+                            y espectro, con uso de librerías espectrales y bases de datos de referencia.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Grupos funcionales</span>
@@ -674,9 +665,8 @@
                         </svg>
                         <h3>Preparación de Muestras para FTIR</h3>
                         <p>
-                            Técnicas de preparación: pastillas KBr, ATR, 
-                            reflectancia difusa DRIFTS. Influencia de la 
-                            preparación en la calidad del espectro.
+                            Técnicas de preparación de muestras: pastillas de KBr, ATR y reflectancia difusa (DRIFTS), 
+                            y su influencia en la calidad del espectro obtenido.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">KBr</span>
@@ -701,9 +691,8 @@
                         </svg>
                         <h3>Análisis Cuantitativo por FTIR</h3>
                         <p>
-                            Curvas de calibración, ley de Beer-Lambert, 
-                            validación de métodos cuantitativos y cálculo 
-                            de incertidumbre en espectroscopía IR.
+                            Construcción de curvas de calibración, aplicación de la ley de Beer-Lambert, validación de 
+                            métodos cuantitativos y cálculo de incertidumbre en espectroscopía infrarroja.
                         </p>
                         <div class="course-topics">
                             <span class="topic-tag">Beer-Lambert</span>
@@ -728,8 +717,8 @@
     <!-- ===== CTA FINAL ===== -->
     <section class="cta-academy">
         <div class="container">
-            <h2>¿Necesitas un curso personalizado para tu laboratorio?</h2>
-            <p>Diseñamos capacitaciones a medida según tus equipos, matriz de ensayos y requisitos de acreditación.</p>
+            <h2>Capacitación Técnica a la Medida de su Laboratorio</h2>
+            <p>Diseñamos programas de capacitación adaptados a los equipos, la matriz de ensayos y los requisitos de acreditación de cada laboratorio.</p>
             <a href="https://wa.me/51935344937?text=Hola,%20quiero%20información%20sobre%20cursos%20personalizados%20para%20mi%20laboratorio" 
                class="cta-button" target="_blank" rel="noopener noreferrer">
                 Solicitar Curso Personalizado →
@@ -748,8 +737,8 @@
                 <a href="academia.html">Hankel Academy</a>
                 <a href="consultoria.html">Consultoría ISO</a>
             </div>
-            <p>📩 <a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
-            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería que inspira confianza</p>
+            <p><a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería y Metrología Aplicada a la Industria</p>
         </div>
     </footer>
 
