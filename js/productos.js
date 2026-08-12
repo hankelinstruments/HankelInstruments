@@ -966,7 +966,7 @@ function crearTarjetaProducto(producto) {
   // en /images, nombradas según el indicativo HI01, HI02, etc.)
   const imagenNombre = producto.imagen || '';
   const bgValue = imagenNombre
-    ? `linear-gradient(135deg, rgba(20,40,55,0.85), rgba(15,35,50,0.9)), url('images/${imagenNombre}.jpg')`
+    ? `linear-gradient(135deg, rgba(20,40,55,0.85), rgba(15,35,50,0.9)), url('images/${imagenNombre}.jpeg')`
     : '';
 
   const specs = [
