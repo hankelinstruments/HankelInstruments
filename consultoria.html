@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoría ISO/IEC 17025 | Hankel Instruments</title>
+    <meta name="description" content="Consultoría y auditoría técnica bajo ISO/IEC 17025 para laboratorios de ensayo y calibración: acreditación, validación de métodos, incertidumbre y gestión documental.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ============================================================ -->
+    <!-- 📁 RECURSOS VISUALES                                         -->
+    <!-- ============================================================ -->
+    <!--                                                            -->
+    <!--  [1] logo.jpg                     → Raíz del repo          -->
+    <!--  [2] images/bg-consultoria.png    → /images/               -->
+    <!--                                                            -->
+    <!-- ============================================================ -->
+
+    <style>
+        /* ============================================================
+           Estilos específicos de la página de Consultoría.
+           Reutilizan la misma paleta del sitio definida en style.css:
+           fondo #0a0c10, acento #00bcd4, tarjetas #151a24,
+           bordes #2a2f3a, texto secundario #9aa3b5.
+           ============================================================ */
+
+        /* ===== HERO ===== */
+        .consultoria-hero {
+            padding: 160px 20px 80px;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+            /* RECURSO [2]: images/bg-consultoria.png */
+            background:
+                linear-gradient(135deg, rgba(10,12,16,0.95), rgba(10,12,16,0.88), rgba(15,45,55,0.85)),
+                url('images/bg-consultoria.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .consultoria-hero .eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #00bcd4;
+            border: 1px solid rgba(0, 188, 212, 0.35);
+            background: rgba(0, 188, 212, 0.08);
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin-bottom: 24px;
+        }
+        .consultoria-hero h1 {
+            font-size: 3rem;
+            line-height: 1.15;
+            max-width: 900px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #00bcd4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .consultoria-hero p.lead {
+            color: #9aa3b5;
+            font-size: 1.15rem;
+            max-width: 720px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+        .hero-acciones {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== ALCANCE / SERVICIOS ===== */
+        .alcance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+            margin-top: 44px;
+        }
+        .alcance-card {
+            background: linear-gradient(145deg, #151a24, #1a1f2b);
+            border: 1px solid #2a2f3a;
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .alcance-card:hover {
+            transform: translateY(-6px);
+            border-color: #00bcd4;
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+        }
+        .alcance-card .icono {
+            width: 44px;
+            height: 44px;
+            color: #00bcd4;
+            margin-bottom: 18px;
+            opacity: 0.9;
+        }
+        .alcance-card h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .alcance-card p {
+            color: #9aa3b5;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+        .alcance-card ul {
+            list-style: none;
+            margin-top: 14px;
+            padding: 0;
+        }
+        .alcance-card li {
+            color: #8892a4;
+            font-size: 0.87rem;
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 7px;
+            line-height: 1.5;
+        }
+        .alcance-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00bcd4;
+        }
+
+        /* ===== PROCESO (secuencia real: la numeración sí aporta orden) ===== */
+        .proceso-section {
+            background: linear-gradient(135deg, #0d1117, #151a24);
+            border-top: 1px solid #1e2a3a;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .proceso-lista {
+            max-width: 900px;
+            margin: 44px auto 0;
+            position: relative;
+        }
+        .proceso-paso {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 24px;
+            padding-bottom: 40px;
+            position: relative;
+        }
+        /* Línea vertical que conecta las etapas */
+        .proceso-paso:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 26px;
+            top: 56px;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, #00bcd4, #2a2f3a);
+        }
+        .paso-numero {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #12161e;
+            border: 1px solid #00bcd4;
+            color: #00bcd4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .paso-contenido h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .paso-contenido p {
+            color: #9aa3b5;
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+        .paso-entregable {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.78rem;
+            color: #00bcd4;
+            background: rgba(0, 188, 212, 0.08);
+            border: 1px solid rgba(0, 188, 212, 0.25);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* ===== TABLA DE REQUISITOS ===== */
+        .tabla-wrapper {
+            overflow-x: auto;
+            margin-top: 40px;
+            border: 1px solid #2a2f3a;
+            border-radius: 14px;
+        }
+        .tabla-requisitos {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 560px;
+        }
+        .tabla-requisitos th {
+            background: #1a1f2e;
+            color: #00bcd4;
+            text-align: left;
+            padding: 14px 18px;
+            font-weight: 600;
+            border-bottom: 1px solid #2a2f3a;
+        }
+        .tabla-requisitos td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #1f2533;
+            color: #9aa3b5;
+            vertical-align: top;
+        }
+        .tabla-requisitos tr:last-child td { border-bottom: none; }
+        .tabla-requisitos td:first-child {
+            color: #e8edf0;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* ===== PREGUNTAS FRECUENTES ===== */
+        .faq-lista {
+            max-width: 860px;
+            margin: 44px auto 0;
+        }
+        .faq-item {
+            border: 1px solid #2a2f3a;
+            border-radius: 12px;
+            background: #12161e;
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            padding: 20px 24px;
+            cursor: pointer;
+            color: #e8edf0;
+            font-weight: 500;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: color 0.25s ease;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { color: #00bcd4; }
+        .faq-item summary::after {
+            content: '+';
+            color: #00bcd4;
+            font-size: 1.4rem;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item[open] summary { color: #00bcd4; }
+        .faq-respuesta {
+            padding: 0 24px 22px;
+            color: #9aa3b5;
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-consultoria {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15,45,55,0.5), rgba(10,12,16,0.9));
+            border-top: 1px solid #1e2a3a;
+        }
+        .cta-consultoria h2 {
+            font-size: 2.1rem;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .cta-consultoria p {
+            color: #9aa3b5;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .consultoria-hero {
+                padding: 130px 20px 56px;
+            }
+            .consultoria-hero h1 { font-size: 2rem; }
+            .consultoria-hero p.lead { font-size: 1rem; }
+            .hero-acciones { flex-direction: column; align-items: stretch; }
+            .hero-acciones .btn { text-align: center; }
+            .proceso-paso {
+                grid-template-columns: 44px 1fr;
+                gap: 16px;
+            }
+            .paso-numero { width: 40px; height: 40px; font-size: 0.9rem; }
+            .proceso-paso:not(:last-child)::before { left: 20px; top: 46px; }
+            .cta-consultoria h2 { font-size: 1.6rem; }
+        }
+
+        /* Respeta la preferencia de movimiento reducido del sistema */
+        @media (prefers-reduced-motion: reduce) {
+            .alcance-card { transition: none; }
+            .alcance-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <!-- 🖼️ RECURSO [1]: logo.jpg -->
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="academia.html">Hankel Academy</a></li>
+                    <li><a href="consultoria.html" class="active">Consultoría ISO</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
+                    <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="consultoria-hero">
+        <div class="container">
+            <span class="eyebrow">ISO/IEC 17025:2017</span>
+            <h1>Consultoría y auditoría técnica para laboratorios de ensayo y calibración</h1>
+            <p class="lead">
+                Acompañamos a laboratorios en la implementación, mantenimiento y preparación para la acreditación
+                bajo ISO/IEC 17025, cubriendo tanto los requisitos de gestión como los requisitos técnicos:
+                validación de métodos, trazabilidad metrológica, estimación de incertidumbre y control de calidad
+                de los resultados.
+            </p>
+            <div class="hero-acciones">
+                <a href="mailto:info@hankelinstruments.com?subject=Consulta%20ISO%2FIEC%2017025" class="btn">Solicitar evaluación inicial</a>
+                <a href="#alcance" class="btn btn-outline">Ver alcance del servicio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ALCANCE DEL SERVICIO ===== -->
+    <section id="alcance">
+        <div class="container">
+            <h2 class="section-title">Alcance del servicio</h2>
+            <p class="section-subtitle">
+                Intervenciones puntuales o acompañamiento completo, según el punto en que se encuentre su laboratorio.
+            </p>
+
+            <div class="alcance-grid">
+                <!-- Diagnóstico -->
+                <article class="alcance-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <h3>Diagnóstico de brechas</h3>
+                    <p>Evaluación del estado actual del laboratorio frente a cada cláusula de la norma, con un informe que prioriza los hallazgos por criticidad.</p>
+                    <ul>
+                        <li>Revisión documental y de registros</li>
+                        <li>Recorrido técnico de instalaciones</li>
+                        <li>Matriz de brechas por cláusula</li>
+                    </ul>
+                </article>
+
+                <!-- Acreditación -->
+                <article class="alcance-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    <h3>Preparación para la acreditación</h3>
+                    <p>Construcción del sistema de gestión y del expediente técnico requerido por el organismo acreditador, hasta la evaluación en sitio.</p>
+                    <ul>
+                        <li>Manual, procedimientos e instructivos</li>
+                        <li>Definición del alcance de acreditación</li>
+                        <li>Acompañamiento en la evaluación</li>
+                    </ul>
+                </article>
+
+                <!-- Auditoría interna -->
+                <article class="alcance-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    <h3>Auditoría interna</h3>
+                    <p>Auditorías internas ejecutadas por personal técnico independiente del área auditada, con seguimiento de acciones correctivas.</p>
+                    <ul>
+                        <li>Programa y plan de auditoría</li>
+                        <li>Informe de no conformidades</li>
+                        <li>Verificación de eficacia del cierre</li>
+                    </ul>
+                </article>
+
+                <!-- Validación de métodos -->
+                <article class="alcance-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"></path>
+                        <path d="M7 15l4-4 3 3 5-6"></path>
+                    </svg>
+                    <h3>Validación y verificación de métodos</h3>
+                    <p>Diseño experimental y análisis estadístico para demostrar que el método es apto para el uso previsto.</p>
+                    <ul>
+                        <li>Veracidad, precisión y linealidad</li>
+                        <li>Límites de detección y cuantificación</li>
+                        <li>Robustez y rango de trabajo</li>
+                    </ul>
+                </article>
+
+                <!-- Incertidumbre -->
+                <article class="alcance-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="20" x2="12" y2="10"></line>
+                        <line x1="18" y1="20" x2="18" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="16"></line>
+                    </svg>
+                    <h3>Estimación de incertidumbre</h3>
+                    <p>Elaboración de presupuestos de incertidumbre conforme a la guía GUM, con hojas de cálculo documentadas y trazables.</p>
+                    <ul>
+                        <li>Identificación de fuentes de incertidumbre</li>
+                        <li>Modelo matemático de la medición</li>
+                        <li>Incertidumbre expandida y factor k</li>
+                    </ul>
+                </article>
+
+                <!-- Trazabilidad -->
+                <article class="alcance-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    <h3>Trazabilidad metrológica</h3>
+                    <p>Definición de la cadena de trazabilidad de los equipos, criterios de aceptación y programa de calibración interno.</p>
+                    <ul>
+                        <li>Plan de calibración y verificación</li>
+                        <li>Evaluación de certificados de calibración</li>
+                        <li>Control intermedio de patrones</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROCESO ===== -->
+    <section class="proceso-section">
+        <div class="container">
+            <h2 class="section-title">Cómo trabajamos</h2>
+            <p class="section-subtitle">
+                Las etapas siguen un orden definido: cada una entrega un producto que habilita la siguiente.
+            </p>
+
+            <div class="proceso-lista">
+                <div class="proceso-paso">
+                    <div class="paso-numero">01</div>
+                    <div class="paso-contenido">
+                        <h3>Evaluación inicial</h3>
+                        <p>Visita técnica y revisión documental para determinar el estado del laboratorio frente a la norma y definir el alcance real del trabajo.</p>
+                        <span class="paso-entregable">Entregable: informe de diagnóstico</span>
+                    </div>
+                </div>
+
+                <div class="proceso-paso">
+                    <div class="paso-numero">02</div>
+                    <div class="paso-contenido">
+                        <h3>Plan de implementación</h3>
+                        <p>Cronograma con responsables, recursos y fechas por cada brecha detectada, ordenado según el impacto sobre la acreditación.</p>
+                        <span class="paso-entregable">Entregable: plan de trabajo con hitos</span>
+                    </div>
+                </div>
+
+                <div class="proceso-paso">
+                    <div class="paso-numero">03</div>
+                    <div class="paso-contenido">
+                        <h3>Desarrollo documental y técnico</h3>
+                        <p>Redacción del sistema de gestión junto al personal del laboratorio, con validación de métodos y cálculo de incertidumbre en paralelo.</p>
+                        <span class="paso-entregable">Entregable: sistema de gestión documentado</span>
+                    </div>
+                </div>
+
+                <div class="proceso-paso">
+                    <div class="paso-numero">04</div>
+                    <div class="paso-contenido">
+                        <h3>Capacitación del personal</h3>
+                        <p>Formación del equipo en los procedimientos implementados y en los fundamentos metrológicos que sustentan cada ensayo.</p>
+                        <span class="paso-entregable">Entregable: registros de competencia</span>
+                    </div>
+                </div>
+
+                <div class="proceso-paso">
+                    <div class="paso-numero">05</div>
+                    <div class="paso-contenido">
+                        <h3>Auditoría interna y revisión por la dirección</h3>
+                        <p>Simulación de la evaluación externa para detectar no conformidades antes de la visita del organismo acreditador.</p>
+                        <span class="paso-entregable">Entregable: informe de auditoría y acciones</span>
+                    </div>
+                </div>
+
+                <div class="proceso-paso">
+                    <div class="paso-numero">06</div>
+                    <div class="paso-contenido">
+                        <h3>Acompañamiento en la evaluación externa</h3>
+                        <p>Soporte técnico durante la evaluación en sitio y en el cierre de los hallazgos levantados por el organismo acreditador.</p>
+                        <span class="paso-entregable">Entregable: plan de cierre de hallazgos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REQUISITOS CUBIERTOS ===== -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Requisitos cubiertos</h2>
+            <p class="section-subtitle">
+                Correspondencia entre las cláusulas de ISO/IEC 17025:2017 y el trabajo que realizamos.
+            </p>
+
+            <div class="tabla-wrapper">
+                <table class="tabla-requisitos">
+                    <thead>
+                        <tr>
+                            <th>Cláusula</th>
+                            <th>Requisito</th>
+                            <th>Trabajo asociado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>Requisitos generales</td>
+                            <td>Imparcialidad, confidencialidad y declaración de conflictos de interés</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Requisitos relativos a la estructura</td>
+                            <td>Organigrama, definición de responsabilidades y alcance de actividades</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Requisitos relativos a los recursos</td>
+                            <td>Competencia del personal, instalaciones, equipos y trazabilidad metrológica</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Requisitos del proceso</td>
+                            <td>Métodos, muestreo, incertidumbre, informes de resultados y quejas</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Requisitos del sistema de gestión</td>
+                            <td>Control de documentos y registros, riesgos, mejora, auditoría y revisión</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PREGUNTAS FRECUENTES ===== -->
+    <section class="proceso-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas frecuentes</h2>
+            <p class="section-subtitle">Dudas habituales antes de iniciar un proceso de acreditación.</p>
+
+            <div class="faq-lista">
+                <details class="faq-item">
+                    <summary>¿Cuánto demora acreditar un laboratorio?</summary>
+                    <div class="faq-respuesta">
+                        Depende del punto de partida y de la cantidad de ensayos incluidos en el alcance. Un laboratorio
+                        que ya opera con procedimientos escritos suele requerir menos tiempo que uno que parte desde cero.
+                        La evaluación inicial define un cronograma realista antes de comprometer plazos.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Hankel Instruments emite la acreditación?</summary>
+                    <div class="faq-respuesta">
+                        No. La acreditación la otorga el organismo acreditador correspondiente. Nuestro rol es de
+                        consultoría y preparación técnica: dejamos al laboratorio en condiciones de ser evaluado y
+                        lo acompañamos durante el proceso, manteniendo la independencia que exige la norma.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Se puede contratar solo una parte del servicio?</summary>
+                    <div class="faq-respuesta">
+                        Sí. Es habitual contratar únicamente la validación de un método, el cálculo de incertidumbre de
+                        un ensayo específico o una auditoría interna anual, sin tomar el acompañamiento completo.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Qué pasa después de obtener la acreditación?</summary>
+                    <div class="faq-respuesta">
+                        La acreditación exige mantenimiento: auditorías internas periódicas, revisión por la dirección,
+                        participación en ensayos de aptitud y actualización documental. Ofrecemos acompañamiento anual
+                        para sostener el sistema entre evaluaciones de seguimiento.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Trabajan con laboratorios fuera de Lima?</summary>
+                    <div class="faq-respuesta">
+                        Sí. El trabajo documental y el análisis de datos se realizan de forma remota, y las visitas
+                        técnicas se programan por bloques para reducir costos de desplazamiento.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-consultoria" id="contacto">
+        <div class="container">
+            <h2>Evaluación técnica inicial</h2>
+            <p>
+                Una revisión del estado actual de su laboratorio frente a ISO/IEC 17025, con un informe de brechas
+                priorizadas y una estimación de plazos antes de comprometer un proyecto.
+            </p>
+            <a href="mailto:info@hankelinstruments.com?subject=Solicitud%20de%20evaluaci%C3%B3n%20t%C3%A9cnica%20ISO%2FIEC%2017025" class="btn">
+                Solicitar evaluación técnica →
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="proyectos.html">Proyectos</a>
+                <a href="productos.html">Productos</a>
+                <a href="academia.html">Hankel Academy</a>
+                <a href="consultoria.html">Consultoría ISO</a>
+            </div>
+            <p><a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería y Metrología Aplicada a la Industria</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/carrito.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | Hankel Instruments</title>
+    <meta name="description" content="Servicios de ingeniería y metrología: consultoría ISO/IEC 17025, diseño y fabricación de equipos de laboratorio, capacitación técnica e instrumentación.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ============================================================ -->
+    <!-- 📁 RECURSOS VISUALES                                         -->
+    <!-- ============================================================ -->
+    <!--                                                            -->
+    <!--  [1] logo.jpg                       → Raíz del repo        -->
+    <!--  [2] images/bg-consultoria.png      → /images/             -->
+    <!--  [3] images/bg-fabricacion.jpg      → /images/             -->
+    <!--  [4] images/bg-capacitacion.jpg     → /images/             -->
+    <!--  [5] images/bg-instrumentacion.jpg  → /images/             -->
+    <!--                                                            -->
+    <!-- ============================================================ -->
+
+    <style>
+        /* ============================================================
+           Estilos de la página de Servicios. Reutiliza la paleta
+           global: fondo #0a0c10, acento #00bcd4, tarjetas #151a24,
+           bordes #2a2f3a, texto secundario #9aa3b5.
+           ============================================================ */
+
+        .servicios-hero {
+            padding: 150px 20px 70px;
+            background: linear-gradient(135deg, rgba(10,12,16,0.94), rgba(15,17,23,0.96), rgba(15,45,55,0.85));
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .servicios-hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.18;
+            max-width: 860px;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #fff, #00bcd4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .servicios-hero p {
+            color: #9aa3b5;
+            font-size: 1.12rem;
+            max-width: 720px;
+            line-height: 1.7;
+        }
+
+        /* ===== TARJETAS DE SERVICIO (mismo lenguaje visual que index.html) ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .service-card {
+            background: linear-gradient(145deg, #151a24, #1a1f2b);
+            padding: 40px 32px;
+            border-radius: 20px;
+            border: 1px solid #2a2f3a;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        .service-card:hover::after { opacity: 0.15; }
+
+        /* Fondos específicos de cada servicio */
+        .service-card:nth-child(1)::after {
+            /* RECURSO [2]: images/bg-consultoria.png */
+            background: linear-gradient(135deg, rgba(30,70,90,0.5), rgba(20,40,55,0.8)), url('images/bg-consultoria.png');
+            background-size: cover;
+        }
+        .service-card:nth-child(2)::after {
+            /* RECURSO [3]: images/bg-fabricacion.jpg */
+            background: linear-gradient(135deg, rgba(25,55,70,0.5), rgba(15,35,50,0.8)), url('images/bg-fabricacion.jpg');
+            background-size: cover;
+        }
+        .service-card:nth-child(3)::after {
+            /* RECURSO [4]: images/bg-capacitacion.jpg */
+            background: linear-gradient(135deg, rgba(35,65,80,0.5), rgba(20,40,55,0.8)), url('images/bg-capacitacion.jpg');
+            background-size: cover;
+        }
+        .service-card:nth-child(4)::after {
+            /* RECURSO [5]: images/bg-instrumentacion.jpg */
+            background: linear-gradient(135deg, rgba(20,50,65,0.5), rgba(10,30,45,0.8)), url('images/bg-instrumentacion.jpg');
+            background-size: cover;
+        }
+
+        /* Línea animada superior */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #3a7a8e, #5b9aaa);
+            transition: left 0.6s ease;
+            z-index: 2;
+        }
+        .service-card:hover::before { left: 100%; }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #3a7a8e;
+            box-shadow: 0 20px 40px rgba(20, 50, 65, 0.2);
+        }
+        .service-card h3,
+        .service-card p,
+        .service-card ul,
+        .service-card .service-link,
+        .service-card .service-icon {
+            position: relative;
+            z-index: 1;
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 20px;
+            display: block;
+            color: #00bcd4;
+            transition: transform 0.3s ease;
+            opacity: 0.85;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.12);
+            opacity: 1;
+        }
+        .service-card h3 {
+            color: #e8edf0;
+            font-size: 1.35rem;
+            margin-bottom: 14px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .service-card p {
+            color: #8892a4;
+            line-height: 1.65;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+        .service-card li {
+            color: #8892a4;
+            font-size: 0.87rem;
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 7px;
+            line-height: 1.5;
+        }
+        .service-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00bcd4;
+        }
+        .service-card .service-link {
+            color: #5b9aaa;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+        .service-card:hover .service-link {
+            gap: 16px;
+            color: #00bcd4;
+        }
+
+        /* ===== SECTORES ATENDIDOS ===== */
+        .sectores-section {
+            background: linear-gradient(135deg, #0d1117, #151a24);
+            border-top: 1px solid #1e2a3a;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .sectores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .sector-item {
+            background: #12161e;
+            border: 1px solid #1f2533;
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.3s ease;
+        }
+        .sector-item:hover { border-color: #00bcd4; }
+        .sector-item h4 {
+            color: #00bcd4;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .sector-item p {
+            color: #9aa3b5;
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        /* ===== CTA ===== */
+        .cta-servicios {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15,45,55,0.5), rgba(10,12,16,0.9));
+            border-top: 1px solid #1e2a3a;
+        }
+        .cta-servicios h2 {
+            font-size: 2.1rem;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .cta-servicios p {
+            color: #9aa3b5;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .servicios-hero { padding: 125px 20px 50px; }
+            .servicios-hero h1 { font-size: 1.9rem; }
+            .servicios-hero p { font-size: 1rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .service-card { padding: 30px 24px; }
+            .service-icon { width: 46px; height: 46px; }
+            .cta-servicios h2 { font-size: 1.6rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .service-card, .service-icon, .service-card::before { transition: none; }
+            .service-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <!-- 🖼️ RECURSO [1]: logo.jpg -->
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html" class="active">Servicios</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="academia.html">Hankel Academy</a></li>
+                    <li><a href="consultoria.html">Consultoría ISO</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
+                    <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="servicios-hero">
+        <div class="container">
+            <h1>Servicios de ingeniería y metrología</h1>
+            <p>
+                Servicios técnicos orientados a laboratorios de ensayo y calibración, y a proyectos industriales que
+                requieren precisión dimensional, trazabilidad metrológica y cumplimiento normativo.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section>
+        <div class="container">
+            <div class="services-grid">
+                <!-- Servicio 1: Consultoría -->
+                <article class="service-card" onclick="location.href='consultoria.html'">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <h3>Consultoría y auditoría técnica ISO/IEC 17025</h3>
+                    <p>
+                        Acompañamiento en procesos de acreditación, auditorías internas, validación y verificación de
+                        métodos, y gestión documental del sistema de calidad.
+                    </p>
+                    <ul>
+                        <li>Diagnóstico de brechas frente a la norma</li>
+                        <li>Estimación de incertidumbre según GUM</li>
+                        <li>Trazabilidad metrológica de equipos</li>
+                    </ul>
+                    <span class="service-link">Ver servicios →</span>
+                </article>
+
+                <!-- Servicio 2: Fabricación -->
+                <article class="service-card" onclick="location.href='productos.html'">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    <h3>Diseño y fabricación de equipos de laboratorio</h3>
+                    <p>
+                        Diseño, fabricación y mantenimiento de equipos, con desarrollo de hardware y software
+                        especializado, adaptados a los requerimientos de cada ensayo.
+                    </p>
+                    <ul>
+                        <li>Electrónica y firmware a medida</li>
+                        <li>Adquisición de datos y automatización</li>
+                        <li>Mantenimiento bajo procedimientos documentados</li>
+                    </ul>
+                    <span class="service-link">Ver equipos →</span>
+                </article>
+
+                <!-- Servicio 3: Capacitación -->
+                <article class="service-card" onclick="location.href='academia.html'">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>
+                    </svg>
+                    <h3>Capacitación técnica y normativa</h3>
+                    <p>
+                        Programas de formación en metrología, cálculo de incertidumbre, ensayos mecánicos y gestión de
+                        laboratorios, estructurados a partir de casos técnicos aplicados.
+                    </p>
+                    <ul>
+                        <li>Cursos presenciales y virtuales</li>
+                        <li>Formación in-house para equipos completos</li>
+                        <li>Registros de competencia del personal</li>
+                    </ul>
+                    <span class="service-link">Ver cursos →</span>
+                </article>
+
+                <!-- Servicio 4: Instrumentación -->
+                <article class="service-card" onclick="location.href='productos.html'">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <line x1="9" y1="2" x2="9" y2="4"></line>
+                        <line x1="15" y1="2" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="22"></line>
+                        <line x1="15" y1="20" x2="15" y2="22"></line>
+                        <line x1="20" y1="9" x2="22" y2="9"></line>
+                        <line x1="20" y1="14" x2="22" y2="14"></line>
+                        <line x1="2" y1="9" x2="4" y2="9"></line>
+                        <line x1="2" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                    <h3>Instrumentación y microcontroladores</h3>
+                    <p>
+                        Suministro y asesoría técnica en microcontroladores, placas de desarrollo, SBC y kits de
+                        evaluación para proyectos de medición y control.
+                    </p>
+                    <ul>
+                        <li>Selección técnica según requerimiento</li>
+                        <li>Catálogo con especificaciones de referencia</li>
+                        <li>Soporte local y stock en Perú</li>
+                    </ul>
+                    <span class="service-link">Ver catálogo →</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTORES ATENDIDOS ===== -->
+    <section class="sectores-section">
+        <div class="container">
+            <h2 class="section-title">Sectores atendidos</h2>
+            <p class="section-subtitle">Contextos donde la trazabilidad de la medición es un requisito, no una preferencia.</p>
+
+            <div class="sectores-grid">
+                <div class="sector-item">
+                    <h4>Laboratorios de ensayo</h4>
+                    <p>Ensayos mecánicos, dimensionales y de materiales con requisitos de acreditación.</p>
+                </div>
+                <div class="sector-item">
+                    <h4>Laboratorios de calibración</h4>
+                    <p>Cadenas de trazabilidad, patrones de referencia y control intermedio de equipos.</p>
+                </div>
+                <div class="sector-item">
+                    <h4>Industria manufacturera</h4>
+                    <p>Control dimensional en línea, instrumentación de proceso y verificación de equipos.</p>
+                </div>
+                <div class="sector-item">
+                    <h4>Instituciones académicas</h4>
+                    <p>Equipamiento de laboratorios docentes y formación técnica en metrología.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-servicios" id="contacto">
+        <div class="container">
+            <h2>¿No sabe por dónde empezar?</h2>
+            <p>
+                Describa su laboratorio o proyecto y le indicamos qué servicio corresponde, sin costo por la
+                consulta inicial.
+            </p>
+            <a href="mailto:info@hankelinstruments.com?subject=Consulta%20de%20servicios" class="btn">
+                Escribir a Hankel Instruments →
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="proyectos.html">Proyectos</a>
+                <a href="productos.html">Productos</a>
+                <a href="academia.html">Hankel Academy</a>
+                <a href="consultoria.html">Consultoría ISO</a>
+            </div>
+            <p><a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería y Metrología Aplicada a la Industria</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/carrito.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
