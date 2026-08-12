@@ -10,6 +10,13 @@
 // Número de WhatsApp de la empresa para consultas
 const WHATSAPP_NUMBER = '51935344937';
 
+/* Ruta y extensión de las fotos de producto.
+   Los archivos se llaman según el indicativo del catálogo: HI01, HI02, ... HI44.
+   Si algún día mueves las fotos de carpeta o cambias de formato, solo se
+   modifican estas dos constantes. */
+const IMAGES_BASE_PATH = 'productos/';
+const IMAGES_EXTENSION = '.jpg';
+
 const PRODUCTS = [
   {
     "id": "seeed-xiao-ra4m1",
@@ -962,11 +969,17 @@ function crearTarjetaProducto(producto) {
   card.className = 'producto-card';
   card.dataset.id = producto.id;
 
-  // Construir la ruta de la imagen (todas las imágenes se guardan como .jpg
-  // en /images, nombradas según el indicativo HI01, HI02, etc.)
+  // Construir la ruta de la imagen. Las fotos de producto viven en la carpeta
+  // /productos, nombradas según el indicativo HI01, HI02, ... con extensión .jpg.
+  //
+  // IMPORTANTE: aquí se aplica ÚNICAMENTE la imagen, sin gradiente encima.
+  // Antes se superponía un azul a 0.85–0.9 de opacidad que dejaba la foto casi
+  // invisible. El oscurecimiento necesario para que se lea el nombre del
+  // producto lo aporta .producto-imagen-overlay (en productos.html), que solo
+  // oscurece la franja inferior y deja la pieza a la vista.
   const imagenNombre = producto.imagen || '';
   const bgValue = imagenNombre
-    ? `linear-gradient(135deg, rgba(20,40,55,0.85), rgba(15,35,50,0.9)), url('images/${imagenNombre}.jpeg')`
+    ? `url('${IMAGES_BASE_PATH}${imagenNombre}${IMAGES_EXTENSION}')`
     : '';
 
   const specs = [
