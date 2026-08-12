@@ -14,8 +14,8 @@ const WHATSAPP_NUMBER = '51935344937';
    Los archivos se llaman según el indicativo del catálogo: HI01, HI02, ... HI44.
    Si algún día mueves las fotos de carpeta o cambias de formato, solo se
    modifican estas dos constantes. */
-const IMAGES_BASE_PATH = 'productos/';
-const IMAGES_EXTENSION = '.jpg';
+const IMAGES_BASE_PATH = 'images/';
+const IMAGES_EXTENSION = '.png';
 
 /* Los datos del catálogo viven en js/productos-data.js, generado
    automáticamente desde el Excel maestro con tools/generar_productos.py.
