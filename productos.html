@@ -135,14 +135,17 @@
         /* ===== IMAGEN DEL PRODUCTO CON DEGRADADO PROGRESIVO ===== */
         .producto-imagen {
             width: 100%;
-            height: 180px;
+            height: 210px;
             position: relative;
             background-size: cover !important;
             background-position: center !important;
-            background-color: var(--fondo-card); /* placeholder mientras carga */
+            /* Fondo neutro claro detrás de la foto: la mayoría de fotos de
+               placas vienen recortadas sobre blanco, así el borde no corta. */
+            background-color: #1a1f2b;
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
+            overflow: hidden;
         }
         /* Overlay con degradado progresivo para transparencia */
         .producto-imagen-overlay {
@@ -151,23 +154,37 @@
             left: 0;
             right: 0;
             bottom: 0;
-            /* Degradado progresivo: más oscuro abajo, transparente arriba */
+            /* El overlay ya NO cubre toda la imagen: la mitad superior queda
+               limpia para que se vea la placa, y el oscurecimiento arranca
+               recién en el tercio inferior, solo lo necesario para que el
+               nombre del producto se lea sobre cualquier fondo. */
             background: linear-gradient(
                 to bottom,
-                rgba(21, 26, 36, 0.1) 0%,
-                rgba(21, 26, 36, 0.3) 40%,
-                rgba(21, 26, 36, 0.7) 70%,
-                rgba(21, 26, 36, 0.95) 100%
+                rgba(21, 26, 36, 0) 0%,
+                rgba(21, 26, 36, 0) 45%,
+                rgba(21, 26, 36, 0.45) 68%,
+                rgba(21, 26, 36, 0.82) 86%,
+                rgba(21, 26, 36, 0.96) 100%
             );
+            transition: opacity 0.3s ease;
+        }
+        /* Al pasar el cursor, el velo se aligera todavía más */
+        .producto-card:hover .producto-imagen-overlay {
+            opacity: 0.75;
         }
         .producto-imagen-texto {
             position: relative;
             z-index: 1;
-            color: rgba(232, 237, 240, 0.5);
+            /* Antes 0.5 de opacidad: se apoyaba en el velo oscuro que cubría
+               toda la imagen. Con el velo aligerado, el texto necesita más
+               contraste propio + una sombra que lo despegue de la foto. */
+            color: rgba(232, 237, 240, 0.92);
             font-size: 0.75rem;
+            font-weight: 500;
             padding: 12px 16px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            text-shadow: 0 1px 4px rgba(10, 12, 16, 0.9);
         }
 
         /* ===== CUERPO DE LA TARJETA ===== */
@@ -345,7 +362,7 @@
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
-            .producto-imagen { height: 150px; }
+            .producto-imagen { height: 190px; }
             .producto-card-body {
                 padding: 16px 18px 18px;
             }
