@@ -85,7 +85,8 @@
             border: 1px solid var(--borde);
             background: var(--fondo-card);
             color: var(--texto-principal);
-            font-size: 1rem;
+            /* 16px explícito: evita el zoom automático de iOS al enfocar el input */
+            font-size: 16px;
         }
         .busqueda input::placeholder {
             color: var(--texto-secundario);
@@ -102,6 +103,8 @@
             background: var(--fondo-card);
             color: var(--texto-principal);
             font-size: 0.95rem;
+            /* Área táctil mínima cómoda en pantallas táctiles */
+            min-height: 44px;
         }
         .resultados-contador {
             color: var(--texto-secundario);
@@ -136,6 +139,7 @@
             position: relative;
             background-size: cover !important;
             background-position: center !important;
+            background-color: var(--fondo-card); /* placeholder mientras carga */
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
@@ -177,6 +181,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             margin-bottom: 8px;
         }
         .producto-categoria {
@@ -188,16 +193,19 @@
             border: 1px solid rgba(58, 122, 142, 0.3);
             padding: 4px 10px;
             border-radius: 20px;
+            white-space: nowrap;
         }
         .producto-precio {
             font-weight: 700;
             color: var(--texto-principal);
             font-size: 1.05rem;
+            white-space: nowrap;
         }
         .producto-nombre {
             color: var(--texto-principal);
             font-size: 1.15rem;
             margin: 4px 0 2px;
+            overflow-wrap: break-word;
         }
         .producto-tipo {
             color: var(--texto-secundario);
@@ -228,6 +236,8 @@
         .spec-valor {
             color: var(--texto-principal);
             text-align: right;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
         .producto-ficha {
             color: var(--texto-secundario);
@@ -262,6 +272,8 @@
             border: none;
             cursor: pointer;
             white-space: nowrap;
+            /* Área táctil mínima cómoda */
+            min-height: 44px;
         }
         .btn-whatsapp-producto:hover {
             background: var(--whatsapp-hover);
@@ -282,6 +294,7 @@
             font-size: 0.85rem;
             text-decoration: none;
             white-space: nowrap;
+            padding: 6px 0;
         }
         .producto-link:hover {
             text-decoration: underline;
@@ -294,10 +307,74 @@
             color: var(--texto-secundario);
         }
 
+        /* ============================================================ */
+        /* ===== RESPONSIVE / MOBILE ===================================*/
+        /* ============================================================ */
+
+        /* Tablets y pantallas medianas */
+        @media (max-width: 900px) {
+            .productos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 18px;
+            }
+        }
+
+        /* Móviles */
         @media (max-width: 640px) {
-            .productos-grid { grid-template-columns: 1fr; }
-            .page-hero h1 { font-size: 2rem; }
+            .page-hero {
+                padding: 100px 16px 40px;
+                margin-top: 64px;
+            }
+            .page-hero h1 {
+                font-size: 1.75rem;
+                margin-bottom: 10px;
+            }
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            /* Los filtros y el select ocupan todo el ancho y se apilan */
+            .filtros {
+                flex-direction: column;
+            }
+            .filtros select {
+                width: 100%;
+            }
+
+            .productos-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
             .producto-imagen { height: 150px; }
+            .producto-card-body {
+                padding: 16px 18px 18px;
+            }
+            .producto-nombre { font-size: 1.05rem; }
+            .producto-ficha { font-size: 0.82rem; }
+
+            /* Precio y categoría pueden apretarse en pantallas muy chicas */
+            .producto-card-header {
+                flex-wrap: wrap;
+            }
+
+            /* El botón de WhatsApp pasa a ancho completo y el link de ficha
+               queda debajo, centrado, para que ambos sean fáciles de tocar */
+            .producto-acciones {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-whatsapp-producto {
+                width: 100%;
+            }
+            .producto-link {
+                text-align: center;
+            }
+        }
+
+        /* Móviles muy pequeños (< 380px) */
+        @media (max-width: 380px) {
+            .page-hero h1 { font-size: 1.5rem; }
+            .producto-card-body { padding: 14px 16px 16px; }
         }
     </style>
 </head>
