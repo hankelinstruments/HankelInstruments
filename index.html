@@ -162,32 +162,32 @@
             bottom: 0;
             background-size: cover;
             background-position: center;
-            opacity: 0.08;
+            opacity: 0.85;
             transition: opacity 0.4s ease;
             z-index: 0;
         }
         .service-card:hover::after {
-            opacity: 0.15;
+            opacity: 1;
         }
         /* Fondos específicos para cada servicio */
         .service-card:nth-child(1)::after {
             /* RECURSO [3]: images/bg-consultoria.png */
-            background: linear-gradient(135deg, rgba(30,70,90,0.5), rgba(20,40,55,0.8)), url('images/bg-consultoria.png');
+            background: linear-gradient(135deg, rgba(30,70,90,0.42), rgba(20,40,55,0.65)), url('images/bg-consultoria.png');
             background-size: cover;
         }
         .service-card:nth-child(2)::after {
             /* RECURSO [4]: images/bg-fabricacion.jpg */
-            background: linear-gradient(135deg, rgba(25,55,70,0.5), rgba(15,35,50,0.8)), url('images/bg-fabricacion.jpg');
+            background: linear-gradient(135deg, rgba(25,55,70,0.42), rgba(15,35,50,0.65)), url('images/bg-fabricacion.jpg');
             background-size: cover;
         }
         .service-card:nth-child(3)::after {
             /* RECURSO [5]: images/bg-capacitacion.jpg */
-            background: linear-gradient(135deg, rgba(35,65,80,0.5), rgba(20,40,55,0.8)), url('images/bg-capacitacion.jpg');
+            background: linear-gradient(135deg, rgba(35,65,80,0.42), rgba(20,40,55,0.65)), url('images/bg-capacitacion.jpg');
             background-size: cover;
         }
         .service-card:nth-child(4)::after {
             /* RECURSO [6]: images/bg-instrumentacion.jpg */
-            background: linear-gradient(135deg, rgba(20,50,65,0.5), rgba(10,30,45,0.8)), url('images/bg-instrumentacion.jpg');
+            background: linear-gradient(135deg, rgba(20,50,65,0.42), rgba(10,30,45,0.65)), url('images/bg-instrumentacion.jpg');
             background-size: cover;
         }
         /* Línea animada superior */
@@ -235,6 +235,7 @@
             font-size: 1.5rem;
             margin-bottom: 16px;
             font-weight: 700;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
         }
         .service-card p {
             color: #8892a4;
