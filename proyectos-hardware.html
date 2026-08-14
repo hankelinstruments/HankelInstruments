@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software de análisis de datos de laboratorio | Productos | Hankel Instruments</title>
-    <meta name="description" content="Desarrollo de software a medida para adquisición, procesamiento y reporte de datos de laboratorio: incertidumbre, reportes automatizados, dashboards y técnicas analíticas (FTIR, DRX, SEM).">
+    <title>Hardware y Software Especializado | Proyectos | Hankel Instruments</title>
+    <meta name="description" content="Diseño y fabricación de circuitos impresos para equipos de laboratorio e instrumentación conectada para monitoreo remoto.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- ============================================================ -->
-    <!-- RECURSOS VISUALES: [1] logo.jpg -> Raíz del repo             -->
-    <!-- ============================================================ -->
-
     <style>
         :root {
             --petroleo-oscuro: #0f2f3d;
@@ -24,18 +19,10 @@
             --fondo-card: #151a24;
             --borde: #2a2f3a;
             --cian: #00bcd4;
-            --whatsapp: #25D366;
-            --whatsapp-hover: #1ea952;
-            --header-h: 80px;
         }
-
-        /* ===== HERO ===== */
         .page-hero {
-            background: linear-gradient(135deg,
-                rgba(10,12,16,0.94),
-                rgba(10,12,16,0.90),
-                rgba(15, 45, 55, 0.88));
-            padding: calc(var(--header-h) + 62px) 20px 40px;
+            background: linear-gradient(135deg, rgba(10,12,16,0.94), rgba(10,12,16,0.90), rgba(15, 45, 55, 0.88));
+            padding: 150px 20px 56px;
             margin-top: 0;
             text-align: left;
             border-bottom: 1px solid #1e2a3a;
@@ -46,80 +33,79 @@
             text-decoration: none; margin-bottom: 18px;
         }
         .breadcrumb:hover { text-decoration: underline; }
-        .page-hero h1 { font-size: 2.4rem; margin-bottom: 14px; color: #f3ede1; line-height: 1.2; }
-        .page-hero p { font-size: 1.05rem; max-width: 760px; color: #9aa3b5; font-weight: 300; line-height: 1.7; }
-        .modalidad {
-            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
-            padding: 7px 14px; border-radius: 30px; white-space: nowrap; display: inline-block; margin-top: 18px;
-        }
-        .modalidad-medida {
-            color: #d8a657; background: rgba(216, 166, 87, 0.11); border: 1px solid rgba(216, 166, 87, 0.32);
-        }
+        .page-hero h1 { font-size: 2.4rem; margin-bottom: 14px; color: var(--texto-principal); line-height: 1.2; }
+        .page-hero p { font-size: 1.05rem; max-width: 760px; color: #9aa3b5; line-height: 1.7; }
 
-        .seccion-linea { padding: 56px 0 80px; }
+        .seccion-linea { padding: 64px 0 80px; }
 
-        /* ===== FAMILIAS ===== */
-        .familias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
-        .familia-card {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 32px;
+        }
+        .project-card {
             background: linear-gradient(145deg, #151a24, #1a1f2b);
-            border: 1px solid var(--borde); border-radius: 14px; padding: 30px 28px;
-            display: flex; flex-direction: column; transition: border-color 0.3s ease, transform 0.3s ease;
+            border-radius: 20px;
+            border: 1px solid var(--borde);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .familia-card:hover { border-color: var(--petroleo-acento); transform: translateY(-4px); }
-        .familia-card .icono { width: 34px; height: 34px; color: var(--cian); opacity: 0.85; margin-bottom: 18px; }
-        .familia-card h3 { color: #fff; font-size: 1.08rem; margin-bottom: 8px; text-transform: none; letter-spacing: 0; font-weight: 600; }
-        .familia-card > p { color: #8892a4; font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
-        .familia-items { list-style: none; padding: 14px 0 0; margin: auto 0 0; border-top: 1px solid var(--borde); }
-        .familia-items li { color: #9aa3b5; font-size: 0.83rem; line-height: 1.5; padding-left: 16px; position: relative; margin-bottom: 6px; }
-        .familia-items li::before {
-            content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px;
-            border-radius: 50%; background: var(--petroleo-acento);
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, #3a7a8e, #5b9aaa);
+            transition: left 0.6s ease; z-index: 2;
         }
+        .project-card:hover::before { left: 100%; }
+        .project-card:hover {
+            transform: translateY(-6px); border-color: var(--petroleo-acento);
+            box-shadow: 0 20px 40px rgba(20, 50, 65, 0.2);
+        }
+        .project-image { width: 100%; height: 200px; background: linear-gradient(135deg, rgba(20,40,55,0.8), rgba(30,70,90,0.5)); position: relative; }
+        .project-image-overlay {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.3;
+        }
+        .project-image-overlay svg { width: 64px; height: 64px; color: var(--petroleo-claro); }
+        .project-body { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-body .project-icon { width: 40px; height: 40px; margin-bottom: 14px; color: var(--petroleo-claro); flex-shrink: 0; }
+        .project-body h3 { color: var(--texto-principal); font-size: 1.25rem; margin-bottom: 10px; font-weight: 700; }
+        .project-body p { color: var(--texto-secundario); line-height: 1.6; font-size: 0.95rem; margin-bottom: 0; flex-grow: 1; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; margin-bottom: 22px; }
+        .project-tag {
+            display: inline-block; background: rgba(58,122,142,0.12); border: 1px solid rgba(58,122,142,0.2);
+            padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; color: var(--petroleo-claro); white-space: nowrap;
+        }
+        .contact-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: transparent; color: var(--petroleo-claro); padding: 12px 24px; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s ease;
+            margin-top: auto; border: 1.5px solid var(--petroleo-acento); cursor: pointer; width: fit-content;
+        }
+        .contact-btn:hover { background: var(--petroleo-acento); color: #fff; transform: scale(1.03); box-shadow: 0 8px 25px rgba(30, 70, 90, 0.3); }
+        .contact-btn:active { transform: scale(0.97); }
+        .contact-btn .btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
 
-        /* ===== BLOQUE DE CONSULTA ===== */
-        .consulta-bloque {
-            margin-top: 40px; background: #12161e; border: 1px solid var(--borde); border-left: 3px solid var(--cian);
-            border-radius: 12px; padding: 28px 30px; display: flex; justify-content: space-between;
-            align-items: center; gap: 28px; flex-wrap: wrap;
+        .cta-proyectos { background: linear-gradient(135deg, #1a4a5a, #0f2f3d); padding: 70px 0; text-align: left; margin-top: 20px; }
+        .cta-proyectos h2 { color: var(--texto-principal); font-size: 1.9rem; margin-bottom: 16px; }
+        .cta-proyectos p { color: rgba(232,237,240,0.85); font-size: 1.05rem; margin-bottom: 28px; max-width: 600px; }
+        .cta-button {
+            background: #f3ede1; color: #0f2f3d; padding: 16px 40px; border-radius: 50px; font-weight: 700;
+            font-size: 1.05rem; text-decoration: none; transition: all 0.3s ease; display: inline-block;
         }
-        .consulta-bloque h4 { color: #fff; font-size: 1.02rem; margin-bottom: 8px; font-weight: 600; }
-        .consulta-bloque p { color: #9aa3b5; font-size: 0.9rem; line-height: 1.65; max-width: 620px; }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
 
-        .btn-whatsapp-producto {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            background: var(--whatsapp); color: #fff; padding: 10px 18px; border-radius: 10px;
-            font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: all 0.3s ease;
-            border: none; cursor: pointer; white-space: nowrap; min-height: 44px;
-        }
-        .btn-whatsapp-producto:hover { background: var(--whatsapp-hover); transform: scale(1.03); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25); }
-        .btn-whatsapp-producto:active { transform: scale(0.97); }
-        .btn-whatsapp-producto .wp-icon { width: 18px; height: 18px; flex-shrink: 0; }
-
-        /* ===== NOTA DE ALCANCE ===== */
-        .nota-alcance {
-            margin-top: 28px; color: #6f7889; font-size: 0.82rem; line-height: 1.65;
-            border-left: 2px solid var(--borde); padding-left: 16px; max-width: 820px;
-        }
-
-        @media (max-width: 640px) {
-            .page-hero { padding: calc(var(--header-h) + 34px) 16px 32px; }
-            .page-hero h1 { font-size: 1.65rem; }
-            .page-hero p { font-size: 1rem; }
+        @media (max-width: 768px) {
+            .page-hero { padding: 130px 16px 40px; }
+            .page-hero h1 { font-size: 1.8rem; }
             .seccion-linea { padding: 40px 0 60px; }
-            .familias-grid { grid-template-columns: 1fr; gap: 16px; }
-            .familia-card { padding: 24px 20px; }
-            .consulta-bloque { padding: 24px 20px; }
-            .consulta-bloque .btn-whatsapp-producto { width: 100%; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .familia-card { transition: none; }
-            .familia-card:hover { transform: none; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-image { height: 160px; }
         }
     </style>
 </head>
 <body>
-    <!-- ===== HEADER ===== -->
     <header>
         <div class="container">
             <nav>
@@ -185,7 +171,7 @@
                         </div>
                     </li>
                     <li class="nav-mega">
-                        <a href="proyectos.html" class="nav-mega-trigger">Proyectos</a>
+                        <a href="proyectos.html" class="nav-mega-trigger active">Proyectos</a>
                         <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="megaProyectos" aria-label="Mostrar submenú de Proyectos">
                             <svg class="mega-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
@@ -211,7 +197,7 @@
                         </div>
                     </li>
                     <li class="nav-mega">
-                        <a href="productos.html" class="nav-mega-trigger active">Productos</a>
+                        <a href="productos.html" class="nav-mega-trigger">Productos</a>
                         <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="megaProductos" aria-label="Mostrar submenú de Productos">
                             <svg class="mega-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
@@ -267,127 +253,88 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
     <div class="page-hero">
         <div class="container">
-            <a href="productos.html" class="breadcrumb">← Volver a Productos</a>
-            <h1>Software de análisis de datos de laboratorio</h1>
-            <p>
-                Desarrollo de software a medida para adquisición, procesamiento y reporte de datos de
-                laboratorio, integrado con la instrumentación existente. Cada desarrollo se define a partir
-                de los instrumentos a conectar, el volumen de datos, el cálculo requerido y el formato de
-                salida, no a partir de un producto empaquetado.
-            </p>
-            <span class="modalidad modalidad-medida">Desarrollo a medida</span>
+            <a href="proyectos.html" class="breadcrumb">← Volver a Proyectos</a>
+            <h1>Diseño y Fabricación de Hardware y Software Especializado</h1>
+            <p>Equipos a medida, circuitos impresos personalizados y soluciones de instrumentación conectada para laboratorios.</p>
         </div>
     </div>
 
     <section class="seccion-linea">
         <div class="container">
-            <div class="familias-grid">
-                <article class="familia-card">
-                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                    </svg>
-                    <h3>Adquisición y registro en tiempo real</h3>
-                    <p>Captura continua de mediciones desde instrumentos conectados por puerto serie, USB o Ethernet.</p>
-                    <ul class="familia-items">
-                        <li>Integración con protocolos propios de cada instrumento</li>
-                        <li>Registro con marca de tiempo y trazabilidad de sesión</li>
-                        <li>Alertas ante desviaciones fuera de rango</li>
-                    </ul>
-                </article>
-
-                <article class="familia-card">
-                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="12" y1="20" x2="12" y2="10"></line>
-                        <line x1="18" y1="20" x2="18" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="16"></line>
-                    </svg>
-                    <h3>Procesamiento y cálculo de incertidumbre</h3>
-                    <p>Rutinas de cálculo estadístico y estimación de incertidumbre aplicadas de forma consistente sobre cada lote de datos.</p>
-                    <ul class="familia-items">
-                        <li>Cálculo de incertidumbre según GUM</li>
-                        <li>Control de calidad y detección de valores atípicos</li>
-                        <li>Trazabilidad del método de cálculo aplicado</li>
-                    </ul>
-                </article>
-
-                <article class="familia-card">
-                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                    </svg>
-                    <h3>Reportes y certificados automatizados</h3>
-                    <p>Generación automática de informes de ensayo y certificados de calibración en el formato del laboratorio.</p>
-                    <ul class="familia-items">
-                        <li>Plantillas propias con numeración y control de versión</li>
-                        <li>Exportación a PDF, Excel y formatos definidos por el cliente</li>
-                        <li>Firma y control de acceso por rol de usuario</li>
-                    </ul>
-                </article>
-
-                <article class="familia-card">
-                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                    <h3>Paneles y dashboards de monitoreo</h3>
-                    <p>Visualización en tiempo real del estado de ensayos y equipos, con histórico consultable y acceso remoto.</p>
-                    <ul class="familia-items">
-                        <li>Paneles configurables por área o línea de ensayo</li>
-                        <li>Histórico de mediciones y eventos</li>
-                        <li>Acceso remoto con control de usuarios</li>
-                    </ul>
-                </article>
-
-                <article class="familia-card">
-                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <h3>Integración con técnicas analíticas</h3>
-                    <p>Módulos de procesamiento adaptados a la salida de datos de cada técnica instrumental, no a un formato genérico.</p>
-                    <ul class="familia-items">
-                        <li>Espectroscopía FTIR y espectrofotometría UV-Vis</li>
-                        <li>Difracción de rayos X (DRX)</li>
-                        <li>Microscopía electrónica de barrido (SEM)</li>
-                        <li>Procesamiento e interpretación automatizada de imágenes</li>
-                    </ul>
-                </article>
+            <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(135deg, rgba(15,35,50,0.5), rgba(25,55,70,0.35)), url('images/proyecto-hardware.jpg'); background-size: cover; background-position: center;">
+                            <div class="project-image-overlay">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                            <h3>Diseño y Fabricación de Circuitos Impresos para Equipos de Laboratorio</h3>
+                            <p>
+                                Desarrollo de circuitos impresos a medida para instrumentos de medición, control de temperatura, sistemas de adquisición y automatización de ensayos.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Diseño de PCB</span>
+                                <span class="project-tag">CAD electrónico</span>
+                                <span class="project-tag">Microcontroladores ARM</span>
+                            </div>
+                            <a href="mailto:info@hankelinstruments.com?subject=Consulta:%20Diseño%20de%20PCBs" class="contact-btn">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                                </svg>
+                                Solicitar Información
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background: linear-gradient(135deg, rgba(20,50,65,0.5), rgba(30,70,90,0.35)), url('images/proyecto-hardware.jpg'); background-size: cover; background-position: center;">
+                            <div class="project-image-overlay">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                            </svg>
+                            <h3>Instrumentación Conectada para Monitoreo de Laboratorios</h3>
+                            <p>
+                                Sistemas conectados para el monitoreo en tiempo real de condiciones ambientales, temperatura, humedad y estado de equipos, con alertas y paneles de control accesibles de forma remota.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Instrumentación conectada</span>
+                                <span class="project-tag">Microcontroladores</span>
+                                <span class="project-tag">Comunicación en la nube</span>
+                            </div>
+                            <a href="mailto:info@hankelinstruments.com?subject=Consulta:%20IoT%20para%20Laboratorios" class="contact-btn">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                                </svg>
+                                Solicitar Información
+                            </a>
+                        </div>
+                    </div>
             </div>
-
-            <!-- Bloque de consulta -->
-            <div class="consulta-bloque">
-                <div>
-                    <h4>Especificación del desarrollo</h4>
-                    <p>
-                        Indique los instrumentos a integrar, el volumen y frecuencia de datos, el cálculo requerido
-                        y el formato de salida esperado. Sobre esa base se define el alcance, el plazo y la
-                        modalidad de soporte del desarrollo.
-                    </p>
-                </div>
-                <a href="https://wa.me/51935344937?text=Consulta%20de%20software%20de%20an%C3%A1lisis%20de%20datos%20de%20laboratorio%20a%20medida."
-                   target="_blank" rel="noopener noreferrer" class="btn-whatsapp-producto">
-                    <svg class="wp-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-                    </svg>
-                    Consultar desarrollo
-                </a>
-            </div>
-
-            <p class="nota-alcance">
-                El desarrollo se entrega con manual de usuario y código documentado. El mantenimiento evolutivo y el
-                soporte posterior a la entrega se acuerdan según el alcance del proyecto.
-            </p>
+        </div>
+    </section>
+    <section class="cta-proyectos">
+        <div class="container">
+            <h2>Evaluación Técnica de Proyectos de Ingeniería</h2>
+            <p>Comuníquese con nuestro equipo para revisar los requerimientos técnicos de su laboratorio o proceso industrial.</p>
+            <a href="mailto:info@hankelinstruments.com?subject=Consulta:%20Proyecto%20Personalizado" class="cta-button">Contáctanos →</a>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
             <div class="footer-links">
