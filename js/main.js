@@ -28,3 +28,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo = document.getElementById('mainLogo');
     if (logo && logo.complete && logo.naturalWidth === 0) handleLogoError();
 });
+
+// ===== Menú móvil (hamburguesa) =====
+(function () {
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (!navToggle || !navLinks) return;
+
+    function closeMenu() {
+        navLinks.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
+    });
+})();

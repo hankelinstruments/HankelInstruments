@@ -485,17 +485,86 @@ footer a:hover { color: #fff; }
     flex-wrap: wrap;
 }
 
+/* ===== MENÚ MÓVIL (HAMBURGUESA) ===== */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
     .carrito-layout { grid-template-columns: 1fr; }
     .carrito-resumen { position: static; }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        margin-top: 0;
+        transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
+    }
+
+    .nav-links.nav-open {
+        max-height: 70vh;
+        overflow-y: auto;
+        opacity: 1;
+        margin-top: 16px;
+    }
+
+    .nav-links li { width: 100%; }
+
+    .nav-links a {
+        display: block;
+        padding: 14px 4px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        font-size: 1rem;
+    }
+
+    .nav-links a.cart-icon,
+    .nav-links a.admin-link {
+        display: inline-flex;
+        width: auto;
+    }
 }
 
 @media (max-width: 768px) {
     .page-hero h1 { font-size: 2rem; }
-    .nav-links { gap: 14px; }
     .section-title { font-size: 1.8rem; }
     .filtros-container { flex-direction: column; }
     .filtros { width: 100%; }
     .filtros select { flex: 1; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 16px; }
+    .section-title { font-size: 1.5rem; }
+    .btn { padding: 12px 24px; font-size: 0.85rem; }
 }
