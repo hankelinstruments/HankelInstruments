@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrias | Hankel Instruments</title>
-    <meta name="description" content="Soporte de metrología, instrumentación y desarrollo a medida para automotriz, manufactura electrónica, laboratorios de ensayo y certificación, y vidrio y materiales industriales.">
+    <title>Manufactura electrónica | Industrias | Hankel Instruments</title>
+    <meta name="description" content="Desarrollo de hardware, instrumentación de control de calidad y software de adquisición de datos para líneas de manufactura y ensamblaje electrónico.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -22,117 +22,49 @@
             --cian: #00bcd4;
         }
 
-        /* ===== HERO ===== */
         .page-hero {
             background: linear-gradient(135deg, rgba(10,12,16,0.94), rgba(10,12,16,0.90), rgba(15, 45, 55, 0.88));
-            padding: 150px 20px 64px;
+            padding: 150px 20px 56px;
             margin-top: 0;
             text-align: left;
             border-bottom: 1px solid #1e2a3a;
         }
-        .page-hero h1 { font-size: 2.8rem; margin-bottom: 16px; color: var(--texto-principal); line-height: 1.2; }
-        .page-hero p { font-size: 1.12rem; max-width: 760px; color: #9aa3b5; line-height: 1.7; }
-
-        /* ===== GRID DE INDUSTRIAS (banners, mismo lenguaje visual que .service-card) ===== */
-        .lineas-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            padding: 64px 0;
+        .breadcrumb {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: var(--cian); font-size: 0.85rem; font-weight: 500;
+            text-decoration: none; margin-bottom: 18px;
         }
-        .linea-banner {
-            display: block;
+        .breadcrumb:hover { text-decoration: underline; }
+        .page-hero h1 { font-size: 2.4rem; margin-bottom: 14px; color: var(--texto-principal); line-height: 1.2; }
+        .page-hero p { font-size: 1.05rem; max-width: 760px; color: #9aa3b5; line-height: 1.7; }
+
+        .seccion-linea { padding: 56px 0 80px; }
+
+        .familias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+        .familia-card {
             background: linear-gradient(145deg, #151a24, #1a1f2b);
-            padding: 40px 32px;
-            border-radius: 20px;
-            border: 1px solid #2a2f3a;
-            min-height: 280px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--borde); border-radius: 14px; padding: 28px 26px;
+            display: flex; flex-direction: column; transition: border-color 0.3s ease, transform 0.3s ease;
         }
-        .linea-banner::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.85;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-        .linea-banner:hover::after { opacity: 1; }
-        .linea-banner:nth-child(1)::after { background: linear-gradient(135deg, rgba(30,70,90,0.42), rgba(20,40,55,0.65)), url('images/proyecto-hardware.jpg'); background-size: cover; }
-        .linea-banner:nth-child(2)::after { background: linear-gradient(135deg, rgba(25,55,70,0.42), rgba(15,35,50,0.65)), url('images/bg-fabricacion.jpg'); background-size: cover; }
-        .linea-banner:nth-child(3)::after { background: linear-gradient(135deg, rgba(35,65,80,0.42), rgba(20,40,55,0.65)), url('images/proyecto-acreditacion.jpg'); background-size: cover; }
-        .linea-banner:nth-child(4)::after { background: linear-gradient(135deg, rgba(20,50,65,0.42), rgba(10,30,45,0.65)), url('images/proyecto-ensayos.jpg'); background-size: cover; }
-        /* Línea animada superior */
-        .linea-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 4px;
-            background: linear-gradient(90deg, transparent, #3a7a8e, #5b9aaa);
-            transition: left 0.6s ease;
-            z-index: 2;
-        }
-        .linea-banner:hover::before { left: 100%; }
-        .linea-banner:hover {
-            transform: translateY(-8px);
-            border-color: #3a7a8e;
-            box-shadow: 0 20px 40px rgba(20, 50, 65, 0.2);
-        }
-        .linea-banner > * { position: relative; z-index: 1; }
-        .linea-banner .icono {
-            width: 44px; height: 44px; margin-bottom: 20px; display: block;
-            color: #00bcd4; opacity: 0.85; transition: transform 0.3s ease;
-        }
-        .linea-banner:hover .icono { transform: scale(1.12); opacity: 1; }
-        .linea-referencia {
-            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-            color: var(--cian); display: block; margin-bottom: 10px;
-        }
-        .linea-banner h2 {
-            color: #f3ede1; font-size: 1.35rem; margin-bottom: 16px; font-weight: 700;
-            text-transform: none; letter-spacing: 0; line-height: 1.3;
-            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
-        }
-        .linea-banner-items { list-style: none; padding: 0; margin: 0 0 20px; }
-        .linea-banner-items li {
-            color: #c3cad6; font-size: 0.87rem; padding-left: 18px; position: relative;
-            margin-bottom: 7px; line-height: 1.5; text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-        }
-        .linea-banner-items li::before {
-            content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px;
-            border-radius: 50%; background: #00bcd4;
-        }
-        .linea-ver {
-            color: #5b9aaa; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;
-            transition: gap 0.3s ease; font-size: 0.92rem;
-        }
-        .linea-banner:hover .linea-ver { gap: 16px; color: #00bcd4; }
+        .familia-card:hover { border-color: var(--petroleo-acento); transform: translateY(-4px); }
+        .familia-card .icono { width: 32px; height: 32px; color: var(--cian); opacity: 0.85; margin-bottom: 16px; }
+        .familia-card h3 { color: #fff; font-size: 1.04rem; margin-bottom: 8px; text-transform: none; letter-spacing: 0; font-weight: 600; }
+        .familia-card p { color: #8892a4; font-size: 0.88rem; line-height: 1.6; }
 
-        /* ===== CTA FINAL ===== */
-        .cta-industrias {
-            padding: 80px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #1a4a5a, #0f2f3d);
+        .enlaces-relacionados { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+        .enlace-relacionado {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px;
+            border: 1px solid var(--borde); border-radius: 30px; color: var(--texto-principal) !important;
+            font-size: 0.85rem; font-weight: 500; transition: border-color 0.3s ease, color 0.3s ease;
         }
-        .cta-industrias h2 { color: var(--texto-principal); font-size: 2rem; margin-bottom: 14px; }
-        .cta-industrias p { color: #cfe3e8; max-width: 620px; margin: 0 auto 32px; }
+        .enlace-relacionado:hover { border-color: var(--cian); color: var(--cian) !important; }
 
-        @media (max-width: 800px) { .lineas-grid { grid-template-columns: 1fr; } }
-
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .page-hero { padding: 130px 16px 40px; }
-            .page-hero h1 { font-size: 1.9rem; }
-            .lineas-grid { padding: 40px 0; gap: 16px; }
-            .linea-banner { padding: 28px 24px; min-height: auto; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .linea-banner { transition: none; }
-            .linea-banner:hover { transform: none; }
+            .page-hero h1 { font-size: 1.8rem; }
+            .seccion-linea { padding: 40px 0 60px; }
+            .familias-grid { grid-template-columns: 1fr; gap: 16px; }
+            .familia-card { padding: 22px 20px; }
         }
     </style>
 </head>
@@ -242,91 +174,50 @@
     <!-- ===== HERO ===== -->
     <div class="page-hero">
         <div class="container">
-            <h1>Industrias</h1>
+            <a href="industrias.html" class="breadcrumb">← Volver a Industrias</a>
+            <h1>Manufactura electrónica</h1>
             <p>
-                Metrología, instrumentación y desarrollo a medida aplicados a las necesidades específicas de cada
-                sector: control dimensional en planta, calibración de instrumentos, acreditación de laboratorios y
-                caracterización de materiales.
+                Desarrollo de hardware, instrumentación de control de calidad y software de adquisición de
+                datos para líneas de manufactura y ensamblaje electrónico.
             </p>
         </div>
     </div>
 
-    <div class="container">
-        <div class="lineas-grid">
-            <a class="linea-banner" href="industria-automotriz.html">
-                <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M2 12h20"></path>
-                    <path d="M5 9v6M9 10v4M13 9v6M17 10v4"></path>
-                </svg>
-                <span class="linea-referencia">Industria 01</span>
-                <h2>Automotriz</h2>
-                <ul class="linea-banner-items">
-                    <li>Metrología dimensional</li>
-                    <li>Calibración de equipos de línea</li>
-                    <li>Trazabilidad ante auditorías</li>
-                </ul>
-                <span class="linea-ver">Ver industria →</span>
-            </a>
-
-            <a class="linea-banner" href="industria-manufactura-electronica.html">
-                <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                    <line x1="9" y1="2" x2="9" y2="4"></line><line x1="15" y1="2" x2="15" y2="4"></line>
-                    <line x1="9" y1="20" x2="9" y2="22"></line><line x1="15" y1="20" x2="15" y2="22"></line>
-                    <line x1="20" y1="9" x2="22" y2="9"></line><line x1="20" y1="14" x2="22" y2="14"></line>
-                    <line x1="2" y1="9" x2="4" y2="9"></line><line x1="2" y1="14" x2="4" y2="14"></line>
-                </svg>
-                <span class="linea-referencia">Industria 02</span>
-                <h2>Manufactura electrónica</h2>
-                <ul class="linea-banner-items">
-                    <li>Equipos de prueba a medida</li>
-                    <li>Instrumentación conectada</li>
-                    <li>Software de adquisición en línea</li>
-                </ul>
-                <span class="linea-ver">Ver industria →</span>
-            </a>
-
-            <a class="linea-banner" href="industria-laboratorios.html">
-                <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <path d="M9 15l2 2 4-4"></path>
-                </svg>
-                <span class="linea-referencia">Industria 03</span>
-                <h2>Laboratorios de ensayo y certificación</h2>
-                <ul class="linea-banner-items">
-                    <li>Consultoría ISO/IEC 17025</li>
-                    <li>Instrumentación de referencia</li>
-                    <li>Reportes automatizados</li>
-                </ul>
-                <span class="linea-ver">Ver industria →</span>
-            </a>
-
-            <a class="linea-banner" href="industria-materiales.html">
-                <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
-                </svg>
-                <span class="linea-referencia">Industria 04</span>
-                <h2>Vidrio y materiales industriales</h2>
-                <ul class="linea-banner-items">
-                    <li>Cámaras de acondicionamiento</li>
-                    <li>Ensayos mecánicos</li>
-                    <li>FTIR, DRX y SEM</li>
-                </ul>
-                <span class="linea-ver">Ver industria →</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- ===== CTA FINAL ===== -->
-    <section class="cta-industrias">
+    <section class="seccion-linea">
         <div class="container">
-            <h2>¿Su sector no está en la lista?</h2>
-            <p>
-                Cuéntenos el proceso o la norma que necesita cubrir. La mayoría de nuestros desarrollos parten de un
-                requerimiento específico, no de un catálogo cerrado.
-            </p>
-            <a href="mailto:info@hankelinstruments.com" class="btn">Escribir a Hankel Instruments</a>
+            <div class="familias-grid">
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <line x1="9" y1="2" x2="9" y2="4"></line><line x1="15" y1="2" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="22"></line><line x1="15" y1="20" x2="15" y2="22"></line>
+                        <line x1="20" y1="9" x2="22" y2="9"></line><line x1="20" y1="14" x2="22" y2="14"></line>
+                        <line x1="2" y1="9" x2="4" y2="9"></line><line x1="2" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                    <h3>Equipos de prueba a medida</h3>
+                    <p>Diseño y fabricación de bancos y fixtures de prueba para control de calidad en línea.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    <h3>Instrumentación conectada</h3>
+                    <p>Monitoreo de variables de proceso con adquisición de datos integrada a la línea.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <h3>Software de adquisición en tiempo real</h3>
+                    <p>Registro y visualización de datos de línea, con alertas ante desviaciones fuera de rango.</p>
+                </article>
+            </div>
+
+            <div class="enlaces-relacionados">
+                <a class="enlace-relacionado" href="servicios.html">Diseño y fabricación de equipos →</a>
+                <a class="enlace-relacionado" href="producto-software.html">Software a medida →</a>
+            </div>
         </div>
     </section>
 

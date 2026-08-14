@@ -109,6 +109,13 @@ nav {
     display: flex;
     align-items: center;
     position: relative;
+    /* "Puente" invisible: extiende el área de hover del li hasta tocar
+       el mega-panel (que empieza en top:81px). Sin esto, al mover el
+       mouse desde el enlace hacia el panel se cruza una franja del
+       header que no pertenece a .nav-mega y el hover se corta a medio
+       camino, haciendo que el panel parpadee y se cierre solo. */
+    padding-bottom: 40px;
+    margin-bottom: -40px;
 }
 
 .mega-toggle {
