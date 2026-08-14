@@ -36,8 +36,8 @@
         /* ===== GRID DE INDUSTRIAS (banners, mismo lenguaje visual que .service-card) ===== */
         .lineas-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             padding: 64px 0;
         }
         .linea-banner {
@@ -120,6 +120,8 @@
         }
         .cta-industrias h2 { color: var(--texto-principal); font-size: 2rem; margin-bottom: 14px; }
         .cta-industrias p { color: #cfe3e8; max-width: 620px; margin: 0 auto 32px; }
+
+        @media (max-width: 1100px) { .lineas-grid { grid-template-columns: repeat(2, 1fr); } }
 
         @media (max-width: 800px) { .lineas-grid { grid-template-columns: 1fr; } }
 

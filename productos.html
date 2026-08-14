@@ -43,8 +43,8 @@
         /* ===== GRID DE LÍNEAS (banners, mismo lenguaje visual que .service-card) ===== */
         .lineas-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             padding: 64px 0;
         }
         .linea-banner {
@@ -134,6 +134,10 @@
             font-size: 0.92rem;
             line-height: 1.7;
             max-width: 820px;
+        }
+
+        @media (max-width: 1100px) {
+            .lineas-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 800px) {
