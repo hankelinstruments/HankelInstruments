@@ -152,10 +152,7 @@ nav {
 .page-hero h1 {
     font-size: 2.6rem;
     margin-bottom: 12px;
-    background: linear-gradient(135deg, #fff, #00bcd4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #f3ede1;
 }
 
 .page-hero p {
