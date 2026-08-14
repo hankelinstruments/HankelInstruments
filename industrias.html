@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrias | Hankel Instruments</title>
+    <meta name="description" content="Soporte de metrología, instrumentación y desarrollo a medida para automotriz, manufactura electrónica, laboratorios de ensayo y certificación, y vidrio y materiales industriales.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ============================================================ -->
+    <!-- RECURSOS VISUALES DE ESTA PÁGINA                            -->
+    <!-- ============================================================ -->
+    <!--  [1] logo.jpg -> Raíz del repo                              -->
+    <!-- ============================================================ -->
+
+    <style>
+        :root {
+            --petroleo-oscuro: #0f2f3d;
+            --petroleo-medio: #1a4a5a;
+            --petroleo-acento: #3a7a8e;
+            --petroleo-claro: #5b9aaa;
+            --texto-principal: #f3ede1;
+            --texto-secundario: #8892a4;
+            --fondo-card: #151a24;
+            --borde: #2a2f3a;
+            --cian: #00bcd4;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #1ea952;
+        }
+
+        /* ===== HERO ===== */
+        .page-hero {
+            background: linear-gradient(135deg,
+                rgba(10,12,16,0.94),
+                rgba(10,12,16,0.90),
+                rgba(15, 45, 55, 0.88));
+            padding: 150px 20px 64px;
+            margin-top: 0;
+            text-align: left;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .page-hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 16px;
+            color: var(--texto-principal);
+            line-height: 1.2;
+        }
+        .page-hero p {
+            font-size: 1.08rem;
+            max-width: 760px;
+            color: #9aa3b5;
+            line-height: 1.7;
+        }
+
+        /* ===== ENCABEZADO DE SECCIÓN ===== */
+        .seccion-linea { padding: 72px 0; }
+        .seccion-alterna {
+            background: linear-gradient(135deg, #0d1117, #151a24);
+            border-top: 1px solid #1e2a3a;
+            border-bottom: 1px solid #1e2a3a;
+        }
+        .linea-titulo-grupo { max-width: 780px; margin-bottom: 8px; }
+        .linea-referencia {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--cian);
+            display: block;
+            margin-bottom: 12px;
+        }
+        .linea-titulo-grupo h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 14px;
+            text-transform: none;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+        }
+        .linea-titulo-grupo p {
+            color: #9aa3b5;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* ===== TARJETAS DE CAPACIDAD ===== */
+        .familias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-top: 40px;
+        }
+        .familia-card {
+            background: linear-gradient(145deg, #151a24, #1a1f2b);
+            border: 1px solid var(--borde);
+            border-radius: 14px;
+            padding: 28px 26px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .familia-card:hover { border-color: var(--petroleo-acento); transform: translateY(-4px); }
+        .familia-card .icono { width: 32px; height: 32px; color: var(--cian); opacity: 0.85; margin-bottom: 16px; }
+        .familia-card h3 { color: #fff; font-size: 1.04rem; margin-bottom: 8px; text-transform: none; letter-spacing: 0; font-weight: 600; }
+        .familia-card p { color: #8892a4; font-size: 0.88rem; line-height: 1.6; }
+
+        /* ===== ENLACES RELACIONADOS ===== */
+        .enlaces-relacionados {
+            margin-top: 36px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .enlace-relacionado {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: 1px solid var(--borde);
+            border-radius: 30px;
+            color: var(--texto-principal) !important;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        .enlace-relacionado:hover { border-color: var(--cian); color: var(--cian) !important; }
+
+        /* ===== CTA FINAL ===== */
+        .cta-industrias {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #1a4a5a, #0f2f3d);
+        }
+        .cta-industrias h2 { color: var(--texto-principal); font-size: 2rem; margin-bottom: 14px; }
+        .cta-industrias p { color: #cfe3e8; max-width: 620px; margin: 0 auto 32px; }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .linea-titulo-grupo h2 { font-size: 1.5rem; }
+            .seccion-linea { padding: 52px 0; }
+            .familias-grid { grid-template-columns: 1fr; gap: 16px; }
+            .familia-card { padding: 22px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html">
+                    <img src="logo.jpg" alt="Hankel Instruments Logo" class="logo" id="mainLogo" onerror="handleLogoError()">
+                    <span id="logoFallbackText" style="display:none; font-family:'Azonix'; font-size:1.6rem; color:#5b9aaa;">HANKEL</span>
+                </a>
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="nav-mega">
+                        <a href="servicios.html" class="nav-mega-trigger">Servicios</a>
+                        <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="megaServicios" aria-label="Mostrar submenú de Servicios">
+                            <svg class="mega-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="mega-panel" id="megaServicios">
+                            <div class="mega-panel-inner">
+                                <a class="mega-item" href="consultoria.html">
+                                    <span class="mega-item-title">Consultoría y auditoría ISO/IEC 17025</span>
+                                    <span class="mega-item-desc">Acreditación, auditorías internas y validación de métodos.</span>
+                                </a>
+                                <a class="mega-item" href="productos.html">
+                                    <span class="mega-item-title">Diseño y fabricación de equipos</span>
+                                    <span class="mega-item-desc">Hardware y software a medida para laboratorio.</span>
+                                </a>
+                                <a class="mega-item" href="academia.html">
+                                    <span class="mega-item-title">Capacitación técnica y normativa</span>
+                                    <span class="mega-item-desc">Cursos de metrología, ISO/IEC 17025 e incertidumbre.</span>
+                                </a>
+                                <a class="mega-item" href="productos.html#mcu">
+                                    <span class="mega-item-title">Instrumentación y microcontroladores</span>
+                                    <span class="mega-item-desc">Microcontroladores, SBC y kits de evaluación.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-mega">
+                        <a href="industrias.html" class="nav-mega-trigger active">Industrias</a>
+                        <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="megaIndustrias" aria-label="Mostrar submenú de Industrias">
+                            <svg class="mega-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="mega-panel" id="megaIndustrias">
+                            <div class="mega-panel-inner">
+                                <a class="mega-item" href="industrias.html#automotriz">
+                                    <span class="mega-item-title">Automotriz</span>
+                                    <span class="mega-item-desc">Metrología dimensional y ensayos para autopartes.</span>
+                                </a>
+                                <a class="mega-item" href="industrias.html#manufactura-electronica">
+                                    <span class="mega-item-title">Manufactura electrónica</span>
+                                    <span class="mega-item-desc">Instrumentación y control de calidad en línea de producción.</span>
+                                </a>
+                                <a class="mega-item" href="industrias.html#laboratorios">
+                                    <span class="mega-item-title">Laboratorios de ensayo y certificación</span>
+                                    <span class="mega-item-desc">Soporte técnico y trazabilidad para acreditación ISO/IEC 17025.</span>
+                                </a>
+                                <a class="mega-item" href="industrias.html#materiales">
+                                    <span class="mega-item-title">Vidrio y materiales industriales</span>
+                                    <span class="mega-item-desc">Caracterización y ensayos de materiales bajo norma.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li class="nav-mega">
+                        <a href="productos.html" class="nav-mega-trigger">Productos</a>
+                        <button type="button" class="mega-toggle" aria-expanded="false" aria-controls="megaProductos" aria-label="Mostrar submenú de Productos">
+                            <svg class="mega-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="mega-panel" id="megaProductos">
+                            <div class="mega-panel-inner">
+                                <a class="mega-item" href="productos.html#mcu">
+                                    <span class="mega-item-title">MCU y electrónica</span>
+                                    <span class="mega-item-desc">Catálogo con stock: placas de desarrollo y microcontroladores.</span>
+                                </a>
+                                <a class="mega-item" href="productos.html#instrumentos">
+                                    <span class="mega-item-title">Instrumentos y sensores</span>
+                                    <span class="mega-item-desc">Instrumentación de laboratorio bajo consulta técnica.</span>
+                                </a>
+                                <a class="mega-item" href="productos.html#camaras">
+                                    <span class="mega-item-title">Cámaras climáticas</span>
+                                    <span class="mega-item-desc">Cámaras de acondicionamiento fabricadas a medida.</span>
+                                </a>
+                                <a class="mega-item" href="productos.html#software">
+                                    <span class="mega-item-title">Software a medida</span>
+                                    <span class="mega-item-desc">Adquisición, análisis y reportes de datos de laboratorio.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="academia.html">Hankel Academy</a></li>
+                    <li><a href="consultoria.html">Consultoría ISO</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="admin.html" class="admin-link" title="Panel Admin">Admin</a></li>
+                    <li><a href="carrito.html" class="cart-icon">Carrito<span class="cart-badge" id="cartBadge">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <div class="page-hero">
+        <div class="container">
+            <h1>Industrias</h1>
+            <p>
+                Metrología, instrumentación y desarrollo a medida aplicados a las necesidades específicas de cada
+                sector: control dimensional en planta, calibración de instrumentos, acreditación de laboratorios y
+                caracterización de materiales.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- AUTOMOTRIZ                                                    -->
+    <!-- ============================================================ -->
+    <section class="seccion-linea" id="automotriz">
+        <div class="container">
+            <div class="linea-titulo-grupo">
+                <span class="linea-referencia">Industria 01</span>
+                <h2>Automotriz</h2>
+                <p>
+                    Soporte metrológico e instrumentación para plantas y proveedores del sector automotriz: control
+                    dimensional de piezas, calibración de equipos de línea y trazabilidad documental ante auditorías
+                    de cliente.
+                </p>
+            </div>
+
+            <div class="familias-grid">
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M2 12h20"></path>
+                        <path d="M5 9v6M9 10v4M13 9v6M17 10v4"></path>
+                    </svg>
+                    <h3>Metrología dimensional para autopartes</h3>
+                    <p>Calibradores, micrómetros y proyectores de perfil con trazabilidad al patrón nacional.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"></polyline>
+                    </svg>
+                    <h3>Calibración de instrumentos de planta</h3>
+                    <p>Multímetros, calibradores de proceso y sensores de línea bajo consulta técnica.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v18"></path>
+                        <path d="M6 7h12M6 17h12"></path>
+                        <path d="M9 10l3 3 3-3"></path>
+                    </svg>
+                    <h3>Ensayos mecánicos de materiales</h3>
+                    <p>Durómetros y máquinas universales de ensayo para caracterización de componentes.</p>
+                </article>
+            </div>
+
+            <div class="enlaces-relacionados">
+                <a class="enlace-relacionado" href="productos.html#instrumentos">Instrumentos y sensores →</a>
+                <a class="enlace-relacionado" href="consultoria.html">Consultoría ISO/IEC 17025 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MANUFACTURA ELECTRÓNICA                                       -->
+    <!-- ============================================================ -->
+    <section class="seccion-linea seccion-alterna" id="manufactura-electronica">
+        <div class="container">
+            <div class="linea-titulo-grupo">
+                <span class="linea-referencia">Industria 02</span>
+                <h2>Manufactura electrónica</h2>
+                <p>
+                    Desarrollo de hardware, instrumentación de control de calidad y software de adquisición de
+                    datos para líneas de manufactura y ensamblaje electrónico.
+                </p>
+            </div>
+
+            <div class="familias-grid">
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <line x1="9" y1="2" x2="9" y2="4"></line><line x1="15" y1="2" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="22"></line><line x1="15" y1="20" x2="15" y2="22"></line>
+                        <line x1="20" y1="9" x2="22" y2="9"></line><line x1="20" y1="14" x2="22" y2="14"></line>
+                        <line x1="2" y1="9" x2="4" y2="9"></line><line x1="2" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                    <h3>Equipos de prueba a medida</h3>
+                    <p>Diseño y fabricación de bancos y fixtures de prueba para control de calidad en línea.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    <h3>Instrumentación conectada</h3>
+                    <p>Monitoreo de variables de proceso con adquisición de datos integrada a la línea.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <h3>Software de adquisición en tiempo real</h3>
+                    <p>Registro y visualización de datos de línea, con alertas ante desviaciones fuera de rango.</p>
+                </article>
+            </div>
+
+            <div class="enlaces-relacionados">
+                <a class="enlace-relacionado" href="servicios.html">Diseño y fabricación de equipos →</a>
+                <a class="enlace-relacionado" href="productos.html#software">Software a medida →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- LABORATORIOS DE ENSAYO Y CERTIFICACIÓN                        -->
+    <!-- ============================================================ -->
+    <section class="seccion-linea" id="laboratorios">
+        <div class="container">
+            <div class="linea-titulo-grupo">
+                <span class="linea-referencia">Industria 03</span>
+                <h2>Laboratorios de ensayo y certificación</h2>
+                <p>
+                    Acompañamiento técnico para laboratorios que buscan acreditarse o que mantienen su sistema de
+                    gestión bajo ISO/IEC 17025: consultoría, instrumentación de referencia y software de reporte.
+                </p>
+            </div>
+
+            <div class="familias-grid">
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <path d="M9 15l2 2 4-4"></path>
+                    </svg>
+                    <h3>Consultoría y auditoría ISO/IEC 17025</h3>
+                    <p>Diagnóstico de brechas, validación de métodos y estimación de incertidumbre según GUM.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 12l4-3"></path>
+                        <path d="M12 3v2M21 12h-2M12 21v-2M3 12h2"></path>
+                    </svg>
+                    <h3>Instrumentación de referencia</h3>
+                    <p>Suministro de equipos de calibración y verificación bajo consulta técnica por magnitud.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="12" y1="20" x2="12" y2="10"></line>
+                        <line x1="18" y1="20" x2="18" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="16"></line>
+                    </svg>
+                    <h3>Reportes y certificados automatizados</h3>
+                    <p>Generación de informes de ensayo y certificados de calibración en el formato del laboratorio.</p>
+                </article>
+            </div>
+
+            <div class="enlaces-relacionados">
+                <a class="enlace-relacionado" href="consultoria.html">Consultoría ISO/IEC 17025 →</a>
+                <a class="enlace-relacionado" href="productos.html#software">Software a medida →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- VIDRIO Y MATERIALES INDUSTRIALES                              -->
+    <!-- ============================================================ -->
+    <section class="seccion-linea seccion-alterna" id="materiales">
+        <div class="container">
+            <div class="linea-titulo-grupo">
+                <span class="linea-referencia">Industria 04</span>
+                <h2>Vidrio y materiales industriales</h2>
+                <p>
+                    Caracterización de materiales y control de condiciones de ensayo para procesos de fabricación
+                    de vidrio y materiales industriales: cámaras climáticas, ensayos mecánicos y técnicas
+                    analíticas.
+                </p>
+            </div>
+
+            <div class="familias-grid">
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+                    </svg>
+                    <h3>Cámaras de acondicionamiento a medida</h3>
+                    <p>Envejecimiento acelerado UV, ciclos térmicos y de humedad, y acondicionamiento normalizado.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 8h18l-3 7H6L3 8z"></path>
+                        <path d="M12 3v18M5 21h14"></path>
+                    </svg>
+                    <h3>Ensayos y caracterización de materiales</h3>
+                    <p>Propiedades mecánicas, dimensionales y de superficie bajo condiciones controladas.</p>
+                </article>
+                <article class="familia-card">
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <h3>Integración con técnicas analíticas</h3>
+                    <p>Procesamiento de datos de FTIR, difracción de rayos X (DRX) y microscopía SEM.</p>
+                </article>
+            </div>
+
+            <div class="enlaces-relacionados">
+                <a class="enlace-relacionado" href="productos.html#camaras">Cámaras climáticas →</a>
+                <a class="enlace-relacionado" href="productos.html#software">Software a medida →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-industrias">
+        <div class="container">
+            <h2>¿Su sector no está en la lista?</h2>
+            <p>
+                Cuéntenos el proceso o la norma que necesita cubrir. La mayoría de nuestros desarrollos parten de un
+                requerimiento específico, no de un catálogo cerrado.
+            </p>
+            <a href="mailto:info@hankelinstruments.com" class="btn">Escribir a Hankel Instruments</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="industrias.html">Industrias</a>
+                <a href="proyectos.html">Proyectos</a>
+                <a href="productos.html">Productos</a>
+                <a href="academia.html">Hankel Academy</a>
+                <a href="consultoria.html">Consultoría ISO</a>
+            </div>
+            <p><a href="mailto:info@hankelinstruments.com">info@hankelinstruments.com</a></p>
+            <p style="margin-top:20px; font-size:0.85rem;">&copy; 2026 Hankel Instruments — Ingeniería y Metrología Aplicada a la Industria</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

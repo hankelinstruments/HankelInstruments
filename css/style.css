@@ -104,6 +104,91 @@ nav {
     border-bottom-color: #00bcd4;
 }
 
+/* ===== MEGA-MENÚ (Servicios / Productos / Industrias) ===== */
+.nav-mega {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.mega-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #9aa3b5;
+    padding: 4px;
+    margin-left: 2px;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.mega-chevron { transition: transform 0.25s ease; }
+
+.nav-mega:hover .mega-chevron,
+.nav-mega.mega-open .mega-chevron {
+    transform: rotate(180deg);
+    color: #00bcd4;
+}
+
+.mega-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 81px;
+    background: #0d1117;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.25);
+    box-shadow: 0 24px 40px rgba(0,0,0,0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 999;
+}
+
+.nav-mega:hover .mega-panel,
+.nav-mega.mega-open .mega-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mega-panel-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 6px;
+}
+
+.mega-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    color: #f3ede1 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    border-bottom: none !important;
+}
+
+.mega-item:hover {
+    background: rgba(0, 188, 212, 0.08);
+    color: #f3ede1 !important;
+}
+
+.mega-item-title {
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.mega-item-desc {
+    font-size: 0.78rem;
+    color: #9aa3b5;
+    line-height: 1.4;
+}
+
 .admin-link {
     background: #151a24;
     border: 1px solid #2a2f3a;
@@ -549,6 +634,55 @@ footer a:hover { color: #fff; }
     .nav-links a.admin-link {
         display: inline-flex;
         width: auto;
+    }
+
+    .nav-mega {
+        flex-direction: column;
+        align-items: stretch;
+        position: relative;
+    }
+
+    .nav-mega .nav-mega-trigger {
+        padding-right: 40px;
+    }
+
+    .mega-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 0;
+        top: 4px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .mega-panel {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        box-shadow: none;
+        border-bottom: none;
+        background: rgba(255,255,255,0.03);
+        border-radius: 8px;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-mega.mega-open .mega-panel {
+        max-height: 600px;
+    }
+
+    .mega-panel-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 4px 0 12px 8px;
+    }
+
+    .mega-item {
+        padding: 10px 8px;
     }
 }
 

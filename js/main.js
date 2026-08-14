@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMenu() {
         navLinks.classList.remove('nav-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        navLinks.querySelectorAll('.nav-mega.mega-open').forEach(li => {
+            li.classList.remove('mega-open');
+            const btn = li.querySelector('.mega-toggle');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
     }
 
     navToggle.addEventListener('click', () => {
@@ -45,11 +50,25 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    navLinks.querySelectorAll('a').forEach(link => {
+    navLinks.querySelectorAll(':scope > li > a, .mega-item').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
 
     window.addEventListener('resize', () => {
         if (window.innerWidth > 900) closeMenu();
+    });
+})();
+
+// ===== Mega-menú (Servicios / Productos / Industrias) =====
+(function () {
+    document.querySelectorAll('.mega-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const li = btn.closest('.nav-mega');
+            if (!li) return;
+            const isOpen = li.classList.toggle('mega-open');
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
     });
 })();
