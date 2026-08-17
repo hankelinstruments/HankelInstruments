@@ -714,7 +714,7 @@ footer a:hover { color: #fff; }
 }
 
 :is(.service-card, .familia-card, .linea-banner, .project-card, .course-card, .producto-card, .alcance-card) {
-    animation: fadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation: fadeInUp 1s ease-out backwards;
 }
 
 :is(.service-card, .familia-card, .linea-banner, .project-card, .course-card, .producto-card, .alcance-card):nth-child(1) { animation-delay: 0.1s; }
